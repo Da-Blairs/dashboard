@@ -101,7 +101,8 @@ with col2:
         creds = get_credentials()
         service = build('calendar', 'v3', credentials=creds)
     
-        today = datetime.datetime.combine(today, datetime.time.min).astimezone(toronto_tz)
+        today = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
+
         events_result = service.events().list(calendarId='primary', timeMin=today,
                                               maxResults=10, singleEvents=True,
                                               orderBy='startTime').execute()
