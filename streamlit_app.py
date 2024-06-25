@@ -79,7 +79,7 @@ def get_credentials():
     return creds
 
 st.set_page_config(layout="wide")
-col1, col2, col3 = col1, col2, col3 = st.beta_columns((2,1,1))
+col1, col2, col3 = st.beta_columns((2,1,1))
 
 # Streamlit setup
 st.title("Blair Family Dashboard")
