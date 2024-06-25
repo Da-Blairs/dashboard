@@ -14,9 +14,9 @@ from streamlit_calendar import calendar
 load_dotenv()
 
 # Fetch environment variables for client ID and client secret
-client_id = os.getenv('GOOGLE_CREDENTIALS_CLIENT_ID')
-client_secret = os.getenv('GOOGLE_CREDENTIALS_CLIENT_SECRET')
-redirect_uri = "https://ominous-fortnight-7wxgg5xw4cpgp6-8501.app.github.dev" #os.getenv('GOOGLE_REDIRECT_URI', "https://ominous-fortnight-7wxgg5xw4cpgp6.github.dev")
+client_id = os.getenv('GOOGLE_CREDENTIALS_CLIENT_ID', st.secrets["GOOGLE_CREDENTIALS_CLIENT_ID"])
+client_secret = os.getenv('GOOGLE_CREDENTIALS_CLIENT_SECRET', st.secrets["GOOGLE_CREDENTIALS_CLIENT_SECRET"])
+redirect_uri = os.getenv('GOOGLE_REDIRECT_URI', st.secrets["GOOGLE_CREDENTIALS_CLIENT_SECRET"])
 
 # Ensure environment variables are set
 if not client_id or not client_secret or not redirect_uri:
