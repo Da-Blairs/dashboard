@@ -87,8 +87,7 @@ st.write(f"Redirect URI: {redirect_uri}")
 creds = get_credentials()
 if not creds:
     st.error("Failed to obtain credentials.")
-else:
-    st.success("Successfully authenticated!")
+    st.stop()
 
 def get_google_calendar_events():
     creds = get_credentials()
