@@ -1,40 +1,142 @@
-import altair as alt
-import numpy as np
-import pandas as pd
+import json
+import os
+import json
+import datetime
 import streamlit as st
+from google_auth_oauthlib.flow import Flow
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from dotenv import load_dotenv
+from urllib.parse import urlparse, parse_qs
+from streamlit_calendar import calendar
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Fetch environment variables for client ID and client secret
+client_id = os.getenv('GOOGLE_CREDENTIALS_CLIENT_ID')
+client_secret = os.getenv('GOOGLE_CREDENTIALS_CLIENT_SECRET')
+redirect_uri = "https://ominous-fortnight-7wxgg5xw4cpgp6-8501.app.github.dev" #os.getenv('GOOGLE_REDIRECT_URI', "https://ominous-fortnight-7wxgg5xw4cpgp6.github.dev")
+
+# Ensure environment variables are set
+if not client_id or not client_secret or not redirect_uri:
+    st.error("Please set the GOOGLE_CREDENTIALS_CLIENT_ID, GOOGLE_CREDENTIALS_CLIENT_SECRET, and GOOGLE_REDIRECT_URI environment variables.")
+    st.stop()
+
+# Define OAuth 2.0 configuration
+credentials_info = {
+    "web": {
+        "client_id": client_id,
+        "project_id": "your_project_id",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": client_secret,
+        "redirect_uris": [redirect_uri],
+    }
+}
+
+SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
+
+# Get the current URL query parameters
+query_params = st.query_params
+if hasattr(query_params, "code"):
+    query_string = "&".join(f"{key}={value}" for key, value in query_params.items())
+    auth_response = f"{redirect_uri}?{query_string}"
+    st.write(auth_response)
+    st.write("zoe")
+    flow = Flow.from_client_config(credentials_info, SCOPES)
+    flow.redirect_uri = redirect_uri
+    flow.fetch_token(authorization_response=auth_response)
+
+    creds = flow.credentials
+    # Store the new credentials in an environment variable
+    os.environ['GOOGLE_CREDENTIALS_TOKEN'] = creds.to_json()
+    
+    # Optionally, remove the query parameters from the URL to avoid repeated processing
+    st.query_params.clear()
+
+def get_credentials():
+    creds = None
+    
+    # Check for existing credentials in environment variable
+    token = os.getenv('GOOGLE_CREDENTIALS_TOKEN')
+    if token:
+        creds = Credentials.from_authorized_user_info(json.loads(token), SCOPES)
+    
+    # Refresh or perform OAuth flow if credentials are invalid
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+            # Update the environment variable with the refreshed token
+            os.environ['GOOGLE_CREDENTIALS_TOKEN'] = creds.to_json()
+        else:
+            flow = Flow.from_client_config(credentials_info, SCOPES)
+            flow.redirect_uri = redirect_uri
+            
+            auth_url, _ = flow.authorization_url(access_type='offline', include_granted_scopes='true', prompt='consent')
+            st.write(f"Please go to this URL for authorization: {auth_url}", auth_url)
+
+    return creds
+
+# Streamlit setup
+st.title("Welcome to Streamlit!")
+st.write(f"Redirect URI: {redirect_uri}")
+
+# Get credentials
+creds = get_credentials()
+if not creds:
+    st.error("Failed to obtain credentials.")
+else:
+    st.success("Successfully authenticated!")
+
+def get_google_calendar_events():
+    creds = get_credentials()
+    service = build('calendar', 'v3', credentials=creds)
+
+    now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
+    events_result = service.events().list(calendarId='primary', timeMin=now,
+                                          maxResults=10, singleEvents=True,
+                                          orderBy='startTime').execute()
+    events = events_result.get('items', [])
+
+    calendar_events = []
+    for event in events:
+        start = event['start'].get('dateTime', event['start'].get('date'))
+        end = event['end'].get('dateTime', event['end'].get('date'))
+        calendar_events.append({
+            'title': event['summary'],
+            'start': start,
+            'end': end,
+        })
+    return calendar_events
+
+# Fetch events from Google Calendar
+calendar_events = get_google_calendar_events()
+
+# Define calendar options
+calendar_options = {
+    "slotMinTime": "06:00:00",
+    "slotMaxTime": "18:00:00",
+    "initialView": "list",
+}
+
+# Custom CSS
+custom_css="""
+    .fc-event-past {
+        opacity: 0.8;
+    }
+    .fc-event-time {
+        font-style: italic;
+    }
+    .fc-event-title {
+        font-weight: 700;
+    }
+    .fc-toolbar-title {
+        font-size: 2rem;
+    }
 """
-# Welcome to Streamlit!
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
-
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
-
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
-
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
-
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
-
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
-
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+# Calendar component with events
+calendar_component = calendar(events=calendar_events, options=calendar_options, custom_css=custom_css)
+st.write(calendar_component)
