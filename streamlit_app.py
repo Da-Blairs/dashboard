@@ -8,7 +8,7 @@ from google_calendar import get_credentials, get_google_calendar_events
 from streamlit_calendar import calendar
 
 st.set_page_config(layout="wide")
-st.title("Blair Family Dashboard")
+st.title("Blair Family Dashboard!")
 
 # Define columns
 col1, col2, col3 = st.columns((2, 1, 1))
