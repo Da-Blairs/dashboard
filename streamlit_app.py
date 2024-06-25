@@ -11,6 +11,8 @@ from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qs
 from streamlit_calendar import calendar
 
+st.set_page_config(layout="wide")
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -81,7 +83,6 @@ def get_credentials():
 # Streamlit setup
 st.title("Blair Family Dashboard")
 
-st.set_page_config(layout="wide")
 col1, col2, col3 = st.columns((2,1,1))
 
 with col1:
