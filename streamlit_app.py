@@ -5,18 +5,20 @@ from time import sleep
 from datetime import datetime
 import pytz
 from google_calendar import get_credentials, get_google_calendar_events
+from streamlit_calendar import calendar
 
 st.set_page_config(layout="wide")
 st.title("Blair Family Dashboard")
 
-col1, col2, col3 = st.columns((2,1,1))
+# Define columns
+col1, col2, col3 = st.columns((2, 1, 1))
 
 # Streamlit setup
 with col1:
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
 
-with col2: 
+with col2:
     # Get credentials and handle OAuth flow if needed
     creds, auth_url = get_credentials(st.experimental_get_query_params())
     if auth_url:
