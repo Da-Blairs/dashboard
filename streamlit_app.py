@@ -11,12 +11,6 @@ from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qs
 from streamlit_calendar import calendar
 
-# Set the title of the app
-st.title("Real-Time Clock")
-
-# Create a placeholder for the clock
-clock_placeholder = st.empty()
-
 # Load environment variables from .env file
 load_dotenv()
 
@@ -86,6 +80,9 @@ def get_credentials():
 
 # Streamlit setup
 st.title("Blair Family Dashboard")
+
+# Create a placeholder for the clock
+clock_placeholder = st.empty()
 
 # Get credentials
 creds = get_credentials()
