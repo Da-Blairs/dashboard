@@ -141,10 +141,13 @@ custom_css="""
 calendar_component = calendar(events=calendar_events, options=calendar_options, custom_css=custom_css)
 st.write(calendar_component)
 
+# Define the timezone for Toronto
+toronto_tz = pytz.timezone('America/Toronto')
+
 # Start an infinite loop to update the clock
 while True:
     # Get the current time
-    current_time = strftime('%I:%M %p')
+    current_time = datetime.now(toronto_tz).strftime('%I:%M:%S %p')
     
     # Update the clock placeholder with the current time
     clock_placeholder.write(current_time)
