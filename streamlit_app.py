@@ -125,8 +125,6 @@ with col2:
     
     # Define calendar options
     calendar_options = {
-        "slotMinTime": "06:00:00",
-        "slotMaxTime": "18:00:00",
         "initialView": "list",
     }
     
