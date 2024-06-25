@@ -157,7 +157,7 @@ while True:
     current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p')
     
     # Update the clock placeholder with the current time
-    clock_placeholder.write(current_time)
+    clock_placeholder.title(current_time)
     
     # Wait for 1 second before updating the time again
     sleep(1)
