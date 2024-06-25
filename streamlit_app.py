@@ -90,65 +90,63 @@ with col1:
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
 
-with col2: 
-    calendar_placeholder = st.empty()
-    
-# Get credentials
-creds = get_credentials()
-if not creds:
-    st.error("Failed to obtain credentials.")
-    st.stop()
-
-def get_google_calendar_events():
+with col2:     
+    # Get credentials
     creds = get_credentials()
-    service = build('calendar', 'v3', credentials=creds)
-
-    now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-    events_result = service.events().list(calendarId='primary', timeMin=now,
-                                          maxResults=10, singleEvents=True,
-                                          orderBy='startTime').execute()
-    events = events_result.get('items', [])
-
-    calendar_events = []
-    for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
-        end = event['end'].get('dateTime', event['end'].get('date'))
-        calendar_events.append({
-            'title': event['summary'],
-            'start': start,
-            'end': end,
-        })
-    return calendar_events
-
-# Fetch events from Google Calendar
-calendar_events = get_google_calendar_events()
-
-# Define calendar options
-calendar_options = {
-    "slotMinTime": "06:00:00",
-    "slotMaxTime": "18:00:00",
-    "initialView": "list",
-}
-
-# Custom CSS
-custom_css="""
-    .fc-event-past {
-        opacity: 0.8;
+    if not creds:
+        st.error("Failed to obtain credentials.")
+        st.stop()
+    
+    def get_google_calendar_events():
+        creds = get_credentials()
+        service = build('calendar', 'v3', credentials=creds)
+    
+        now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
+        events_result = service.events().list(calendarId='primary', timeMin=now,
+                                              maxResults=10, singleEvents=True,
+                                              orderBy='startTime').execute()
+        events = events_result.get('items', [])
+    
+        calendar_events = []
+        for event in events:
+            start = event['start'].get('dateTime', event['start'].get('date'))
+            end = event['end'].get('dateTime', event['end'].get('date'))
+            calendar_events.append({
+                'title': event['summary'],
+                'start': start,
+                'end': end,
+            })
+        return calendar_events
+    
+    # Fetch events from Google Calendar
+    calendar_events = get_google_calendar_events()
+    
+    # Define calendar options
+    calendar_options = {
+        "slotMinTime": "06:00:00",
+        "slotMaxTime": "18:00:00",
+        "initialView": "list",
     }
-    .fc-event-time {
-        font-style: italic;
-    }
-    .fc-event-title {
-        font-weight: 700;
-    }
-    .fc-toolbar-title {
-        font-size: 2rem;
-    }
-"""
-
-# Calendar component with events
-calendar_component = calendar(events=calendar_events, options=calendar_options, custom_css=custom_css)
-calendar_placeholder.write(calendar_component)
+    
+    # Custom CSS
+    custom_css="""
+        .fc-event-past {
+            opacity: 0.8;
+        }
+        .fc-event-time {
+            font-style: italic;
+        }
+        .fc-event-title {
+            font-weight: 700;
+        }
+        .fc-toolbar-title {
+            font-size: 2rem;
+        }
+    """
+    
+    # Calendar component with events
+    calendar_component = calendar(events=calendar_events, options=calendar_options, custom_css=custom_css)
+    st.write(calendar_component)
 
 # Define the timezone for Toronto
 toronto_tz = pytz.timezone('America/Toronto')
