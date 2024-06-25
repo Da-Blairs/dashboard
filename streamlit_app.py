@@ -5,7 +5,6 @@ import datetime
 import pytz
 import streamlit as st
 from time import sleep, strftime
-from datetime import datetime
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
@@ -155,7 +154,7 @@ toronto_tz = pytz.timezone('America/Toronto')
 # Start an infinite loop to update the clock
 while True:
     # Get the current time
-    current_time = datetime.now(toronto_tz).strftime('%I:%M:%S %p')
+    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p')
     
     # Update the clock placeholder with the current time
     clock_placeholder.write(current_time)
