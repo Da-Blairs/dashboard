@@ -147,7 +147,7 @@ st.write(calendar_component)
 # Start an infinite loop to update the clock
 while True:
     # Get the current time
-    current_time = strftime('%I:%M:%S %p')
+    current_time = strftime('%I:%M %p')
     
     # Update the clock placeholder with the current time
     clock_placeholder.write(current_time)
