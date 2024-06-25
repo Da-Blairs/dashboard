@@ -82,7 +82,7 @@ def get_credentials():
     return creds
 
 # Streamlit setup
-st.title("Blair Family Dashboard!")
+st.title("Blair Family Dashboard!!")
 
 col1, col2 = st.columns((1,2))
 
@@ -101,8 +101,8 @@ with col2:
         creds = get_credentials()
         service = build('calendar', 'v3', credentials=creds)
     
-        now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-        events_result = service.events().list(calendarId='primary', timeMin=now,
+        today = datetime.datetime.combine(today, datetime.time.min).astimezone(toronto_tz)
+        events_result = service.events().list(calendarId='primary', timeMin=today,
                                               maxResults=10, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
