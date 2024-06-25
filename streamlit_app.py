@@ -3,12 +3,19 @@ import os
 import json
 import datetime
 import streamlit as st
+from time import sleep, strftime
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qs
 from streamlit_calendar import calendar
+
+# Set the title of the app
+st.title("Real-Time Clock")
+
+# Create a placeholder for the clock
+clock_placeholder = st.empty()
 
 # Load environment variables from .env file
 load_dotenv()
@@ -136,3 +143,14 @@ custom_css="""
 # Calendar component with events
 calendar_component = calendar(events=calendar_events, options=calendar_options, custom_css=custom_css)
 st.write(calendar_component)
+
+# Start an infinite loop to update the clock
+while True:
+    # Get the current time
+    current_time = strftime('%I:%M:%S %p')
+    
+    # Update the clock placeholder with the current time
+    clock_placeholder.write(current_time)
+    
+    # Wait for 1 second before updating the time again
+    sleep(1)
