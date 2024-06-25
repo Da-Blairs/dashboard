@@ -43,8 +43,6 @@ query_params = st.query_params
 if hasattr(query_params, "code"):
     query_string = "&".join(f"{key}={value}" for key, value in query_params.items())
     auth_response = f"{redirect_uri}?{query_string}"
-    st.write(auth_response)
-    st.write("zoe")
     flow = Flow.from_client_config(credentials_info, SCOPES)
     flow.redirect_uri = redirect_uri
     flow.fetch_token(authorization_response=auth_response)
@@ -80,8 +78,7 @@ def get_credentials():
     return creds
 
 # Streamlit setup
-st.title("Welcome to Streamlit!")
-st.write(f"Redirect URI: {redirect_uri}")
+st.title("Blair Family Dashboard")
 
 # Get credentials
 creds = get_credentials()
