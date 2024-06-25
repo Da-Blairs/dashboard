@@ -1,5 +1,6 @@
 altair
 pandas
+dotenv
 streamlit
 streamlit-calendar
 google-api-python-client
