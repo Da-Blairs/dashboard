@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qs
 from streamlit_calendar import calendar
 
+st.set_page_config(layout="wide")
 st.beta_columns
 
 # Load environment variables from .env file
