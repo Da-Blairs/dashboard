@@ -84,7 +84,7 @@ def get_credentials():
 # Streamlit setup
 st.title("Blair Family Dashboard")
 
-col1, col2, col3 = st.columns((1,2,1))
+col1, col2 = st.columns((1,2))
 
 with col1:
     # Create a placeholder for the clock
