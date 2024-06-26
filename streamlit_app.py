@@ -152,8 +152,8 @@ with col2:
         for event in events:
             calendar_events.append({
                 'title': event['summary'],
-                'start': event['start'].get('dateTime', event['start'].get('date')),
-                'end': event['end'].get('dateTime', event['end'].get('date')),
+                'start': event['start'],
+                'end': event['end'],
                 'allday': 'date' in event['start']
             })
         return calendar_events
