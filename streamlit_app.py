@@ -25,10 +25,10 @@ custom_css = f"""
         font-size: 30px;
     }}
     </style>
-    """
+"""
     
-    # Inject custom CSS and display the clock
-    st.markdown(custom_css, unsafe_allow_html=True)
+# Inject custom CSS and display the clock
+st.markdown(custom_css, unsafe_allow_html=True)
 
 # Load environment variables from .env file
 load_dotenv()
