@@ -159,6 +159,16 @@ with col2:
             })
         return calendar_events
 
+    def get_event_dates(start, end):
+        start_date = datetime.fromisoformat(start).date()
+        end_date = datetime.fromisoformat(end).date()
+        date_list = []
+        current_date = start_date
+        while current_date <= end_date:
+            date_list.append(current_date.strftime('%Y-%m-%d'))
+            current_date += timedelta(days=1)
+        return date_list
+        
     def format_event(event):
         start_datetime = datetime.fromisoformat(event['start'])
         end_datetime = datetime.fromisoformat(event['end'])
@@ -174,13 +184,22 @@ with col2:
     calendar_events = get_google_calendar_events()
     
     if calendar_events:
-        # Sort events by start date and time
-        calendar_events.sort(key=lambda x: x['start'])
+        # Expand each event to include all dates from start to end
+        expanded_events = []
+        for event in calendar_events:
+            dates = get_event_dates(event['start'], event['end'])
+            for date in dates:
+                expanded_event = event.copy()
+                expanded_event['date'] = date
+                expanded_events.append(expanded_event)
+        
+        # Sort expanded events by date
+        expanded_events.sort(key=lambda x: x['date'])
         
         # Group events by date
         events_by_date = {}
-        for event in calendar_events:
-            date = datetime.fromisoformat(event['start']).strftime('%A %B %d')
+        for event in expanded_events:
+            date = datetime.fromisoformat(event['date']).strftime('%A %B %d')
             if date not in events_by_date:
                 events_by_date[date] = []
             events_by_date[date].append(event)
