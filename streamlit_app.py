@@ -89,6 +89,8 @@ col1, col2 = st.columns((1,2))
 
 with col1:
 
+    lat = "42.9836"
+    lng = "-81.2497"
     response_current = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lng}&current_weather=true')
     st.write(response_current);
     
