@@ -189,7 +189,7 @@ with col2:
                 #         end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
                 #         st.markdown(f"{event['title']} {start_time}-{end_time}")
                 #     else:
-                        st.markdown(f"{event['title']} All Day")
+                        # st.markdown(f"{event['title']} All Day")
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
