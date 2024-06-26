@@ -57,5 +57,10 @@ body, h1, h2, .clock-placeholder {
     border-radius: 20px;
     padding: .5em;
     margin: .25em 0;
+    display: flex;
+    justify-content: space-between;
+}
+#swims .count, #steps .count {
+    font-size: 48px;
 }
 
