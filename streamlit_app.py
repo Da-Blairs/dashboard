@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qs
 from streamlit_calendar import calendar
 
-with open( "app\style.css" ) as css:
+with open( "app/style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
 # Load environment variables from .env file
