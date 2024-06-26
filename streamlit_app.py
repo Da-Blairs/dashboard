@@ -101,10 +101,25 @@ with col2:
     def get_google_calendar_events():
         creds = get_credentials()
         service = build('calendar', 'v3', credentials=creds)
-    
+
+        # Get the current UTC time
+        now_utc = datetime.datetime.utcnow()
+        
+        # Define the Toronto timezone
+        toronto_tz = pytz.timezone('America/Toronto')
+        
+        # Convert the current UTC time to Toronto time
+        now_toronto = now_utc.astimezone(toronto_tz)
+        
+        # Replace the time to midnight
+        midnight_toronto = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0)
+        
+        # Convert to ISO format
+        midnight_toronto_iso = midnight_toronto.isoformat()
+        
         today = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
 
-        events_result = service.events().list(calendarId='primary', timeMin=today,
+        events_result = service.events().list(calendarId='primary', timeMin=midnight_toronto_iso,
                                               maxResults=10, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
