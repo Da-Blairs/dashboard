@@ -19,5 +19,5 @@ body, h1, h2, .clock-placeholder {
     font-family: 'Azeret Mono', sans-serif;
 }
 .event-list .event {
-    background: linear-gradient(240deg, #97e7d1 0%, #ecfcc3 50%);
+    background: linear-gradient(240deg, #97e7d1 0%, #ecfcc3 100%);
 }
