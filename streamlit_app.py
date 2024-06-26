@@ -96,9 +96,10 @@ with col1:
 
     current = result_current["current_weather"]
     temp = current["temperature"]
+    weathercode = current["weathercode"]
 
     st.write(current);
-    st.write(temp);
+    st.write(f'{temp} °C');
     
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
