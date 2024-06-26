@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
-body, h1, h2 {
+body, h1, h2, .clock-placeholder {
     font-family: 'Aldrich', sans-serif;
 }
 .clock-placeholder {
