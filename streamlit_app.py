@@ -177,8 +177,8 @@ with col2:
             st.subheader(date)
             #print all the events on this date
             for event in events:
-                # pprint.pp(event['start'])
-                # if event['start'].get('date', event['start'].get('dateTime').split('T')[0]) == date:
+                pprint.pp(event['start'])
+                if event['start'].get('date') == date:
                 #     if event['start'].get('dateTime'):
                 #         start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6]) 
                 #         start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
