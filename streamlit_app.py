@@ -97,7 +97,7 @@ with col1:
     current = result_current["current_weather"]
     temp = current["temperature"]
     weathercode = current["weathercode"]
-    isday = current["isday"]
+    is_day = current["is_day"]
 
     day_weather_code_to_emoji = {
         0: ":sunny:",            # Clear sky
