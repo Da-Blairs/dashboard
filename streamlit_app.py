@@ -175,7 +175,7 @@ with col2:
         markdown_output = []
         
         for date in date_list:
-            header = datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%a %b %d")
+            header = datetime.datetime.strptime(date, "%Y-%m-%d").strftime("\<\s\p\a\n\>%a\<\/\s\p\a\n\>\<\s\p\a\n\>%b %d\<\/\s\p\a\n\>")
             markdown_output.append(f"<span class='date'>{header}</span>")
             
             for event in events:
