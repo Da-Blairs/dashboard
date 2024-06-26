@@ -177,8 +177,7 @@ with col2:
             st.subheader(date)
             #print all the events on this date
             for event in events:
-                pprint.pp(event['start'])
-                if event['start'].get('date') == date: #or event['start'].get('dateTime').split('T')[0] == date:
+                if event['start'].get('date') == date: or event['start']['dateTime'].split('T')[0] == date:
                     st.write(event['title'])
                 else: 
                     pprint.pp(event['start'])
