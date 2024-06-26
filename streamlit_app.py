@@ -178,20 +178,17 @@ with col2:
             #print all the events on this date
             for event in events:
                 if event['start'].get('date') == date or event['start']['dateTime'].split('T')[0] == date:
-                    # st.write(event['title'])
-                # else: 
-                    # pprint.pp(event['start'])
                     if event['start'].get('date'):
                         st.markdown(f"{event['title']} All Day")
-                    else
+                    else:
                         start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6]) 
                         pprint.pp(start_datetime)
                         # start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
                 #         end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6]) 
                 #         end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
                 #         st.markdown(f"{event['title']} {start_time}-{end_time}")
-                #     else:
-                        # 
+                else:
+                     pass   
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
