@@ -183,9 +183,9 @@ with col1:
 
     emoji_shortcode = get_weather_emoji(weathercode, is_day)
 
-    st.write(current);
-    st.title(f'{emoji_shortcode}');
-    st.subheading(f'{temp} °C');
+    st.write(current)
+    st.title(f'{emoji_shortcode}')
+    st.subheading(f'{temp} °C')
     
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
