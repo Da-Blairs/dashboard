@@ -174,7 +174,7 @@ toronto_tz = pytz.timezone('America/Toronto')
 # Start an infinite loop to update the clock
 while True:
     # Get the current time
-    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p')
+    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p %B %d, %Y')
     current_date = datetime.datetime.now(toronto_tz).strftime('%B %d, %Y')
     
     # Update the clock placeholder with the current time
