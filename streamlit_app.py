@@ -158,10 +158,40 @@ with col2:
                 'allday': 'date' in event['start']
             })
         return calendar_events
+
+    def format_event(event):
+    start_datetime = datetime.fromisoformat(event['start'])
+    end_datetime = datetime.fromisoformat(event['end'])
+    
+    if event['allday']:
+        return f"{event['title']} All Day"
+    else:
+        start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
+        end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
+        return f"{event['title']} {start_time}-{end_time}"
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
-    st.write(calendar_events);
+    
+    if calendar_events:
+        # Sort events by start date and time
+        calendar_events.sort(key=lambda x: x['start'])
+        
+        # Group events by date
+        events_by_date = {}
+        for event in calendar_events:
+            date = datetime.fromisoformat(event['start']).strftime('%A %B %d')
+            if date not in events_by_date:
+                events_by_date[date] = []
+            events_by_date[date].append(event)
+        
+        # Display the events
+        for date, events in events_by_date.items():
+            st.write(f"### {date}")
+            for event in events:
+                st.write(format_event(event))
+    else:
+        st.write("No events found.")
     
     # Define calendar options
     # calendar_options = {
