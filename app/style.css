@@ -59,6 +59,9 @@ body, h1, h2, .clock-placeholder {
     margin: .25em 0;
     display: flex;
     justify-content: space-between;
+    font-family: 'Azeret Mono', sans-serif;
+    align-items: baseline;
+    flex-flow: row wrap;
 }
 #swims .count, #steps .count {
     font-size: 48px;
