@@ -181,7 +181,7 @@ with col2:
                 if event['start'].get('date') == date: #or event['start'].get('dateTime').split('T')[0] == date:
                     st.print(event['title'])
                 else: 
-                    pprint.pp(event['start'].get['dateTime'])
+                    pprint.pp(event['start'])
                 #     if event['start'].get('dateTime'):
                 #         start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6]) 
                 #         start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
