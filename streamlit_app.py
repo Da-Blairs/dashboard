@@ -180,7 +180,7 @@ with col2:
                 pprint.pp(event['start'])
                 if event['start'].get('date') == date: #or event['start'].get('dateTime').split('T')[0] == date:
                     st.print(event['title'])
-                else 
+                else: 
                     pprint.pp(event['start'].get['dateTime'])
                 #     if event['start'].get('dateTime'):
                 #         start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6]) 
