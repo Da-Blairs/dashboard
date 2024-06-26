@@ -179,16 +179,19 @@ while True:
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
     .clock-placeholder {{
-        font-size: 40px;
+        font-size: 30px;
         font-weight: bold;
         font-family: 'Aldrich', sans-serif;
+    }}
+    .time {{
+        font-size: 34px;
     }}
     </style>
     """
     
     # Inject custom CSS and display the clock
     st.markdown(custom_css, unsafe_allow_html=True)
-    clock_placeholder.markdown(f'<div class="clock-placeholder">{current_time}<br>{current_date}</div>', unsafe_allow_html=True)
+    clock_placeholder.markdown(f'<div class="clock-placeholder"><span class="time">{current_time}<span><br>{current_date}</div>', unsafe_allow_html=True)
     
     # Wait for 1 second before updating the time again
     sleep(1)
