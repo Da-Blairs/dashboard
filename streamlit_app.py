@@ -196,6 +196,7 @@ with col2:
     calendar_events = get_google_calendar_events()
     
     if calendar_events:
+        st.write("Calendar")
         # print_events(calendar_events)
     else:
         st.write("No events found.")
