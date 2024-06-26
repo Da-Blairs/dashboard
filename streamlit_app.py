@@ -151,7 +151,7 @@ with col2:
     # Custom CSS
     custom_css="""
         .fc-event-past {
-            opacity: 0.8;
+            opacity: 0.5;
         }
         .fc-event-time {
             font-style: italic;
