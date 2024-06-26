@@ -72,7 +72,7 @@ body, h1, h2, .clock-placeholder {
  #food {
     background: linear-gradient(240deg, rgba(229, 162, 67, 0.5) 0%, rgba(247, 247, 170, 0.5) 90%);
     border-radius: 20px;
-    padding: .5em 1em;
+    padding: 1em;
     margin: 10px 0;
     font-family: 'Azeret Mono', sans-serif;
     align-items: baseline;
