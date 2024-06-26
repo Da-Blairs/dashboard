@@ -182,6 +182,8 @@ while True:
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
     .clock-placeholder {{
+        font-size: 200px;
+        font-weight: bold;
         font-family: 'Aldrich', sans-serif;
     }}
     </style>
