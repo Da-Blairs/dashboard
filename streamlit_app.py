@@ -92,7 +92,13 @@ with col1:
     lat = "42.9836"
     lng = "-81.2497"
     response_current = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lng}&current_weather=true')
-    st.write(response_current);
+    result_current = json.loads(response_current._content)
+
+    current = result_current["current_weather"]
+    temp = current["temperature"]
+
+    st.write(current);
+    st.write(temp);
     
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
