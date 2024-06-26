@@ -98,7 +98,41 @@ with col1:
     temp = current["temperature"]
     weathercode = current["weathercode"]
 
+    weather_code_to_emoji = {
+        0: ":sunny:",            # Clear sky
+        1: ":partly_sunny:",     # Mainly clear
+        2: ":cloud:",            # Partly cloudy
+        3: ":cloud:",            # Overcast
+        45: ":fog:",             # Fog
+        48: ":fog:",             # Depositing rime fog
+        51: ":umbrella:",        # Light drizzle
+        53: ":umbrella:",        # Moderate drizzle
+        55: ":umbrella:",        # Dense drizzle
+        56: ":cloud_rain_snow:", # Light freezing drizzle
+        57: ":cloud_rain_snow:", # Dense freezing drizzle
+        61: ":umbrella:",        # Slight rain
+        63: ":umbrella:",        # Moderate rain
+        65: ":umbrella:",        # Heavy rain
+        66: ":cloud_rain_snow:", # Light freezing rain
+        67: ":cloud_rain_snow:", # Heavy freezing rain
+        71: ":snowflake:",       # Slight snow fall
+        73: ":snowflake:",       # Moderate snow fall
+        75: ":snowflake:",       # Heavy snow fall
+        77: ":snowflake:",       # Snow grains
+        80: ":umbrella:",        # Slight rain showers
+        81: ":umbrella:",        # Moderate rain showers
+        82: ":umbrella:",        # Violent rain showers
+        85: ":cloud_snow:",      # Slight snow showers
+        86: ":cloud_snow:",      # Heavy snow showers
+        95: ":thunder_cloud_rain:", # Thunderstorm
+        96: ":thunder_cloud_rain:", # Thunderstorm with slight hail
+        99: ":thunder_cloud_rain:"  # Thunderstorm with heavy hail
+    }
+
+    emoji_shortcode = weather_code_to_emoji.get(weathercode, ":question:")
+
     st.write(current);
+    st.title(f'{emoji_shortcode}');
     st.write(f'{temp} °C');
     
     # Create a placeholder for the clock
