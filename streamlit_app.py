@@ -186,8 +186,8 @@ with col2:
             for event in events:
                 if event['start'].get('date', event['start'].get('dateTime').split('T')[0]) == date:
                     if event['start'].get('dateTime', False):
-                        start_time = event['start'].strftime('%I:%M %p').lower().lstrip('0')
-                        end_time = event['end'].strftime('%I:%M %p').lower().lstrip('0')
+                        start_time = event['start']['dateTime'].strftime('%I:%M %p').lower().lstrip('0')
+                        end_time = event['end']['dateTime'].strftime('%I:%M %p').lower().lstrip('0')
                         st.markdown(f"{event['title']} {start_time}-{end_time}")
                     else:
                         st.markdown(f"{event['title']} All Day")
