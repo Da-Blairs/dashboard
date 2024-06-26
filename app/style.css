@@ -54,7 +54,7 @@ body, h1, h2, .clock-placeholder {
     padding: 15px 15px 0;
 }
 
-#swims, #steps, #food {
+#swims, #steps {
     background-image: linear-gradient(240deg, rgba(124, 136, 224, 0.5) 0%, rgba(195, 244, 252, 0.5) 100%);
     border-radius: 20px;
     padding: .5em 1em;
@@ -67,5 +67,15 @@ body, h1, h2, .clock-placeholder {
 }
 #swims .count, #steps .count {
     font-size: 48px;
+}
+
+ #food {
+    background: linear-gradient(240deg, rgba(151, 231, 209, 0.5) 0%, rgba(236, 252, 195, 0.5) 100%);
+    border-radius: 20px;
+    padding: .5em 1em;
+    margin: 10px 0;
+    font-family: 'Azeret Mono', sans-serif;
+    align-items: baseline;
+    flex-flow: row wrap;
 }
 
