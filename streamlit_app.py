@@ -89,7 +89,6 @@ col1, col2 = st.columns((1,2))
 with col1:
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
-    date_placeholder = st.empty()
 
 with col2:     
     # Get credentials
@@ -175,7 +174,7 @@ toronto_tz = pytz.timezone('America/Toronto')
 while True:
     # Get the current time
     current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p \\\n%B %d, %Y')
-    current_date = datetime.datetime.now(toronto_tz).strftime('%B %d, %Y')
+    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p  \n%B %d, %Y')
     
     # Update the clock placeholder with the current time
     clock_placeholder.title(current_time)
