@@ -163,11 +163,20 @@ with col2:
         for event in events:
             start_date = event['start'].get('date', event['start'].get('dateTime', 'ZoeTZoe').split('T')[0])
             end_date = event['end'].get('date', event['end'].get('dateTime', 'ZoeTZoe').split('T')[0])
-            date_list.append(start_date)
-            if start_date != end_date:
-                #this should be a loop
-                date_list.append(end_date)
+            
+            # Convert start_date and end_date to datetime objects
+            start_datetime = datetime.fromisoformat(start_date)
+            end_datetime = datetime.fromisoformat(end_date)
+            
+            # Include all dates between start_date and end_date
+            current_date = start_datetime
+            while current_date <= end_datetime:
+                date_list.append(current_date.strftime('%Y-%m-%d'))
+                current_date += timedelta(days=1)
+        
+        # Sort and remove duplicates from date_list
         date_list = list(sorted(set(date_list)))
+        
         return date_list
         
     def print_events(events):
