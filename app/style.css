@@ -13,4 +13,8 @@ body, h1, h2, .clock-placeholder {
 .event-list {
     display: flex;
     flex-flow: column;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-family: 'Azeret Mono', sans-serif;
 }
