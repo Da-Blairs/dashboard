@@ -107,8 +107,7 @@ with col1:
     weathercode = current["weathercode"]
     is_day = current["is_day"]
 
-    st.markdown(f'<i class="wi wi-wmo4680-{weathercode}" style="font-size: 48px;"></i>', unsafe_allow_html=True)
-    st.subheader(f'{temp} °C')
+    st.markdown(f'<div id="weather"><i class="wi wi-wmo4680-{weathercode}" style="font-size: 48px;">{temp} °C</i></div>', unsafe_allow_html=True)
     
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
