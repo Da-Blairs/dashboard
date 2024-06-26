@@ -185,7 +185,7 @@ with col2:
             #print all the events on this date
             for event in events:
                 pprint.pp('zoe')
-                pprint.pp(event['start'].strftime("%Y"))
+                pprint.pp(event['start'])
                 if event['start'].get('date', event['start'].get('dateTime').split('T')[0]) == date:
                     if event['start'].get('dateTime', False):
                         start_time = event['start']['dateTime'].strftime('%I:%M %p').lower().lstrip('0')
