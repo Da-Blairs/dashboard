@@ -149,12 +149,10 @@ with col2:
 
         calendar_events = []
         for event in events:
-            start = event['start'].get('dateTime', event['start'].get('date'))
-            end = event['end'].get('dateTime', event['end'].get('date'))
             calendar_events.append({
                 'title': event['summary'],
-                'start': start,
-                'end': end,
+                'start': event['start'].get('dateTime', event['start'].get('date')),
+                'end': event['end'].get('dateTime', event['end'].get('date')),
                 'allday': 'date' in event['start']
             })
         return calendar_events
