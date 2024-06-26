@@ -89,6 +89,7 @@ col1, col2 = st.columns((1,2))
 with col1:
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
+    date_placeholder = st.empty()
 
 with col2:     
     # Get credentials
@@ -173,10 +174,26 @@ toronto_tz = pytz.timezone('America/Toronto')
 # Start an infinite loop to update the clock
 while True:
     # Get the current time
-    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p \\\n%B %d, %Y')
-    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p  \n%B %d, %Y')
+    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p')
+    current_date = datetime.datetime.now(toronto_tz).strftime('%B %d, %Y')
     
     # Update the clock placeholder with the current time
+    custom_css = f"""
+    <style>
+    @keyframes slide-up {{
+        0% {{ transform: translateY(0); }}
+        100% {{ transform: translateY(-100%); }}
+    }}
+    .clock-placeholder {{
+        font-family: 'Aldrich', sans-serif;
+        animation: slide-up 1s linear infinite;
+    }}
+    </style>
+    """
+    
+    # Inject custom CSS and display the clock
+    st.markdown(custom_css, unsafe_allow_html=True)
+    clock_placeholder.markdown(f'<div class="clock-placeholder">{current_time}<br>{current_date}</div>', unsafe_allow_html=True)
     clock_placeholder.title(current_time)
     date_placeholder.title(current_date)
     
