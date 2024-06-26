@@ -82,7 +82,7 @@ def get_credentials():
     return creds
 
 # Streamlit setup
-st.title("Blair Family Dashboard!!")
+st.title("Blair Family Dashboard")
 
 col1, col2 = st.columns((1,2))
 
