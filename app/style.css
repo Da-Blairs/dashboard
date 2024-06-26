@@ -5,14 +5,15 @@ body, h1, h2, .clock-placeholder {
 }
 .clock-placeholder {
     background-image: linear-gradient(240deg, rgba(229, 162, 67, 0.5) 0%, rgba(247, 247, 170, 0.5) 90%);
-    font-size: 28px;
+    font-size: 53px;
+    text-transform: uppercase;
     border-radius: 20px;
     padding: .5em;
     margin: .25em 0;
     
 }
 .time {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 #weather {
