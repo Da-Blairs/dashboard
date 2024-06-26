@@ -183,8 +183,7 @@ with col2:
                 if 'dateTime' in event['start']:
                     if event['start']['dateTime'].split('T')[0] == date:
                         start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6]) 
-                        pprint.pp(start_datetime)
-                        # start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
+                        start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
                 #         end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6]) 
                 #         end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
                 #         st.markdown(f"{event['title']} {start_time}-{end_time}")  
