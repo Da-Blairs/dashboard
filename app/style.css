@@ -51,3 +51,11 @@ body, h1, h2, .clock-placeholder {
     justify-content: space-between;
     padding: 15px 15px 0;
 }
+
+#swims, #steps {
+    background: linear-gradient(240deg, rgba(151, 231, 209, 0.5) 0%, rgba(236, 252, 195, 0.5) 100%);
+    border-radius: 20px;
+    padding: .5em;
+    margin: .25em 0;
+}
+
