@@ -93,7 +93,7 @@ def get_credentials():
     return creds
 
 # Streamlit setup
-col1, col2 = st.columns((1,2))
+col1, col2 = st.columns((1,1,1))
 
 with col1:
 
