@@ -186,9 +186,9 @@ with col2:
             for event in events:
                 if event['start'].get('date', event['start'].get('dateTime').split('T')[0]) == date:
                     if event['start'].get('dateTime'):
-                        start_datetime = datetime.fromisoformat(event['start']['dateTime'][:-6]) 
+                        start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6]) 
                         start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
-                        end_datetime = datetime.fromisoformat(event['end']['dateTime'][:-6]) 
+                        end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6]) 
                         end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
                         st.markdown(f"{event['title']} {start_time}-{end_time}")
                     else:
