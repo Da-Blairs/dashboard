@@ -178,14 +178,14 @@ with col2:
             for event in events:
                 if 'date' in event['start']:
                     if event['start'].get('date') == date:
-                        st.markdown(f"{event['title']} All Day")
+                        st.markdown(f'<div class="event"><span class="time">All Day</span><br>{event['title']}</div>', unsafe_allow_html=True)
                 if 'dateTime' in event['start']:
                     if event['start']['dateTime'].split('T')[0] == date:
                         start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6]) 
                         start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
                         end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6]) 
                         end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
-                        st.markdown(f"{event['title']} {start_time}-{end_time}")  
+                        st.markdown(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{event['title']}</div>', unsafe_allow_html=True)
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
