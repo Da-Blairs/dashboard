@@ -172,6 +172,7 @@ with col2:
         
     def print_events(events):
         date_list = get_event_dates(events)
+        st.markdown(f'<div class="event-list">')
         for date in date_list:
             st.subheader(datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%a %b %d"))
             #print all the events on this date
@@ -188,6 +189,7 @@ with col2:
                         end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
                         event_title = event['title']
                         st.markdown(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{event_title}</div>', unsafe_allow_html=True)
+        st.markdown(f'</div>')
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
