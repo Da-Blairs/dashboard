@@ -9,3 +9,7 @@ body, h1, h2, .clock-placeholder {
 .time {
     font-size: 30px;
 }
+
+.event-list {
+    display: flex;
+}
