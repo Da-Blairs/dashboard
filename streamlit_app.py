@@ -17,6 +17,13 @@ from streamlit_calendar import calendar
 with open( "app/style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
+with open( "app/weather-icons.min.css" ) as css:
+    st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
+
+st.markdown("""
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    """, unsafe_allow_html=True)
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -99,6 +106,8 @@ with col1:
     weathercode = current["weathercode"]
     is_day = current["is_day"]
 
+    #wi-wmo4680-0
+
     day_weather_code_to_emoji = {
         0: ":sunny:",            # Clear sky
         1: ":partly_sunny:",     # Mainly clear
@@ -173,7 +182,7 @@ with col1:
 
     st.write(current);
     st.title(f'{emoji_shortcode}');
-    st.write(f'{temp} °C');
+    st.subheading(f'{temp} °C');
     
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
