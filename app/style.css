@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap');
+
+body, h1, h2, .clock-placeholder {
+    font-family: 'Azeret Mono', sans-serif;
+}
+.clock-placeholder {
+    font-size: 28px;
+}
+.time {
+    font-size: 30px;
+}
