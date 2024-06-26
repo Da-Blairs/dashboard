@@ -125,6 +125,14 @@ with col2:
     
     # Define calendar options
     calendar_options = {
+        "headerToolbar": {
+            "left": "",
+            "center": "",
+            "right": "",
+        },
+        start: 'title', // will normally be on the left. if RTL, will be on the right
+  center: '',
+  end: 'today prev,next'
         "initialView": "list",
     }
     
