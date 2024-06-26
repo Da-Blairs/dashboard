@@ -130,9 +130,6 @@ with col2:
             "center": "",
             "right": "",
         },
-        start: 'List',
-  center: '',
-  end: 'today prev,next'
         "initialView": "list",
     }
     
