@@ -89,7 +89,6 @@ col1, col2 = st.columns((1,2))
 with col1:
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
-    date_placeholder = st.empty()
 
 with col2:     
     # Get credentials
@@ -182,7 +181,7 @@ while True:
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
     .clock-placeholder {{
-        font-size: 50px;
+        font-size: 40px;
         font-weight: bold;
         font-family: 'Aldrich', sans-serif;
     }}
@@ -192,7 +191,6 @@ while True:
     # Inject custom CSS and display the clock
     st.markdown(custom_css, unsafe_allow_html=True)
     clock_placeholder.markdown(f'<div class="clock-placeholder">{current_time}<br>{current_date}</div>', unsafe_allow_html=True)
-    date_placeholder.title(current_date)
     
     # Wait for 1 second before updating the time again
     sleep(1)
