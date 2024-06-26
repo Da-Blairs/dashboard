@@ -161,8 +161,8 @@ with col2:
     def get_event_dates(events):
         date_list = []
         for event in events:
-            start = event['start'].get('date', event['start'].get('dateTime').split('T')[0])
-            end = event['end'].get('date', event['end'].get('dateTime').split('T')[0])
+            start_date = event['start'].get('date', event['start'].get('dateTime').split('T')[0])
+            end_date = event['end'].get('date', event['end'].get('dateTime').split('T')[0])
             date_list.append(start_date)
             if start_date != end_date:
                 #this should be a loop
