@@ -170,31 +170,38 @@ with col2:
         date_list = list(sorted(set(date_list)))
         return date_list
         
-    def print_events(events):
+    def generate_events_markdown(events):
         date_list = get_event_dates(events)
+        markdown_output = []
+        
         for date in date_list:
-            st.subheader(datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%a %b %d"))
-            #print all the events on this date
+            header = datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%a %b %d")
+            markdown_output.append(f"### {header}")
+            
             for event in events:
                 if 'date' in event['start']:
                     if event['start'].get('date') == date:
                         event_title = event['title']
-                        st.markdown(f'<div class="event"><span class="time">All Day</span><br>{event_title}</div>', unsafe_allow_html=True)
+                        markdown_output.append(f'<div class="event"><span class="time">All Day</span><br>{event_title}</div>')
                 if 'dateTime' in event['start']:
                     if event['start']['dateTime'].split('T')[0] == date:
-                        start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6]) 
+                        start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6])
                         start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
-                        end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6]) 
+                        end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6])
                         end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
                         event_title = event['title']
-                        st.markdown(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{event_title}</div>', unsafe_allow_html=True)
+                        markdown_output.append(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{event_title}</div>')
+    
+        return "\n".join(markdown_output)
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
     # pprint.pp(calendar_events)
     
     if calendar_events:
-        print_events(calendar_events)
+        calendar_markdown = print_events(calendar_events)
+        st.markdown(f'<div class="event-list">{calendar_markdown}</div>', unsafe_allow_html=True)
+        
     else:
         st.write("No events found.")
     
