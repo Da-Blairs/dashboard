@@ -145,7 +145,7 @@ with col2:
             "center": "",
             "right": "",
         },
-        "initialView": "list",
+        "initialView": "listWeek",
     }
     
     # Custom CSS
