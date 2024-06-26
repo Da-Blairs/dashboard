@@ -157,56 +157,46 @@ with col2:
             })
         return calendar_events
 
-    def get_event_dates(start, end):
-        start_date = datetime.fromisoformat(start).date()
-        end_date = datetime.fromisoformat(end).date()
+    def get_event_dates(events):
         date_list = []
-        current_date = start_date
-        while current_date <= end_date:
-            date_list.append(current_date.strftime('%Y-%m-%d'))
-            current_date += timedelta(days=1)
+        for event in events:
+            start = event['start'].get('dateTime', event['start'].get('date'))
+            end = event['end'].get('dateTime', event['end'].get('date'))
+            if 'T' in start:  # if it's a datetime
+                start_date = start.split('T')[0]
+            else:
+                start_date = start
+            if 'T' in end:  # if it's a datetime
+                end_date = end.split('T')[0]
+            else:
+                end_date = end
+            date_list.append(start_date)
+            if start_date != end_date:
+                date_list.append(end_date)
+        date_list = list(sorted(set(date_list)))
         return date_list
         
-    def format_event(event):
-        start_datetime = datetime.fromisoformat(event['start'])
-        end_datetime = datetime.fromisoformat(event['end'])
-        
-        if event['allday']:
-            return f"{event['title']} All Day"
-        else:
-            start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
-            end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
-            return f"{event['title']} {start_time}-{end_time}"
+    def print_events(events):
+        date_list = get_event_dates(events)
+        for date in date_list:
+            st.subheading(date.strftime('%A %B %d'))
+            #print all the events on this date
+            for event in events:
+                if event['start'].get('dateTime', event['start'].get('date')).split('T')[0] == date.strftime('%Y-%m-%d'):
+                    if 'T' in event['start'].get('dateTime', event['start'].get('date')):
+                        start_datetime = datetime.strptime(event['start'].get('dateTime', event['start'].get('date')), '%Y-%m-%dT%H:%M:%S%z')
+                        end_datetime = datetime.strptime(event['end'].get('dateTime', event['end'].get('date')), '%Y-%m-%dT%H:%M:%S%z')
+                        start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
+                        end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
+                        st.markdown(f"{event['title']} {start_time}-{end_time}")
+                    else:
+                        st.markdown(f"{event['title']} All Day")
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
     
     if calendar_events:
-        # Expand each event to include all dates from start to end
-        expanded_events = []
-        for event in calendar_events:
-            dates = get_event_dates(event['start'], event['end'])
-            for date in dates:
-                expanded_event = event.copy()
-                expanded_event['date'] = date
-                expanded_events.append(expanded_event)
-        
-        # Sort expanded events by date
-        expanded_events.sort(key=lambda x: x['date'])
-        
-        # Group events by date
-        events_by_date = {}
-        for event in expanded_events:
-            date = datetime.fromisoformat(event['date']).strftime('%A %B %d')
-            if date not in events_by_date:
-                events_by_date[date] = []
-            events_by_date[date].append(event)
-        
-        # Display the events
-        for date, events in events_by_date.items():
-            st.write(f"### {date}")
-            for event in events:
-                st.write(format_event(event))
+        print_events(calendar_events)
     else:
         st.write("No events found.")
     
