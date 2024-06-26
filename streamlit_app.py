@@ -199,7 +199,7 @@ with col2:
     # pprint.pp(calendar_events)
     
     if calendar_events:
-        calendar_markdown = print_events(calendar_events)
+        calendar_markdown = generate_events_markdown(calendar_events)
         st.markdown(f'<div class="event-list">{calendar_markdown}</div>', unsafe_allow_html=True)
         
     else:
