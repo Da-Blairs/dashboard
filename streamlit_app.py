@@ -177,7 +177,7 @@ with col2:
             st.subheader(date)
             #print all the events on this date
             for event in events:
-                if event['start'].get('date') == date 
+                if event['start'].get('date') == date:
                     st.markdown(f"{event['title']} All Day")
                 if event['start']['dateTime'] and event['start']['dateTime'].split('T')[0] == date:
                     start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6]) 
