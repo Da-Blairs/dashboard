@@ -11,7 +11,11 @@ body, h1, h2, .clock-placeholder {
 }
 
 #weather {
-    background: linear-gradient(240deg, rgba(151, 231, 209, 0.5) 0%, rgba(236, 252, 195, 0.5) 100%);
+    background: linear-gradient(240deg, rgba(252, 142, 190, 0.5) 0%, rgba(252, 229, 195, 0.5) 100%);
+    border-radius: 20px;
+    padding: .5em;
+    margin: .25em 0;
+
 }
 
 .event-list {
