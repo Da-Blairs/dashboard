@@ -160,36 +160,37 @@ with col2:
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
+    st.write(calendar_events);
     
     # Define calendar options
-    calendar_options = {
-        "headerToolbar": {
-            "left": "",
-            "center": "",
-            "right": "",
-        },
-        "initialView": "listWeek",
-    }
+    # calendar_options = {
+    #     "headerToolbar": {
+    #         "left": "",
+    #         "center": "",
+    #         "right": "",
+    #     },
+    #     "initialView": "listWeek",
+    # }
     
     # Custom CSS
-    custom_css="""
-        .fc-event-past {
-            opacity: 0.5;
-        }
-        .fc-event-time {
-            font-style: italic;
-        }
-        .fc-event-title {
-            font-weight: 700;
-        }
-        .fc-toolbar-title {
-            font-size: 2rem;
-        }
-    """
-    _RELEASE = True
+    # custom_css="""
+    #     .fc-event-past {
+    #         opacity: 0.5;
+    #     }
+    #     .fc-event-time {
+    #         font-style: italic;
+    #     }
+    #     .fc-event-title {
+    #         font-weight: 700;
+    #     }
+    #     .fc-toolbar-title {
+    #         font-size: 2rem;
+    #     }
+    # """
+    # _RELEASE = True
     # Calendar component with events
-    calendar_component = calendar(events=calendar_events, options=calendar_options, custom_css=custom_css)
-    st.write(calendar_component)
+    # calendar_component = calendar(events=calendar_events, options=calendar_options, custom_css=custom_css)
+    # st.write(calendar_component)
 
 # Define the timezone for Toronto
 toronto_tz = pytz.timezone('America/Toronto')
