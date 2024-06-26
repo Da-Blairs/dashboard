@@ -7,6 +7,7 @@ import streamlit as st
 from time import sleep, strftime
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qs
