@@ -106,6 +106,7 @@ with col1:
     weathercode = current["weathercode"]
     is_day = current["is_day"]
 
+    st.markdown(f'<i class="wi wi-day-sunny" style="font-size: 48px;"></i>', unsafe_allow_html=True)
     st.markdown(f'<i class="wi wi-wmo4680-{weathercode}" style="font-size: 48px;"></i>', unsafe_allow_html=True)
 
 
