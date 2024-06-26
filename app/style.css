@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+.element-container {
+    font-family: 'Aldrich', sans-serif;
+}
+.clock-placeholder {
+    font-size: 26px;
+}
+.time {
+    font-size: 30px;
+}
