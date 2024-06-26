@@ -175,7 +175,7 @@ toronto_tz = pytz.timezone('America/Toronto')
 while True:
     # Get the current time
     current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M:%S %p')
-    current_date = datetime.datetime.now(toronto_tz).strftime('%B %d, %Y')
+    current_date = datetime.datetime.now(toronto_tz).strftime('%b %d, %Y')
     
     # Update the clock placeholder with the current time
     clock_placeholder.markdown(f'<div class="clock-placeholder"><span class="time">{current_time}</span><br>{current_date}</div>', unsafe_allow_html=True)
