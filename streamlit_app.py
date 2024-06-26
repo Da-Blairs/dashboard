@@ -160,15 +160,15 @@ with col2:
         return calendar_events
 
     def format_event(event):
-    start_datetime = datetime.fromisoformat(event['start'])
-    end_datetime = datetime.fromisoformat(event['end'])
-    
-    if event['allday']:
-        return f"{event['title']} All Day"
-    else:
-        start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
-        end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
-        return f"{event['title']} {start_time}-{end_time}"
+        start_datetime = datetime.fromisoformat(event['start'])
+        end_datetime = datetime.fromisoformat(event['end'])
+        
+        if event['allday']:
+            return f"{event['title']} All Day"
+        else:
+            start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
+            end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
+            return f"{event['title']} {start_time}-{end_time}"
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
