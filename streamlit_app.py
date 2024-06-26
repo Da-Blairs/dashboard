@@ -180,13 +180,9 @@ while True:
     # Update the clock placeholder with the current time
     custom_css = f"""
     <style>
-    @keyframes slide-up {{
-        0% {{ transform: translateY(0); }}
-        100% {{ transform: translateY(-100%); }}
-    }}
+    @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
     .clock-placeholder {{
         font-family: 'Aldrich', sans-serif;
-        animation: slide-up 1s linear infinite;
     }}
     </style>
     """
