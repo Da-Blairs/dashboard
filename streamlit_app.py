@@ -194,7 +194,6 @@ while True:
     # Inject custom CSS and display the clock
     st.markdown(custom_css, unsafe_allow_html=True)
     clock_placeholder.markdown(f'<div class="clock-placeholder">{current_time}<br>{current_date}</div>', unsafe_allow_html=True)
-    clock_placeholder.title(current_time)
     date_placeholder.title(current_date)
     
     # Wait for 1 second before updating the time again
