@@ -244,6 +244,9 @@ while True:
     # Get the current time
     current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M %p')
     current_date = datetime.datetime.now(toronto_tz).strftime('%b %d')
+
+    if current_time.minute == 0 or current_time.minute == 30:
+        st.experimental_rerun()
     
     # Update the clock placeholder with the current time
     clock_placeholder.markdown(f'<div class="clock-placeholder"><span class="time">{current_time}</span><br>{current_date}</div>', unsafe_allow_html=True)
