@@ -12,23 +12,8 @@ from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qs
 from streamlit_calendar import calendar
 
-custom_css = f"""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
-    .element-container {{
-        font-family: 'Aldrich', sans-serif;
-    }}
-    .clock-placeholder {{
-        font-size: 26px;
-    }}
-    .time {{
-        font-size: 30px;
-    }}
-    </style>
-"""
-    
-# Inject custom CSS and display the clock
-st.markdown(custom_css, unsafe_allow_html=True)
+with open( "app\style.css" ) as css:
+    st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
 # Load environment variables from .env file
 load_dotenv()
