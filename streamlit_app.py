@@ -180,7 +180,7 @@ with col2:
     def print_events(events):
         date_list = get_event_dates(events)
         for date in date_list:
-            st.subheading(date.strftime('%A %B %d'))
+            st.subheading(date)
             #print all the events on this date
             for event in events:
                 if event['start'].get('dateTime', event['start'].get('date')).split('T')[0] == date.strftime('%Y-%m-%d'):
