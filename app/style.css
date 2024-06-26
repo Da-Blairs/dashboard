@@ -15,6 +15,10 @@ body, h1, h2, .clock-placeholder {
     border-radius: 20px;
     padding: .5em;
     margin: .25em 0;
+    display: flex;
+    font-family: 'Azeret Mono', sans-serif;
+    font-size: 33px;
+    justify-content: space-between;
 
 }
 
