@@ -9,7 +9,7 @@ body, h1, h2, .clock-placeholder {
     text-transform: uppercase;
     border-radius: 20px;
     padding: .5em;
-    margin: .25em 0;
+    margin: 10px 0;
     line-height: normal;    
 }
 .time {
@@ -20,7 +20,7 @@ body, h1, h2, .clock-placeholder {
     background: linear-gradient(240deg, rgba(252, 142, 190, 0.5) 0%, rgba(252, 229, 195, 0.5) 100%);
     border-radius: 20px;
     padding: .5em;
-    margin: .25em 0;
+    margin: 10px 0;
     display: flex;
     font-family: 'Azeret Mono', sans-serif;
     font-size: 33px;
@@ -40,7 +40,7 @@ body, h1, h2, .clock-placeholder {
     background: linear-gradient(240deg, rgba(151, 231, 209, 0.5) 0%, rgba(236, 252, 195, 0.5) 100%);
     border-radius: 20px;
     padding: .5em;
-    margin: .25em 0;
+    margin: 10px 0;
 }
 .event-list .time {
     font-size: 20px;
@@ -56,7 +56,7 @@ body, h1, h2, .clock-placeholder {
     background: linear-gradient(240deg, rgba(151, 231, 209, 0.5) 0%, rgba(236, 252, 195, 0.5) 100%);
     border-radius: 20px;
     padding: .5em;
-    margin: .25em 0;
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
     font-family: 'Azeret Mono', sans-serif;
