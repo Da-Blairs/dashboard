@@ -180,6 +180,7 @@ with col2:
     def print_events(events):
         date_list = get_event_dates(events)
         for date in date_list:
+            pprint.pp(date)
             st.subheader(date)
             #print all the events on this date
             for event in events:
@@ -195,7 +196,7 @@ with col2:
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
-    pprint.pp(calendar_events)
+    # pprint.pp(calendar_events)
     
     if calendar_events:
         print_events(calendar_events)
