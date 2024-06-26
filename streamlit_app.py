@@ -146,9 +146,10 @@ with col2:
                                               maxResults=10, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
-    
+
         calendar_events = []
         for event in events:
+            st.write(event);
             start = event['start'].get('dateTime', event['start'].get('date'))
             end = event['end'].get('dateTime', event['end'].get('date'))
             calendar_events.append({
