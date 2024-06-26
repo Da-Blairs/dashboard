@@ -169,7 +169,7 @@ with col1:
         else:
             return night_weather_code_to_emoji.get(weather_code, ":question:")
 
-    emoji_shortcode = get_weather_emoji(weathercode, isday)
+    emoji_shortcode = get_weather_emoji(weathercode, is_day)
 
     st.write(current);
     st.title(f'{emoji_shortcode}');
