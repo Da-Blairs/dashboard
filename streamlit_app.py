@@ -180,11 +180,11 @@ with col2:
     def print_events(events):
         date_list = get_event_dates(events)
         for date in date_list:
-            pprint.pp(date)
+            # pprint.pp(date)
             st.subheader(date)
             #print all the events on this date
             for event in events:
-                if event['start'].get('date', event['start'].get('dateTime').split('T')[0]) == date.strftime('%Y-%m-%d'):
+                if event['start'].get('date', event['start'].get('dateTime').split('T')[0]) == date:
                     if 'T' in event['start'].get('dateTime', event['start'].get('date')):
                         start_datetime = datetime.strptime(event['start'].get('dateTime', event['start'].get('date')), '%Y-%m-%dT%H:%M:%S%z')
                         end_datetime = datetime.strptime(event['end'].get('dateTime', event['end'].get('date')), '%Y-%m-%dT%H:%M:%S%z')
