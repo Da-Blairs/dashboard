@@ -196,11 +196,9 @@ with col2:
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
     pprint.pp(calendar_events)
-    st.write(calendar_events)
     
     if calendar_events:
-        st.write("Calendar")
-        # print_events(calendar_events)
+        print_events(calendar_events)
     else:
         st.write("No events found.")
     
