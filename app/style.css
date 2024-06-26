@@ -10,7 +10,7 @@ body, h1, h2, .clock-placeholder {
     border-radius: 20px;
     padding: .5em;
     margin: .25em 0;
-    
+    line-height: normal;    
 }
 .time {
     font-size: 40px;
