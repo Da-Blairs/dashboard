@@ -173,7 +173,7 @@ with col2:
     def print_events(events):
         date_list = get_event_dates(events)
         for date in date_list:
-            st.subheader(datetime.strptime(date, "%Y-%m-%d").strftime("%a %b %d"))
+            st.subheader(datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%a %b %d"))
             #print all the events on this date
             for event in events:
                 if 'date' in event['start']:
