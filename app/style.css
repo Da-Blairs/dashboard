@@ -28,3 +28,8 @@ body, h1, h2, .clock-placeholder {
     font-size: 20px;
     font-weight: normal;
 }
+.event-list .date {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px 0;
+}
