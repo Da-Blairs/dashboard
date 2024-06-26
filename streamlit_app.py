@@ -15,7 +15,7 @@ from streamlit_calendar import calendar
 custom_css = f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
-    body {{
+    .element-container {{
         font-family: 'Aldrich', sans-serif;
     }}
     .clock-placeholder {{
