@@ -178,7 +178,7 @@ with col2:
             #print all the events on this date
             for event in events:
                 pprint.pp(event['start'])
-                if event['start'].get('date') == date #or event['start'].get('dateTime').split('T')[0] == date:
+                if event['start'].get('date') == date: #or event['start'].get('dateTime').split('T')[0] == date:
                     st.print(event['title']
                 else 
                     pprint.pp(event['start'].get['dateTime'])
