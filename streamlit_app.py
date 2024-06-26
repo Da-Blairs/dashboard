@@ -176,7 +176,7 @@ with col2:
         
         for date in date_list:
             header = datetime.datetime.strptime(date, "%Y-%m-%d")
-            markdown_output.append(f"<span class='date'>{header.strftime("%a %b %d")}</span>")
+            markdown_output.append(f"<span class='date'><span>{header.strftime('%a %b %d')}</span><span>{header.strftime('%b %d')}</span></span>")
             
             for event in events:
                 if 'date' in event['start']:
