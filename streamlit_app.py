@@ -97,8 +97,9 @@ with col1:
     current = result_current["current_weather"]
     temp = current["temperature"]
     weathercode = current["weathercode"]
+    isday = current["isday"]
 
-    weather_code_to_emoji = {
+    day_weather_code_to_emoji = {
         0: ":sunny:",            # Clear sky
         1: ":partly_sunny:",     # Mainly clear
         2: ":cloud:",            # Partly cloudy
@@ -129,7 +130,46 @@ with col1:
         99: ":thunder_cloud_rain:"  # Thunderstorm with heavy hail
     }
 
-    emoji_shortcode = weather_code_to_emoji.get(weathercode, ":question:")
+    # Nighttime weather code to emoji mapping
+    night_weather_code_to_emoji = {
+        0: ":night_with_stars:", # Clear sky
+        1: ":mostly_clear_night:", # Mainly clear
+        2: ":partly_cloudy_night:", # Partly cloudy
+        3: ":cloud:",            # Overcast
+        45: ":fog:",             # Fog
+        48: ":fog:",             # Depositing rime fog
+        51: ":umbrella:",        # Light drizzle
+        53: ":umbrella:",        # Moderate drizzle
+        55: ":umbrella:",        # Dense drizzle
+        56: ":cloud_rain_snow:", # Light freezing drizzle
+        57: ":cloud_rain_snow:", # Dense freezing drizzle
+        61: ":umbrella:",        # Slight rain
+        63: ":umbrella:",        # Moderate rain
+        65: ":umbrella:",        # Heavy rain
+        66: ":cloud_rain_snow:", # Light freezing rain
+        67: ":cloud_rain_snow:", # Heavy freezing rain
+        71: ":snowflake:",       # Slight snow fall
+        73: ":snowflake:",       # Moderate snow fall
+        75: ":snowflake:",       # Heavy snow fall
+        77: ":snowflake:",       # Snow grains
+        80: ":umbrella:",        # Slight rain showers
+        81: ":umbrella:",        # Moderate rain showers
+        82: ":umbrella:",        # Violent rain showers
+        85: ":cloud_snow:",      # Slight snow showers
+        86: ":cloud_snow:",      # Heavy snow showers
+        95: ":thunder_cloud_rain:", # Thunderstorm
+        96: ":thunder_cloud_rain:", # Thunderstorm with slight hail
+        99: ":thunder_cloud_rain:"  # Thunderstorm with heavy hail
+    }
+    
+    # Example usage
+    def get_weather_emoji(weather_code, is_day):
+        if is_day:
+            return day_weather_code_to_emoji.get(weather_code, ":question:")
+        else:
+            return night_weather_code_to_emoji.get(weather_code, ":question:")
+
+    emoji_shortcode = get_weather_emoji(weathercode, isday)
 
     st.write(current);
     st.title(f'{emoji_shortcode}');
