@@ -111,7 +111,8 @@ with col1:
     st.markdown(f'<div id="steps"><span class="count">0</span><span>summer steps</span></div>' , unsafe_allow_html= True)
     st.markdown(f'<div id="swims"><span class="count">0</span><span>hours swimming</span></div>' , unsafe_allow_html= True)
 
-    st.markdown(f'<div id="food"><span class="count">Dinner Today</span><br><span>Sushi Bowls</span></div>' , unsafe_allow_html= True)
+    st.markdown(f'<div id="food"><span class="count">Dinner Today</span><br><span>Sushi Bowls</span><br><span class="count">Dinner Tomorrow</span><br><br><span>Pork Chops & Fries</span></div>' , unsafe_allow_html= True)
+
     
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
