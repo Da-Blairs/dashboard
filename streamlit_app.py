@@ -265,7 +265,7 @@ with col2:
             font-size: 2rem;
         }
     """
-    
+    _RELEASE = True
     # Calendar component with events
     calendar_component = calendar(events=calendar_events, options=calendar_options, custom_css=custom_css)
     st.write(calendar_component)
