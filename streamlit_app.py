@@ -130,7 +130,7 @@ with col2:
             "center": "",
             "right": "",
         },
-        start: 'title', // will normally be on the left. if RTL, will be on the right
+        start: 'List',
   center: '',
   end: 'today prev,next'
         "initialView": "list",
