@@ -20,7 +20,7 @@ from io import BytesIO
 
 st.set_page_config(page_title="Blair Dashboard", layout="wide")
  
-
+ 
 with open( "app/style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
