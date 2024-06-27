@@ -180,7 +180,7 @@ def update_weather():
 
     current = result_current["current_weather"]
     temp = current["temperature"]
-    weathercode = current["weathercode"]
+    weathercode = current["weather_code"]
     is_day = current["is_day"]
     weather.markdown(f'<div id="weather"><i class="wi wi-wmo4680-{weathercode}" style="font-size: 48px;"></i>{temp}°C</div>', unsafe_allow_html=True)
     
