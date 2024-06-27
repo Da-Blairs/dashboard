@@ -200,7 +200,7 @@ with col1:
     st.markdown(f'<div id="steps"><span class="count">0</span><span>summer steps</span></div>' , unsafe_allow_html= True)
     st.markdown(f'<div id="swims"><span class="count">0</span><span>hours swimming</span></div>' , unsafe_allow_html= True)
 
-    dinner = st.markdown(f'<div id="food"></div>', unsafe_allow_html= True)
+    dinner = st.markdown(f'<div id="food"><p><span class="count">Dinner Today</span><br><span>No plans</span></p><p><span class="count">Dinner Tomorrow</span><br><span>No plans</span></p></div>' , unsafe_allow_html= True)
     
     # Create a placeholder for the clock
     clock_placeholder = st.empty()
@@ -238,10 +238,10 @@ def updateDinner():
     for event in events:
         dinners.append(event['summary'])
 
-    dinner_today = dinners[0] if len(dinners) > 0 else "No dinner today"
-    dinner_tomorrow = dinners[1] if len(dinners) > 1 else "No dinner tomorrow"
+    dinner_today = dinners[0] if len(dinners) > 0 else "No plans"
+    dinner_tomorrow = dinners[1] if len(dinners) > 1 else "No plans"
 
-    dinner.markdown(f'<div id="food"><span class="count">Dinner Today</span><br><span>{dinner_today}</span><br><br><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></div>' , unsafe_allow_html= True)
+    dinner.markdown(f'<div id="food"><p><span class="count">Dinner Today</span><br><span>{dinner_today}</span></p><p><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></p></div>' , unsafe_allow_html= True)
     
 updateDinner()
 
