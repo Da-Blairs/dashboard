@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qs
 from streamlit_calendar import calendar
 from io import BytesIO
-
+ 
 st.set_page_config(page_title="Blair Dashboard", layout="wide")
  
  
