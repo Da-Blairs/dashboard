@@ -245,7 +245,7 @@ def run_schedule():
 
         updateClock()
 
-        if current_second % 5 == 0
+        if current_second % 5 == 0:
             update_image()
 
         if current_minute == 0 or current_minute == 30:
