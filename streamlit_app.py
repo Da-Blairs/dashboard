@@ -175,12 +175,12 @@ def generate_events_markdown(events):
 def update_weather():
     lat = "42.9836"
     lng = "-81.2497"
-    response_current = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lng}&current_weather=true')
+    response_current = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lng}&current_weather=true&daily=weather_code&timezone=America%2FNew_York')
     result_current = json.loads(response_current._content)
 
     current = result_current["current_weather"]
     temp = current["temperature"]
-    weathercode = current["weather_code"]
+    weathercode = current["weathercode"]
     is_day = current["is_day"]
     weather.markdown(f'<div id="weather"><i class="wi wi-wmo4680-{weathercode}" style="font-size: 48px;"></i>{temp}°C</div>', unsafe_allow_html=True)
     
