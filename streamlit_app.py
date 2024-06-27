@@ -241,5 +241,6 @@ def run_schedule():
 
 # Run the scheduling loop in a separate thread
 import threading
+run_schedule()
 threading.Thread(target=run_schedule, daemon=True).start()
 
