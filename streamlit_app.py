@@ -172,7 +172,7 @@ col0, col1, col2 = st.columns((1,1,1.5))
 
 with col0:
     # Create a container to hold the image
-    image_container = st.container()
+    image_container = st.empty()
 
 with col1:
     lat = "42.9836"
