@@ -9,7 +9,7 @@ footer {visibility: hidden;}
     margin: 0 auto;
 }
 
-body, h1, h2, h3, .clock-placeholder {
+body, h1, h2, h3, em, .clock-placeholder {
     font-family: 'Azeret Mono', sans-serif;
     color: #000;
 }
@@ -116,5 +116,12 @@ img {
      padding: 1em;
      margin: 10px 0;
      font-family: 'Azeret Mono', sans-serif;    
+}
+
+#gwen-goals em,
+#william-goals em,
+#sadie-goals em {
+    font-weight: bold;
+    font-size: 28px;
 }
 
