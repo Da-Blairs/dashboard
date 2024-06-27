@@ -92,6 +92,78 @@ def get_credentials():
 
     return creds
 
+def get_google_calendar_events():
+    creds = get_credentials()
+    service = build('calendar', 'v3', credentials=creds)
+
+    # Get the current UTC time
+    now_utc = datetime.datetime.utcnow()
+    
+    # Define the Toronto timezone
+    toronto_tz = pytz.timezone('America/Toronto')
+    
+    # Convert the current UTC time to Toronto time
+    now_toronto = now_utc.astimezone(toronto_tz)
+    
+    # Replace the time to midnight
+    midnight_toronto = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0)
+    
+    # Convert to ISO format
+    midnight_toronto_iso = midnight_toronto.isoformat()
+    
+    today = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
+
+    events_result = service.events().list(calendarId='primary', timeMin=midnight_toronto_iso,
+                                          maxResults=10, singleEvents=True,
+                                          orderBy='startTime').execute()
+    events = events_result.get('items', [])
+
+    calendar_events = []
+    for event in events:
+        calendar_events.append({
+            'title': event['summary'],
+            'start': event['start'],
+            'end': event['end'],
+            'allday': 'date' in event['start']
+        })
+    return calendar_events
+
+def get_event_dates(events):
+    date_list = []
+    for event in events:
+        start_date = event['start'].get('date', event['start'].get('dateTime', 'ZoeTZoe').split('T')[0])
+        end_date = event['end'].get('date', event['end'].get('dateTime', 'ZoeTZoe').split('T')[0])
+        date_list.append(start_date)
+        if start_date != end_date:
+            #this should be a loop
+            date_list.append(end_date)
+    date_list = list(sorted(set(date_list)))
+    return date_list
+    
+def generate_events_markdown(events):
+    date_list = get_event_dates(events)
+    markdown_output = []
+    
+    for date in date_list:
+        header = datetime.datetime.strptime(date, "%Y-%m-%d")
+        markdown_output.append(f"<span class='date'><span>{header.strftime('%a')}</span><span>{header.strftime('%b %d')}</span></span>")
+        
+        for event in events:
+            if 'date' in event['start']:
+                if event['start'].get('date') == date:
+                    event_title = event['title']
+                    markdown_output.append(f'<div class="event"><span class="time">All Day</span><br>{event_title}</div>')
+            if 'dateTime' in event['start']:
+                if event['start']['dateTime'].split('T')[0] == date:
+                    start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6])
+                    start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
+                    end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6])
+                    end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
+                    event_title = event['title']
+                    markdown_output.append(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{event_title}</div>')
+
+    return "\n".join(markdown_output)
+
 # Streamlit setup
 col0, col1, col2 = st.columns((1,1,1.5))
 
@@ -118,85 +190,12 @@ with col1:
     clock_placeholder = st.empty()
 
     
-
 with col2:     
     # Get credentials
     creds = get_credentials()
     if not creds:
         st.error("Failed to obtain credentials.")
         st.stop()
-    
-    def get_google_calendar_events():
-        creds = get_credentials()
-        service = build('calendar', 'v3', credentials=creds)
-
-        # Get the current UTC time
-        now_utc = datetime.datetime.utcnow()
-        
-        # Define the Toronto timezone
-        toronto_tz = pytz.timezone('America/Toronto')
-        
-        # Convert the current UTC time to Toronto time
-        now_toronto = now_utc.astimezone(toronto_tz)
-        
-        # Replace the time to midnight
-        midnight_toronto = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0)
-        
-        # Convert to ISO format
-        midnight_toronto_iso = midnight_toronto.isoformat()
-        
-        today = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
-
-        events_result = service.events().list(calendarId='primary', timeMin=midnight_toronto_iso,
-                                              maxResults=10, singleEvents=True,
-                                              orderBy='startTime').execute()
-        events = events_result.get('items', [])
-
-        calendar_events = []
-        for event in events:
-            calendar_events.append({
-                'title': event['summary'],
-                'start': event['start'],
-                'end': event['end'],
-                'allday': 'date' in event['start']
-            })
-        return calendar_events
-
-    def get_event_dates(events):
-        date_list = []
-        for event in events:
-            start_date = event['start'].get('date', event['start'].get('dateTime', 'ZoeTZoe').split('T')[0])
-            end_date = event['end'].get('date', event['end'].get('dateTime', 'ZoeTZoe').split('T')[0])
-            date_list.append(start_date)
-            if start_date != end_date:
-                #this should be a loop
-                date_list.append(end_date)
-        date_list = list(sorted(set(date_list)))
-        return date_list
-        
-    def generate_events_markdown(events):
-        date_list = get_event_dates(events)
-        markdown_output = []
-        
-        for date in date_list:
-            header = datetime.datetime.strptime(date, "%Y-%m-%d")
-            markdown_output.append(f"<span class='date'><span>{header.strftime('%a')}</span><span>{header.strftime('%b %d')}</span></span>")
-            
-            for event in events:
-                if 'date' in event['start']:
-                    if event['start'].get('date') == date:
-                        event_title = event['title']
-                        markdown_output.append(f'<div class="event"><span class="time">All Day</span><br>{event_title}</div>')
-                if 'dateTime' in event['start']:
-                    if event['start']['dateTime'].split('T')[0] == date:
-                        start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6])
-                        start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
-                        end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6])
-                        end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
-                        event_title = event['title']
-                        markdown_output.append(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{event_title}</div>')
-    
-        return "\n".join(markdown_output)
     
     # Fetch events from Google Calendar
     calendar_events = get_google_calendar_events()
@@ -205,56 +204,41 @@ with col2:
     if calendar_events:
         calendar_markdown = generate_events_markdown(calendar_events)
         st.markdown(f'<div class="event-list">{calendar_markdown}</div>', unsafe_allow_html=True)
-        
     else:
         st.write("No events found.")
-    
-    # Define calendar options
-    # calendar_options = {
-    #     "headerToolbar": {
-    #         "left": "",
-    #         "center": "",
-    #         "right": "",
-    #     },
-    #     "initialView": "listWeek",
-    # }
-    
-    # Custom CSS
-    # custom_css="""
-    #     .fc-event-past {
-    #         opacity: 0.5;
-    #     }
-    #     .fc-event-time {
-    #         font-style: italic;
-    #     }
-    #     .fc-event-title {
-    #         font-weight: 700;
-    #     }
-    #     .fc-toolbar-title {
-    #         font-size: 2rem;
-    #     }
-    # """
-    # _RELEASE = True
-    # Calendar component with events
-    # calendar_component = calendar(events=calendar_events, options=calendar_options, custom_css=custom_css)
-    # st.write(calendar_component)
 
 # Define the timezone for Toronto
 toronto_tz = pytz.timezone('America/Toronto')
 
-# Start an infinite loop to update the clock
-while True:
-    # Get the current time
-    current_time = datetime.datetime.now(toronto_tz)
-    current_date = datetime.datetime.now(toronto_tz).strftime('%b %d')
+def refreshWeather():
+    st.experimental_rerun()
 
-    if current_time.second == 0 and (current_time.minute == 0 or current_time.minute == 30):
-        st.experimental_rerun()
+# Schedule the task to run at every hour and half-hour marks
+schedule.every().hour.at(":00").do(refreshWeather)
+schedule.every().hour.at(":30").do(refreshWeather)
 
-    current_time = current_time.strftime('%I:%M %p')
+# Run the schedule in a loop
+def run_schedule():
+    # Start an infinite loop to update the clock
+    while True:
+        # Get the current time
+        current_time = datetime.datetime.now(toronto_tz)
+        current_date = datetime.datetime.now(toronto_tz).strftime('%b %d')
     
-    # Update the clock placeholder with the current time
-    clock_placeholder.markdown(f'<div class="clock-placeholder"><span class="time">{current_time}</span><br>{current_date}</div>', unsafe_allow_html=True)
+        if current_time.second == 0 and (current_time.minute == 0 or current_time.minute == 30):
+            st.experimental_rerun()
     
-    # Wait for 1 second before updating the time again
-    sleep(1)
+        current_time = current_time.strftime('%I:%M %p')
+        
+        # Update the clock placeholder with the current time
+        clock_placeholder.markdown(f'<div class="clock-placeholder"><span class="time">{current_time}</span><br>{current_date}</div>', unsafe_allow_html=True)
+
+        schedule.run_pending()
+        
+        # Wait for 1 second before updating the time again
+        sleep(1)
+
+# Run the scheduling loop in a separate thread
+import threading
+threading.Thread(target=run_schedule, daemon=True).start()
+
