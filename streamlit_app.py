@@ -224,6 +224,9 @@ def updateDinner():
     events_result = service.events().list(calendarId={dinnerId}, timeMin=midnight_toronto_iso(),
                                           maxResults=2, singleEvents=True,
                                           orderBy='startTime').execute()
+    pprint.pp(events_result)
+    
+updateDinner()
 
 # Function to update the image
 def updateImage():
