@@ -9,8 +9,9 @@ footer {visibility: hidden;}
     margin: 0 auto;
 }
 
-body, h1, h2, .clock-placeholder {
+body, h1, h2, h3, .clock-placeholder {
     font-family: 'Azeret Mono', sans-serif;
+    color: #000;
 }
 img {
     border-radius: 20px;
