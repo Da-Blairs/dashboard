@@ -23,7 +23,8 @@ img {
 }
 
 #weather {
-    background: linear-gradient(240deg, rgba(252, 142, 190, 0.5) 0%, rgba(252, 229, 195, 0.5) 100%);
+    background: linear-gradient(240deg, rgba(252, 142, 190) 0%, rgba(252, 229, 195) 100%);
+    color: #000;
     border-radius: 20px;
     padding: .5em;
     margin: 65px 0 10px;
