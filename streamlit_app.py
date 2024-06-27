@@ -95,10 +95,7 @@ def get_credentials():
 
     return creds
 
-def get_google_calendar_events():
-    creds = get_credentials()
-    service = build('calendar', 'v3', credentials=creds)
-
+def midnight_toronto_iso():
     # Get the current UTC time
     now_utc = datetime.datetime.utcnow()
     
@@ -112,18 +109,16 @@ def get_google_calendar_events():
     midnight_toronto = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0)
     
     # Convert to ISO format
-    midnight_toronto_iso = midnight_toronto.isoformat()
+    return midnight_toronto.isoformat()
+
+
+def get_google_calendar_events():
+    creds = get_credentials()
+    service = build('calendar', 'v3', credentials=creds)
     
     today = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
-
-    # Get the list of calendars
-    calendar_list = service.calendarList().list().execute()
-    
-    # Print the calendar IDs
-    for calendar in calendar_list['items']:
-        st.write(f"Calendar ID: {calendar['id']}, Summary: {calendar['summary']}")
         
-    events_result = service.events().list(calendarId='primary', timeMin=midnight_toronto_iso,
+    events_result = service.events().list(calendarId='primary', timeMin=midnight_toronto_iso(),
                                           maxResults=10, singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
@@ -223,6 +218,12 @@ with col2:
 
 # Define the timezone for Toronto
 toronto_tz = pytz.timezone('America/Toronto')
+
+def updateDinner():
+    dinnerId = 'd784fd49eb9057cf7c36c7d91c36b40613c3a86da4e351020ae0d1eaa4568cc2@group.calendar.google.com'
+    events_result = service.events().list(calendarId={dinnerId}, timeMin=midnight_toronto_iso(),
+                                          maxResults=2, singleEvents=True,
+                                          orderBy='startTime').execute()
 
 # Function to update the image
 def updateImage():
