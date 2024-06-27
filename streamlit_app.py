@@ -233,7 +233,7 @@ def updateDinner():
     dinner_today = dinners[0] if len(dinners) > 0 else "No dinner today"
     dinner_tomorrow = dinners[1] if len(dinners) > 1 else "No dinner tomorrow"
 
-    dinner = st.markdown(f'<div id="food"><span class="count">Dinner Today</span><br><span>{dinner_today}</span><br><br><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></div>' , unsafe_allow_html= True)
+    dinner.markdown(f'<div id="food"><span class="count">Dinner Today</span><br><span>{dinner_today}</span><br><br><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></div>' , unsafe_allow_html= True)
     
 updateDinner()
 
