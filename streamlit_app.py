@@ -194,24 +194,17 @@ with col0:
     # Create a container to hold the image
     image_container = st.empty()
     
-    st.markdown('''
+    # Define the HTML content with checkboxes
+    html_content = '''
     <div id="gwen-goals">
-        [] Eating Icecream
-        [] Reading 50 audiobooks
-        [] Playing D&D
-    </div>''', unsafe_allow_html= True)
-    st.markdown('''
-    <div id="gwen-goals">
-        [] Eating Icecream
-        [] Reading 50 audiobooks
-        [] Playing D&D
-    </div>''', unsafe_allow_html= True)
-           st.markdown('''
-    <div id="gwen-goals">
-        [] Eating Icecream
-        [] Reading 50 audiobooks
-        [] Playing D&D
-    </div>''', unsafe_allow_html= True)
+        <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
+        <input type="checkbox" id="audiobooks"> <label for="audiobooks">Reading 50 audiobooks</label><br>
+        <input type="checkbox" id="dnd"> <label for="dnd">Playing D&D</label><br>
+    </div>
+    '''
+    
+    # Render the HTML content
+    st.markdown(html_content, unsafe_allow_html=True)
     
     
 
