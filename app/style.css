@@ -3,6 +3,12 @@
 header {visibility: hidden;}
 footer {visibility: hidden;}
 
+.block-container {
+    padding: 0;
+    width: calc(1366px - 2rem);
+    margin: 0 auto;
+}
+
 body, h1, h2, .clock-placeholder {
     font-family: 'Azeret Mono', sans-serif;
 }
