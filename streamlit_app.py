@@ -6,7 +6,6 @@ import pytz
 import streamlit as st
 import requests
 import pprint
-import schedule
 import threading
 from PIL import Image
 from time import sleep, strftime
@@ -226,15 +225,8 @@ def update_image():
     # Display the image in the container
     image_container.image(image, use_column_width=True)
 
-# Schedule the image update every 5 seconds
-schedule.every(5).seconds.do(update_image)
-
 def refreshWeather():
     st.rerun()
-
-# Schedule the task to run at every hour and half-hour marks
-schedule.every().hour.at(":00").do(refreshWeather)
-schedule.every().hour.at(":30").do(refreshWeather)
 
 def updateClock():
     # Get the current time
@@ -243,14 +235,21 @@ def updateClock():
      # Update the clock placeholder with the current time
     clock_placeholder.markdown(f'<div class="clock-placeholder"><span class="time">{current_time}</span><br>{current_date}</div>', unsafe_allow_html=True)
 
-schedule.every(1).seconds.do(updateClock)
-
 # Run the schedule in a loop
 def run_schedule():
     # Start an infinite loop to update the clock
     while True:
-        
-        schedule.run_pending()
+        current_time = datetime.now()
+        current_minute = current_time.minute
+        current_second = current_time.second
+
+        updateClock()
+
+        if current_second % 5 == 0
+            update_image()
+
+        if current_minute == 0 or current_minute == 30:
+            refreshWeather()
         
         # Wait for 1 second before updating the time again
         sleep(1)
