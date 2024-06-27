@@ -8,6 +8,7 @@ import requests
 import pprint
 import schedule
 import threading
+from PIL import Image
 from time import sleep, strftime
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
