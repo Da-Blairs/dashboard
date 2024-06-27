@@ -7,6 +7,7 @@ import streamlit as st
 import requests
 import pprint
 import schedule
+import threading
 from time import sleep, strftime
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
@@ -168,6 +169,10 @@ def generate_events_markdown(events):
 # Streamlit setup
 col0, col1, col2 = st.columns((1,1,1.5))
 
+with col0:
+    # Create a container to hold the image
+    image_container = st.container()
+
 with col1:
     lat = "42.9836"
     lng = "-81.2497"
@@ -211,6 +216,18 @@ with col2:
 # Define the timezone for Toronto
 toronto_tz = pytz.timezone('America/Toronto')
 
+# Function to update the image
+def update_image():
+    # Get the image from the URL
+    url = "https://example.com/image.jpg"  # Replace with your image URL
+    response = requests.get(url)
+    image = Image.open(BytesIO(response.content))
+    # Display the image in the container
+    image_container.image(image, use_column_width=True)
+
+# Schedule the image update every 5 seconds
+schedule.every(5).seconds.do(update_image)
+
 def refreshWeather():
     st.rerun()
 
@@ -240,7 +257,6 @@ def run_schedule():
         sleep(1)
 
 # Run the scheduling loop in a separate thread
-import threading
 run_schedule()
 threading.Thread(target=run_schedule, daemon=True).start()
 
