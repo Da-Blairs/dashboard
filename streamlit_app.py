@@ -239,7 +239,7 @@ def updateClock():
 def run_schedule():
     # Start an infinite loop to update the clock
     while True:
-        current_time = datetime.now()
+        current_time = datetime.datetime.now()
         current_minute = current_time.minute
         current_second = current_time.second
 
