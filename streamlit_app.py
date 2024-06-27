@@ -246,7 +246,7 @@ with col1:
     dinner = st.markdown(f'<div id="food"><p><span class="count">Dinner Today</span><br><span>No plans</span></p><p><span class="count">Dinner Tomorrow</span><br><span>No plans</span></p></div>' , unsafe_allow_html= True)
     
     # Create a placeholder for the clock
-    clock_placeholder = st.empty()
+    clock_placeholder = st.empty() 
 
     
 with col2:     
