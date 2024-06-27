@@ -223,7 +223,6 @@ def updateImage():
     response = requests.get(f'http://generationgeneration.ca/frame.jpg')
     image = Image.open(BytesIO(response.content))
     # Display the image in the container
-    image_container.empty()
     image_container.image(image, use_column_width=True)
 
 def refreshWeather():
