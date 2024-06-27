@@ -219,14 +219,15 @@ with col2:
 # Define the timezone for Toronto
 toronto_tz = pytz.timezone('America/Toronto')
 
-def updateDinner():
+def updateDinner():    
     creds = get_credentials()
     service = build('calendar', 'v3', credentials=creds)
     dinnerId = 'primary' #'d784fd49eb9057cf7c36c7d91c36b40613c3a86da4e351020ae0d1eaa4568cc2@group.calendar.google.com'
     events_result = service.events().list(calendarId={dinnerId}, timeMin=midnight_toronto_iso(),
                                           maxResults=2, singleEvents=True,
                                           orderBy='startTime').execute()
-    pprint.pp(events_result)
+    events = events_result.get('items', [])
+    pprint.pp(events)
     
 updateDinner()
 
