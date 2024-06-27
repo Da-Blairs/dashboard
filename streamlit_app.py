@@ -169,14 +169,7 @@ def generate_events_markdown(events):
 
     return "\n".join(markdown_output)
 
-# Streamlit setup
-col0, col1, col2 = st.columns((1,1,1.5))
-
-with col0:
-    # Create a container to hold the image
-    image_container = st.empty()
-
-with col1:
+def update_weather():
     lat = "42.9836"
     lng = "-81.2497"
     response_current = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lng}&current_weather=true')
@@ -186,8 +179,20 @@ with col1:
     temp = current["temperature"]
     weathercode = current["weathercode"]
     is_day = current["is_day"]
+    weather.markdown(f'<div id="weather"><i class="wi wi-wmo4680-{weathercode}" style="font-size: 48px;"></i>{temp}°C</div>', unsafe_allow_html=True)
+    
 
-    st.markdown(f'<div id="weather"><i class="wi wi-wmo4680-{weathercode}" style="font-size: 48px;"></i>{temp}°C</div>', unsafe_allow_html=True)
+# Streamlit setup
+col0, col1, col2 = st.columns((1,1,1.5))
+
+with col0:
+    # Create a container to hold the image
+    image_container = st.empty()
+
+with col1:
+
+    weather.markdown(f'<div id="weather"></div>' , unsafe_allow_html= True)
+    update_weather()
 
     st.markdown(f'<div id="steps"><span class="count">0</span><span>summer steps</span></div>' , unsafe_allow_html= True)
     st.markdown(f'<div id="swims"><span class="count">0</span><span>hours swimming</span></div>' , unsafe_allow_html= True)
@@ -268,8 +273,9 @@ def run_schedule():
         if current_second % 5 == 0:
             updateImage()
 
-        if current_minute == 0 or current_minute == 30:
+        if current_minute % 5 == 0:
             refreshWeather()
+            updateDinner()
         
         # Wait for 1 second before updating the time again
         sleep(1)
