@@ -116,6 +116,13 @@ def get_google_calendar_events():
     
     today = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
 
+    # Get the list of calendars
+    calendar_list = service.calendarList().list().execute()
+    
+    # Print the calendar IDs
+    for calendar in calendar_list['items']:
+        st.write(f"Calendar ID: {calendar['id']}, Summary: {calendar['summary']}")
+        
     events_result = service.events().list(calendarId='primary', timeMin=midnight_toronto_iso,
                                           maxResults=10, singleEvents=True,
                                           orderBy='startTime').execute()
