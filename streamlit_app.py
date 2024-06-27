@@ -227,7 +227,10 @@ def updateDinner():
                                           maxResults=2, singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
-    pprint.pp(events)
+    dinners = []
+    for event in events:
+        dinners.append(event['summary'])
+    st.write(dinners)
     
 updateDinner()
 
