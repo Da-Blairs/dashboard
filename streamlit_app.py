@@ -211,7 +211,7 @@ with col2:
 toronto_tz = pytz.timezone('America/Toronto')
 
 def refreshWeather():
-    st.experimental_rerun()
+    st.rerun()
 
 # Schedule the task to run at every hour and half-hour marks
 schedule.every().hour.at(":00").do(refreshWeather)
