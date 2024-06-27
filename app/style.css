@@ -85,11 +85,13 @@ img {
      font-family: 'Azeret Mono', sans-serif;
     align-items: baseline;
     flex-flow: row wrap;
+ }
+#food p {
     font-family: "Azeret Mono", sans-serif;
     font-size: 25px;
     font-weight: 700;
 }
- #food .count {
+ #food p .count {
      font-weight: normal;
      font-size: 16px;
  }
