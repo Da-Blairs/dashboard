@@ -254,6 +254,5 @@ def run_schedule():
         # Wait for 1 second before updating the time again
         sleep(1)
 
-# Run the scheduling loop in a separate thread
-threading.Thread(target=run_schedule, daemon=True).start()
+run_schedule()
 
