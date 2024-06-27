@@ -218,7 +218,7 @@ with col2:
 toronto_tz = pytz.timezone('America/Toronto')
 
 # Function to update the image
-def update_image():
+def updateImage():
     # Get the image from the URL
     response = requests.get(f'http://generationgeneration.ca/frame.jpg')
     image = Image.open(BytesIO(response.content))
@@ -246,7 +246,7 @@ def run_schedule():
         updateClock()
 
         if current_second % 5 == 0:
-            update_image()
+            updateImage()
 
         if current_minute == 0 or current_minute == 30:
             refreshWeather()
