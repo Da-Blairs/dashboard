@@ -107,7 +107,7 @@ img {
  }
 
 #gwen-goals, #william-goals, #sadie-goals {
-    background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 90%);
+    background: linear-gradient(240deg, rgba(185, 159, 237, 0.6) 0%, rgba(237, 185, 218, 0.6) 100%);
      color: #000;
      border-radius: 20px;
      padding: 1em;
