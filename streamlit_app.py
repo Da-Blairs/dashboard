@@ -191,7 +191,7 @@ with col0:
 
 with col1:
 
-    weather.markdown(f'<div id="weather"></div>' , unsafe_allow_html= True)
+    weather = st.markdown(f'<div id="weather"></div>' , unsafe_allow_html= True)
     update_weather()
 
     st.markdown(f'<div id="steps"><span class="count">0</span><span>summer steps</span></div>' , unsafe_allow_html= True)
