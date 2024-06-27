@@ -220,7 +220,7 @@ toronto_tz = pytz.timezone('America/Toronto')
 # Function to update the image
 def update_image():
     # Get the image from the URL
-    url = "https://example.com/image.jpg"  # Replace with your image URL
+    url = "http://generationgeneration.ca/frame.jpg"  # Replace with your image URL
     response = requests.get(url)
     image = Image.open(BytesIO(response.content))
     # Display the image in the container
