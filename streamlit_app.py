@@ -295,7 +295,7 @@ def updateImage():
     image = Image.open(BytesIO(response.content))
     # Display the image in the container
     image_container.image(image, use_column_width=True)
-
+ 
 def updateClock():
     # Get the current time
     current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M %p')
