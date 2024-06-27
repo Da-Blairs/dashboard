@@ -236,28 +236,25 @@ def refreshWeather():
 schedule.every().hour.at(":00").do(refreshWeather)
 schedule.every().hour.at(":30").do(refreshWeather)
 
+def updateClock():
+    # Get the current time
+    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M %p')
+    current_date = datetime.datetime.now(toronto_tz).strftime('%b %d')
+     # Update the clock placeholder with the current time
+    clock_placeholder.markdown(f'<div class="clock-placeholder"><span class="time">{current_time}</span><br>{current_date}</div>', unsafe_allow_html=True)
+
+schedule.every(1).seconds.do(updateClock)
+
 # Run the schedule in a loop
 def run_schedule():
     # Start an infinite loop to update the clock
     while True:
-        # Get the current time
-        current_time = datetime.datetime.now(toronto_tz)
-        current_date = datetime.datetime.now(toronto_tz).strftime('%b %d')
-    
-        if current_time.second == 0 and (current_time.minute == 0 or current_time.minute == 30):
-            st.experimental_rerun()
-    
-        current_time = current_time.strftime('%I:%M %p')
         
-        # Update the clock placeholder with the current time
-        clock_placeholder.markdown(f'<div class="clock-placeholder"><span class="time">{current_time}</span><br>{current_date}</div>', unsafe_allow_html=True)
-
         schedule.run_pending()
         
         # Wait for 1 second before updating the time again
         sleep(1)
 
 # Run the scheduling loop in a separate thread
-run_schedule()
 threading.Thread(target=run_schedule, daemon=True).start()
 
