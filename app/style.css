@@ -52,7 +52,7 @@ img {
     text-transform: uppercase;
     font-size: 25px;
     font-family: 'Azeret Mono', sans-serif;
-    column-gap: 20px;
+    column-gap: 16px;
 }
 .event-list .event {
     background: linear-gradient(240deg, rgba(151, 231, 209) 0%, rgba(236, 252, 195) 100%);
