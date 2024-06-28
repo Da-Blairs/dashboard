@@ -122,6 +122,10 @@ img {
     margin-top: 0;
 }
 
+#william-goals {
+     background: linear-gradient(240deg, #ee9ca7 0%, #ffdde1 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 #gwen-goals em,
 #william-goals em,
 #sadie-goals em {
