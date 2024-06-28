@@ -118,6 +118,10 @@ img {
      font-family: 'Azeret Mono', sans-serif;    
 }
 
+#gwen-goals {
+    margin-top: 0;
+}
+
 #gwen-goals em,
 #william-goals em,
 #sadie-goals em {
