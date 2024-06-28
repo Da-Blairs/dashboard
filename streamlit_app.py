@@ -209,7 +209,7 @@ with col0:
     # William Goals
     html_content = '''
     <div id="william-goals">
-        <em>William Summer Goals</em>
+        <em>Will Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
         <input type="checkbox" id="audiobooks"> <label for="audiobooks">Reading 50 audiobooks</label><br>
         <input type="checkbox" id="dnd"> <label for="dnd">Playing D&D</label><br>
