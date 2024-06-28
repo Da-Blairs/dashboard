@@ -25,8 +25,8 @@ img {
     text-transform: uppercase;
     border-radius: 20px;
     padding: 0;
-    margin: 8px 0;
-    line-height: normal;   
+    margin: 0;
+    line-height: .85;  
 }
 .time {
     font-size: 71px;
