@@ -219,7 +219,7 @@ with col0:
         <i class="fa-solid fa-feather"></i>
         <em>Gwen Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
-        <input type="checkbox" id="audiobooks"> <label for="audiobooks">Reading 30 books</label><br>
+        <input type="checkbox" id="audiobooks"> <label for="audiobooks">1/30 books read</label><br>
         <input type="checkbox" id="dnd"> <label for="dnd">Playing D&D</label><br>
     </div>
     '''
