@@ -157,7 +157,7 @@ event_icons = {
     "goderich": "<i class='fa-solid fa-face-grin-hearts'></i>",
     "movie": "<i class='fa-solid fa-clapperboard'></i>",
     "plorin": "<i class='fa-solid fa-person-hiking'></i>",
-    "exercise": "<i class='fa-solid fa-dumbbell' data-fa-transform='rotate--30'></i>",
+    "exercise": "<i class='fa-solid fa-dumbbell fa-rotate-by' style='--fa-rotate-angle: 45deg;'></i>",
     "dentist": "<i class='fa-solid fa-tooth'></i>"
 }
     
