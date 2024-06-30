@@ -42,7 +42,7 @@ img {
     font-family: 'Azeret Mono', sans-serif;
     font-size: 33px;
     justify-content: space-between;
-
+    position: relative;
 }
 
 .event-list {
@@ -120,6 +120,7 @@ img {
      position: relative;
 }
 
+#weather .big-icon,
 #food .fa-solid,
 #gwen-goals .fa-solid,
 #william-goals .fa-solid,
