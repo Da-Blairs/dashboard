@@ -183,7 +183,7 @@ def update_weather():
     if weathercode == 0 or weathercode == 2: 
         weathercode = result_current["daily"]["weather_code"][0]
     is_day = current["is_day"]
-    weather.markdown(f'<div id="weather"><i class="big-icon wi wi-wmo4680-{weathercode}"><i class="wi wi-wmo4680-{weathercode}" style="font-size: 48px;"></i>{temp}°C</div>', unsafe_allow_html=True)
+    weather.markdown(f'<div id="weather"><i class="big-icon wi wi-wmo4680-{weathercode}"></i><i class="wi wi-wmo4680-{weathercode}" style="font-size: 48px;"></i>{temp}°C</div>', unsafe_allow_html=True)
     
 
 # Streamlit setup
