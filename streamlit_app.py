@@ -163,7 +163,7 @@ def generate_events_markdown(events):
         for event in events:
             icon = ""
             event_title = event['title']
-            for keyword, event_icon in icon_dict.items():
+            for keyword, event_icon in event_icons.items():
                 if keyword.lower() in event_title.lower():
                     icon = event_icon
                     break  # Stop after finding the first matching keyword
