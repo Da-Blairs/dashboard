@@ -286,7 +286,7 @@ def updateDinner():
     dinner_today = dinners[0] if len(dinners) > 0 else "No plans"
     dinner_tomorrow = dinners[1] if len(dinners) > 1 else "No plans"
 
-    dinner.markdown(f'<div id="food"><p><span class="count">Dinner Today</span><br><span>{dinner_today}</span></p><p><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></p></div>' , unsafe_allow_html= True)
+    dinner.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>{dinner_today}</span></p><p><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></p></div>' , unsafe_allow_html= True)
     
 updateDinner()
 
