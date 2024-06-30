@@ -135,6 +135,10 @@ img {
     margin-top: -18px;
 }
 
+#weather .big-icon {
+    margin-top: -40px;
+}
+
 #gwen-goals {
     margin-top: 0;
 }
