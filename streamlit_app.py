@@ -152,7 +152,13 @@ event_icons = {
     "swim": "<i class='fa-solid fa-person-swimming'></i>",
     "among": "<i class='fa-solid fa-user-astronaut'></i>",
     "game": "<i class='fa-solid fa-dice'></i>",
-    "d&d": "<i class='a-solid fa-dragon'></i>",
+    "d&d": "<i class='fa-solid fa-dragon'></i>",
+    "oma": "<i class='fa-solid fa-face-grin-hearts'></i>",
+    "goderich": "<i class='fa-solid fa-face-grin-hearts'></i>",
+    "movie": "<i class='fa-solid fa-clapperboard'></i>",
+    "plorin": "<i class='fa-solid fa-person-hiking'></i>",
+    "exercise": "<i class='fa-solid fa-dumbbell'></i>",
+    "dentist": "<i class='fa-solid fa-tooth'></i>"
 }
     
 def generate_events_markdown(events):
