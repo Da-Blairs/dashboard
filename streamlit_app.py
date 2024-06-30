@@ -222,6 +222,7 @@ with col0:
     # Sadie Goals
     html_content = '''
     <div id="sadie-goals">
+        <i class="fa-solid fa-heart"></i>
         <em>Sadie Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Learn to Swim</label><br>
         <input type="checkbox" id="audiobooks"> <label for="audiobooks">Learn to Read</label><br>
