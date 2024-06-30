@@ -146,6 +146,11 @@ def get_event_dates(events):
             date_list.append(end_date)
     date_list = list(sorted(set(date_list)))
     return date_list
+
+# Event icon dictionary
+event_icons = {
+    "swim": "<i class="fa-solid fa-person-swimming"></i>",
+}
     
 def generate_events_markdown(events):
     date_list = get_event_dates(events)
