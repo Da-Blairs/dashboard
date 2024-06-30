@@ -98,6 +98,7 @@ img {
      font-family: 'Azeret Mono', sans-serif;
     align-items: baseline;
     flex-flow: row wrap;
+     positing: relative;
  }
 #food p {
     font-family: "Azeret Mono", sans-serif;
