@@ -115,7 +115,19 @@ img {
      border-radius: 20px;
      padding: 1em;
      margin: 8px 0;
-     font-family: 'Azeret Mono', sans-serif;    
+     font-family: 'Azeret Mono', sans-serif;  
+     position: relative;
+}
+
+#gwen-goals .fa-solid,
+#william-goals .fa-solid,
+#sadie-goals .fa-solid {
+    position: absolute;
+    font-size: 80px;
+    opacity: 20%;
+    right: 20px;
+    top: 50%;
+    margin-top: -18px;
 }
 
 #gwen-goals {
