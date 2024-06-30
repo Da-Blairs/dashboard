@@ -151,6 +151,8 @@ def get_event_dates(events):
 event_icons = {
     "swim": "<i class='fa-solid fa-person-swimming'></i>",
     "among": "<i class='fa-solid fa-user-astronaut'></i>",
+    "game": "<i class="fa-solid fa-dice"></i>",
+    "d&d": "<i class="fa-solid fa-dragon"></i>",
 }
     
 def generate_events_markdown(events):
