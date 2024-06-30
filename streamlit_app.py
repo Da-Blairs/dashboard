@@ -196,6 +196,7 @@ with col0:
     # Gwen Goals
     html_content = '''
     <div id="gwen-goals">
+        <i class="fa-solid fa-feather"></i>
         <em>Gwen Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
         <input type="checkbox" id="audiobooks"> <label for="audiobooks">Reading 50 audiobooks</label><br>
@@ -209,7 +210,7 @@ with col0:
     # William Goals
     html_content = '''
     <div id="william-goals">
-        <i class="fa-solid fa-feather"></i>
+        <i class="fa-solid fa-sun"></i>
         <em>Will Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
         <input type="checkbox" id="audiobooks"> <label for="audiobooks">Reading 50 audiobooks</label><br>
@@ -244,7 +245,7 @@ with col1:
     st.markdown(f'<div id="steps"><span class="count">0</span><span>summer steps</span></div>' , unsafe_allow_html= True)
     st.markdown(f'<div id="swims"><span class="count">0</span><span>hours swimming</span></div>' , unsafe_allow_html= True)
 
-    dinner = st.markdown(f'<div id="food"><p><span class="count">Dinner Today</span><br><span>No plans</span></p><p><span class="count">Dinner Tomorrow</span><br><span>No plans</span></p></div>' , unsafe_allow_html= True)
+    dinner = st.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>No plans</span></p><p><span class="count">Dinner Tomorrow</span><br><span>No plans</span></p></div>' , unsafe_allow_html= True)
     
     # Create a placeholder for the clock
     clock_placeholder = st.empty() 
