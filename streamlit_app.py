@@ -157,7 +157,7 @@ event_icons = {
     "goderich": "<i class='fa-solid fa-face-grin-hearts'></i>",
     "movie": "<i class='fa-solid fa-clapperboard'></i>",
     "plorin": "<i class='fa-solid fa-person-hiking'></i>",
-    "exercise": "<i class='fa-solid fa-dumbbell'></i>",
+    "exercise": "<i class='fa-solid fa-dumbbell' data-fa-transform='rotate--30'></i>",
     "dentist": "<i class='fa-solid fa-tooth'></i>"
 }
     
@@ -220,7 +220,7 @@ with col0:
         <em>Gwen Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
         <input type="checkbox" id="audiobooks"> <label for="audiobooks">1/30 books read</label><br>
-        <input type="checkbox" id="dnd"> <label for="dnd">Playing D&D</label><br>
+        <input type="checkbox" id="dnd"> <label for="dnd">0/4 D&D Sessions</label><br>
     </div>
     '''
     
@@ -233,8 +233,8 @@ with col0:
         <i class="fa-solid fa-skull-crossbones"></i>
         <em>Will Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
-        <input type="checkbox" id="audiobooks"> <label for="audiobooks">Reading 50 audiobooks</label><br>
-        <input type="checkbox" id="dnd"> <label for="dnd">Playing D&D</label><br>
+        <input type="checkbox" id="audiobooks"> <label for="audiobooks">Finish Ascendant Series</label><br>
+        <input type="checkbox" id="dnd"> <label for="dnd">0/4 D&D Sessions</label><br>
     </div>
     '''
     
