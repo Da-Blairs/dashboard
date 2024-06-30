@@ -61,6 +61,7 @@ img {
     padding: .5em;
     margin: 8px 0;
     width: calc(50% - 20px);
+    position: relative;
 }
 .event-list .time {
     font-size: 20px;
@@ -124,7 +125,8 @@ img {
 #food .fa-solid,
 #gwen-goals .fa-solid,
 #william-goals .fa-solid,
-#sadie-goals .fa-solid {
+#sadie-goals .fa-solid,
+.event .fa-solid {
     position: absolute;
     font-size: 80px;
     opacity: 20%;
