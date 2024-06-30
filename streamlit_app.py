@@ -298,9 +298,9 @@ def updateImage():
     # Display the image in the container
     image_container.image(image, use_column_width=True)
  
-def updateClock():
+def updateClock(use_colon=True):
     # Get the current time
-    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M %p')
+    current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M %p' if use_colon else '%I %M %p')
     current_date = datetime.datetime.now(toronto_tz).strftime('%b %d')
      # Update the clock placeholder with the current time
     clock_placeholder.markdown(f'<div class="clock-placeholder"><span class="time">{current_time}</span><br>{current_date}</div>', unsafe_allow_html=True)
@@ -313,7 +313,7 @@ def run_schedule():
         current_minute = current_time.minute
         current_second = current_time.second
 
-        updateClock()
+        updateClock(current_second % 2)
 
         if current_second % 5 == 0:
             updateImage()
