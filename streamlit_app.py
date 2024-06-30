@@ -149,7 +149,7 @@ def get_event_dates(events):
 
 # Event icon dictionary
 event_icons = {
-    "swim": "<i class="fa-solid fa-person-swimming"></i>",
+    "swim": "<i class='fa-solid fa-person-swimming'></i>",
 }
     
 def generate_events_markdown(events):
