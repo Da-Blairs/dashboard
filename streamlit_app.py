@@ -161,18 +161,24 @@ def generate_events_markdown(events):
         markdown_output.append(f"<span class='date'><span>{header.strftime('%a')}</span><span>{header.strftime('%b %d')}</span></span>")
         
         for event in events:
+            icon = ""
+            event_title = event['title']
+            for keyword, event_icon in icon_dict.items():
+                if keyword.lower() in event_title.lower():
+                    icon = event_icon
+                    break  # Stop after finding the first matching keyword
+            
             if 'date' in event['start']:
                 if event['start'].get('date') == date:
-                    event_title = event['title']
-                    markdown_output.append(f'<div class="event"><span class="time">All Day</span><br>{event_title}</div>')
+                    markdown_output.append(f'<div class="event"><span class="time">All Day</span><br>{icon} {event_title}</div>')
+            
             if 'dateTime' in event['start']:
                 if event['start']['dateTime'].split('T')[0] == date:
                     start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'][:-6])
                     start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
                     end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6])
                     end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
-                    event_title = event['title']
-                    markdown_output.append(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{event_title}</div>')
+                    markdown_output.append(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{icon} {event_title}</div>')
 
     return "\n".join(markdown_output)
 
