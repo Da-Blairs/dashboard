@@ -129,10 +129,11 @@ img {
 .event .fa-solid {
     position: absolute;
     font-size: 80px;
-    opacity: 20%;
+    opacity: 70%;
     right: 20px;
     top: 50%;
     margin-top: -18px;
+    mix-blend-mode: soft-light;
 }
 
 #weather .big-icon {
