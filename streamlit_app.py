@@ -165,6 +165,9 @@ event_icons = {
     "tv": "<i class='fa-solid fa-gamepad'></i>",
     "wincelsea": "<i class='fa-solid fa-tractor'></i>",
     "cottage": "<i class='fa-solid fa-house-chimney-window'></i>",
+    "school": "<i class='fa-solid fa-pencil'></i>",
+    "home": "<i class='fa-solid fa-suitcase'></i>",
+    "camp": "<i class='fa-solid fa-campground'></i>",
  
 }
     
