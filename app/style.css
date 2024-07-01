@@ -53,6 +53,7 @@ img {
     font-size: 25px;
     font-family: 'Azeret Mono', sans-serif;
     column-gap: 16px;
+    justify-content: space-between;
 }
 .event-list .event {
     background: linear-gradient(240deg, rgba(151, 231, 209) 0%, rgba(236, 252, 195) 100%);
@@ -60,7 +61,7 @@ img {
     border-radius: 20px;
     padding: .5em;
     margin: 8px 0;
-    width: calc(50% - 20px);
+    width: calc(50% - 8px);
     position: relative;
 }
 .event-list .time {
