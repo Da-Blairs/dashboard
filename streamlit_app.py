@@ -292,6 +292,7 @@ with col2:
         st.stop()
     
     # Fetch events from Google Calendar
+    calendar_events = []
     try:
       calendar_events = get_google_calendar_events()
     except:
