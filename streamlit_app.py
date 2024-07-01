@@ -121,7 +121,7 @@ def get_google_calendar_events():
     today = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
         
     events_result = service.events().list(calendarId='primary', timeMin=midnight_toronto_iso(),
-                                          maxResults=80, singleEvents=True,
+                                          maxResults=160, singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
 
@@ -150,6 +150,7 @@ def get_event_dates(events):
 # Event icon dictionary
 event_icons = {
     "swim": "<i class='fa-solid fa-person-swimming'></i>",
+    "pool": "<i class='fa-solid fa-person-swimming'></i>",
     "among": "<i class='fa-solid fa-user-astronaut'></i>",
     "game": "<i class='fa-solid fa-dice'></i>",
     "birthday": "<i class='fa-solid fa-cake-candles'></i>",
@@ -162,6 +163,7 @@ event_icons = {
     "dentist": "<i class='fa-solid fa-tooth'></i>",
     "zoub": "<i class='fa-solid fa-dog'></i>",
     "tv": "<i class='fa-solid fa-gamepad'></i>",
+    "wincelsea": "<i class='fa-solid fa-tractor'></i>",
 }
     
 def generate_events_markdown(events):
