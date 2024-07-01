@@ -215,7 +215,18 @@ def update_weather():
         weathercode = result_current["daily"]["weather_code"][0]
     is_day = current["is_day"]
     weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
+
+def gwen_read():
+    sheet = client.open('https://docs.google.com/spreadsheets/d/1i96NvsEwbv5AZ9C0r8m1__E7EHTTUpHtgToIkX1yoNA/edit?gid=0#gid=0').sheet1
+    # Get all the values in the sheet
+    values = sheet.get_all_values()
     
+    # Count the number of filled rows
+    filled_rows = len([row for row in values if any(cell.strip() for cell in row)])
+    
+    print(f'Total filled rows: {filled_rows}')
+
+gwen_read()
 
 # Streamlit setup
 col1, col0, col2 = st.columns((1,1,1.5))
