@@ -152,6 +152,7 @@ event_icons = {
     "swim": "<i class='fa-solid fa-person-swimming'></i>",
     "among": "<i class='fa-solid fa-user-astronaut'></i>",
     "game": "<i class='fa-solid fa-dice'></i>",
+    "birthday": "<i class='fa-solid fa-cake-candles'></i>",
     "d&d": "<i class='fa-solid fa-dragon'></i>",
     "oma": "<i class='fa-solid fa-face-grin-hearts'></i>",
     "goderich": "<i class='fa-solid fa-face-grin-hearts'></i>",
