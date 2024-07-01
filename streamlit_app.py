@@ -292,7 +292,10 @@ with col2:
         st.stop()
     
     # Fetch events from Google Calendar
-    calendar_events = get_google_calendar_events()
+    try:
+      calendar_events = get_google_calendar_events()
+    except:
+      pass
     # pprint.pp(calendar_events)
     
     if calendar_events:
