@@ -333,14 +333,26 @@ def run_schedule():
         current_minute = current_time.minute
         current_second = current_time.second
 
-        updateClock(current_second % 2)
+        try:
+            updateClock(current_second % 2)
+        except: 
+            pass
 
         if current_second % 5 == 0:
-            updateImage()
+            try:
+                updateImage()
+            except: 
+                pass
 
         if current_minute % 5 == 0:
-            update_weather()
-            updateDinner()
+            try: 
+                update_weather()
+            except: 
+                pass
+            try:
+                updateDinner()
+            except: 
+                pass    
         
         # Wait for 1 second before updating the time again
         sleep(1)
