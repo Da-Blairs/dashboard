@@ -220,15 +220,12 @@ def update_weather():
     weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
 
 def gwen_read():
+    sheet_url = 'https://docs.google.com/spreadsheets/d/1i96NvsEwbv5AZ9C0r8m1__E7EHTTUpHtgToIkX1yoNA/edit?gid=0#gid=0'
     client = gspread.authorize(get_credentials())
-    sheet = client.open('https://docs.google.com/spreadsheets/d/1i96NvsEwbv5AZ9C0r8m1__E7EHTTUpHtgToIkX1yoNA/edit?gid=0#gid=0').sheet1
-    # Get all the values in the sheet
+    sheet = client.open_by_url(sheet_url).sheet1
     values = sheet.get_all_values()
-    
-    # Count the number of filled rows
     filled_rows = len([row for row in values if any(cell.strip() for cell in row)])
-    
-    print(f'Total filled rows: {filled_rows}')
+    return filled_rows
 
 gwen_read()
 
