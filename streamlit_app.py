@@ -215,6 +215,7 @@ def update_weather():
     temp = current["temperature"]
     weathercode = current["weathercode"]
     if weathercode == 0 or weathercode == 2: 
+        pprint.pp(result_current["daily"])
         weathercode = result_current["daily"]["weather_code"][0]
     is_day = current["is_day"]
     weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
