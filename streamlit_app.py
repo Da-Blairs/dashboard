@@ -220,6 +220,7 @@ def update_weather():
     weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
 
 def gwen_read():
+    client = gspread.authorize(get_credentials())
     sheet = client.open('https://docs.google.com/spreadsheets/d/1i96NvsEwbv5AZ9C0r8m1__E7EHTTUpHtgToIkX1yoNA/edit?gid=0#gid=0').sheet1
     # Get all the values in the sheet
     values = sheet.get_all_values()
