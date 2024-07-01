@@ -227,7 +227,7 @@ def gwen_read():
     filled_rows = len([row for row in values if any(cell.strip() for cell in row)])
     return filled_rows
 
-gwen_read()
+# gwen_read()
 
 # Streamlit setup
 col1, col0, col2 = st.columns((1,1,1.5))
