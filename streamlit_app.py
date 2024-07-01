@@ -164,6 +164,8 @@ event_icons = {
     "zoub": "<i class='fa-solid fa-dog'></i>",
     "tv": "<i class='fa-solid fa-gamepad'></i>",
     "wincelsea": "<i class='fa-solid fa-tractor'></i>",
+    "cottage": "<i class='fa-solid fa-house-chimney-window'></i>",
+ 
 }
     
 def generate_events_markdown(events):
@@ -265,7 +267,10 @@ with col0:
 with col1:
 
     weather = st.markdown(f'<div id="weather"></div>' , unsafe_allow_html= True)
-    update_weather()
+    try: 
+      update_weather()
+    except:
+      pass
 
     st.markdown(f'<div id="steps"><span class="count">0</span><span>summer steps</span></div>' , unsafe_allow_html= True)
     st.markdown(f'<div id="swims"><span class="count">0</span><span>hours swimming</span></div>' , unsafe_allow_html= True)
