@@ -57,7 +57,10 @@ credentials_info = {
     }
 }
 
-SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
+SCOPES = [
+    'https://www.googleapis.com/auth/calendar.readonly',
+    'https://www.googleapis.com/auth/spreadsheets.readonly'
+]
 
 # Get the current URL query parameters
 query_params = st.query_params
