@@ -158,7 +158,8 @@ event_icons = {
     "movie": "<i class='fa-solid fa-clapperboard'></i>",
     "plorin": "<i class='fa-solid fa-person-hiking'></i>",
     "exercise": "<i class='fa-solid fa-dumbbell'></i>",
-    "dentist": "<i class='fa-solid fa-tooth'></i>"
+    "dentist": "<i class='fa-solid fa-tooth'></i>",
+    "zoub": "<i class='fa-solid fa-dog'></i>">,
 }
     
 def generate_events_markdown(events):
