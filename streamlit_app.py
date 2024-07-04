@@ -221,10 +221,7 @@ def update_weather():
     is_day = current["is_day"]
     weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
 
-def books_read():
-    # URL of the CSV file
-    url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
-    
+def books_read(url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"):     
     # Fetch the CSV data from the URL
     response = requests.get(url)
     
@@ -242,6 +239,10 @@ def books_read():
     else:
         return False
 
+def gwen_read():
+    return books_read(url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv")
+    
+
 # Streamlit setup
 col1, col0, col2 = st.columns((1,1,1.5))
 
@@ -255,7 +256,7 @@ with col0:
         <i class="fa-solid fa-feather"></i>
         <em>Gwen Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
-        <input type="checkbox" id="audiobooks"> <label for="audiobooks">1/30 books read</label><br>
+        <input type="checkbox" id="audiobooks"> <label for="audiobooks">{gwen_read()}/30 books read</label><br>
         <input type="checkbox" id="dnd"> <label for="dnd">0/4 D&D Sessions</label><br>
     </div>
     '''
