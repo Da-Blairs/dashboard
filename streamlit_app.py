@@ -251,12 +251,13 @@ with col0:
     image_container = st.empty()
     
     # Gwen Goals
+    gwen_read = gwen_read()
     html_content = '''
     <div id="gwen-goals">
         <i class="fa-solid fa-feather"></i>
         <em>Gwen Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
-        <input type="checkbox" id="audiobooks"> <label for="audiobooks">{gwen_read()}/30 books read</label><br>
+        <input type="checkbox" id="audiobooks"> <label for="audiobooks">{gwen_read}/30 books read</label><br>
         <input type="checkbox" id="dnd"> <label for="dnd">0/4 D&D Sessions</label><br>
     </div>
     '''
