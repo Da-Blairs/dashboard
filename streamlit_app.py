@@ -252,7 +252,7 @@ with col0:
     
     # Gwen Goals
     gwen_read = gwen_read()
-    html_content = '''
+    html_content = f'''
     <div id="gwen-goals">
         <i class="fa-solid fa-feather"></i>
         <em>Gwen Summer Goals</em>
