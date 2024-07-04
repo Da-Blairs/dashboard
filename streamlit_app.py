@@ -305,7 +305,7 @@ with col1:
     if(books_read):
         st.markdown(f'<div id="steps"><span class="count">{books_read}</span><span>summer steps</span></div>' , unsafe_allow_html= True)
     
-    st.markdown(f'<div id="swims"><span class="count">0</span><span>hours swimming</span></div>' , unsafe_allow_html= True)
+    #st.markdown(f'<div id="swims"><span class="count">0</span><span>hours swimming</span></div>' , unsafe_allow_html= True)
 
     dinner = st.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>No plans</span></p><p><span class="count">Dinner Tomorrow</span><br><span>No plans</span></p></div>' , unsafe_allow_html= True)
     
