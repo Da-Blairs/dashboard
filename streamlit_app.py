@@ -279,12 +279,13 @@ with col0:
     st.markdown(html_content, unsafe_allow_html=True)
  
     # William Goals
-    html_content = '''
+    will_read = will_read() + 2
+    html_content = f'''
     <div id="william-goals">
         <i class="fa-solid fa-skull-crossbones"></i>
         <em>Will Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eating Icecream</label><br>
-        <input type="checkbox" id="audiobooks"> <label for="audiobooks">Finish Ascendant Series</label><br>
+        <input type="checkbox" id="audiobooks"> <label for="audiobooks">{will_read}/5 Ascendant Series</label><br>
         <input type="checkbox" id="dnd"> <label for="dnd">0/4 D&D Sessions</label><br>
     </div>
     '''
