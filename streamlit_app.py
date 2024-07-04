@@ -253,7 +253,7 @@ def who_read(name):
 
         # Count rows where the first column starts with name
         name = name.strip().lower();
-        return sum(1 for row in csv_reader if row and row[0].strip().lower() == name
+        return sum(1 for row in csv_reader if row and row[0].strip().lower() == name)
     else:
         return False
 
