@@ -238,7 +238,8 @@ def books_read(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5
     else:
         return False
 
-def gwen_read(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"):
+def who_read(name):
+    url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
     # Fetch the CSV data from the URL
     response = requests.get(url)
 
@@ -250,10 +251,18 @@ def gwen_read(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5X
         # Use csv.reader to read the lines
         csv_reader = csv.reader(lines)
 
-        # Count rows where the first column starts with "Gwen"
-        return sum(1 for row in csv_reader if row and row[0].strip().lower() == "gwen")
+        # Count rows where the first column starts with name
+        name = name.strip().lower();
+        return sum(1 for row in csv_reader if row and row[0].strip().lower() == name
     else:
         return False
+
+def gwen_read():
+    return who_read(name="gwen")
+
+def will_read():
+    return who_read(name="will")
+    
     
 
 # Streamlit setup
