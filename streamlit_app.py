@@ -302,7 +302,7 @@ with col1:
       pass
 
     books_read = books_read()
-    if(book_read)
+    if(books_read):
         st.markdown(f'<div id="steps"><span class="count">{books_read}</span><span>summer steps</span></div>' , unsafe_allow_html= True)
     
     st.markdown(f'<div id="swims"><span class="count">0</span><span>hours swimming</span></div>' , unsafe_allow_html= True)
