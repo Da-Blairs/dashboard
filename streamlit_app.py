@@ -240,7 +240,7 @@ def books_read():
         return sum(1 for row in csv_reader)
     
     else:
-        print(f"Failed to fetch CSV: Status code {response.status_code}")
+        return False
 
 # Streamlit setup
 col1, col0, col2 = st.columns((1,1,1.5))
