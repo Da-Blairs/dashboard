@@ -221,26 +221,39 @@ def update_weather():
     is_day = current["is_day"]
     weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
 
-def books_read(url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"):     
+def books_read(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"):
     # Fetch the CSV data from the URL
     response = requests.get(url)
-    
+
     # Check if request was successful
     if response.status_code == 200:
         # Decode the content to text and split it into lines
         lines = response.content.decode('utf-8').splitlines()
-    
+
         # Use csv.reader to read the lines
         csv_reader = csv.reader(lines)
-    
+
         # Count the number of rows
         return sum(1 for row in csv_reader)
-    
     else:
         return False
 
-def gwen_read():
-    return books_read(url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv")
+def gwen_read(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"):
+    # Fetch the CSV data from the URL
+    response = requests.get(url)
+
+    # Check if request was successful
+    if response.status_code == 200:
+        # Decode the content to text and split it into lines
+        lines = response.content.decode('utf-8').splitlines()
+
+        # Use csv.reader to read the lines
+        csv_reader = csv.reader(lines)
+
+        # Count rows where the first column starts with "Gwen"
+        return sum(1 for row in csv_reader if row and row[0].strip().lower() == "gwen")
+    else:
+        return False
     
 
 # Streamlit setup
