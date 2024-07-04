@@ -221,15 +221,28 @@ def update_weather():
     is_day = current["is_day"]
     weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
 
-def gwen_read():
-    sheet_url = 'https://docs.google.com/spreadsheets/d/1i96NvsEwbv5AZ9C0r8m1__E7EHTTUpHtgToIkX1yoNA/edit?gid=0#gid=0'
-    client = gspread.authorize(get_credentials())
-    sheet = client.open_by_url(sheet_url).sheet1
-    values = sheet.get_all_values()
-    filled_rows = len([row for row in values if any(cell.strip() for cell in row)])
-    return filled_rows
+def books_read():
+    # URL of the CSV file
+    url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
+    
+    # Fetch the CSV data from the URL
+    response = requests.get(url)
+    
+    # Check if request was successful
+    if response.status_code == 200:
+        # Decode the content to text and split it into lines
+        lines = response.content.decode('utf-8').splitlines()
+    
+        # Use csv.reader to read the lines
+        csv_reader = csv.reader(lines)
+    
+        # Count the number of rows
+        return sum(1 for row in csv_reader)
+    
+    else:
+        print(f"Failed to fetch CSV: Status code {response.status_code}")
 
-# gwen_read()
+books_read()
 
 # Streamlit setup
 col1, col0, col2 = st.columns((1,1,1.5))
