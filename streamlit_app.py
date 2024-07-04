@@ -242,8 +242,6 @@ def books_read():
     else:
         print(f"Failed to fetch CSV: Status code {response.status_code}")
 
-books_read()
-
 # Streamlit setup
 col1, col0, col2 = st.columns((1,1,1.5))
 
@@ -303,7 +301,10 @@ with col1:
     except:
       pass
 
-    st.markdown(f'<div id="steps"><span class="count">0</span><span>summer steps</span></div>' , unsafe_allow_html= True)
+    books_read = books_read()
+    if(book_read)
+        st.markdown(f'<div id="steps"><span class="count">{books_read}</span><span>summer steps</span></div>' , unsafe_allow_html= True)
+    
     st.markdown(f'<div id="swims"><span class="count">0</span><span>hours swimming</span></div>' , unsafe_allow_html= True)
 
     dinner = st.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>No plans</span></p><p><span class="count">Dinner Tomorrow</span><br><span>No plans</span></p></div>' , unsafe_allow_html= True)
