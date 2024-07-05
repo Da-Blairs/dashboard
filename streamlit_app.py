@@ -409,7 +409,7 @@ def run_schedule():
         except: 
             pass
 
-        if current_minute % 15 == 0:
+        if current_second % 2 == 0:
             try:
                 updateImage()
             except: 
