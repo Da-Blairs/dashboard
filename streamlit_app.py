@@ -428,5 +428,6 @@ def run_schedule():
         # Wait for 1 second before updating the time again
         sleep(1)
 
+updateImage()
 run_schedule()
 
