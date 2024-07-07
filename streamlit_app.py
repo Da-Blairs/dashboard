@@ -280,7 +280,7 @@ with col0:
         <em>Gwen Summer Goals</em>
         <input type="checkbox" checked="checked" id="icecream"> <label for="icecream">Eat Icecream</label><br>
         <input type="checkbox" id="audiobooks"> <label for="audiobooks">{gwen_read}/30 books read</label><br>
-        <input type="checkbox" id="dnd"> <label for="dnd">0/4 D&D Sessions</label><br>
+        <input type="checkbox" id="dnd"> <label for="dnd">1/4 D&D Sessions</label><br>
     </div>
     '''
     
@@ -295,7 +295,7 @@ with col0:
         <em>Will Summer Goals</em>
         <input type="checkbox" checked="checked" id="icecream"> <label for="icecream">Eat Icecream</label><br>
         <input type="checkbox" id="audiobooks"> <label for="audiobooks">{will_read}/5 Ascendant Series</label><br>
-        <input type="checkbox" id="dnd"> <label for="dnd">0/4 D&D Sessions</label><br>
+        <input type="checkbox" id="dnd"> <label for="dnd">1/4 D&D Sessions</label><br>
     </div>
     '''
     
@@ -309,7 +309,7 @@ with col0:
         <em>Sadie Summer Goals</em>
         <input type="checkbox" checked="checked" id="icecream"> <label for="icecream">Learn to Swim</label><br>
         <input type="checkbox" id="audiobooks"> <label for="audiobooks">Learn to Read</label><br>
-        <input type="checkbox" id="dnd"> <label for="dnd">Play D&D</label><br>
+        <input type="checkbox" checked="checked" id="dnd"> <label for="dnd">Play D&D</label><br>
     </div>
     '''
     
