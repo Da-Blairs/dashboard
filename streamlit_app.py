@@ -269,6 +269,16 @@ def will_read():
 # Streamlit setup
 col3, col1, col0, col2 = st.columns((1,1,1.5,2))
 
+with col3:
+    weather = st.markdown(f'<div id="weather"></div>' , unsafe_allow_html= True)
+    try: 
+      update_weather()
+    except:
+      pass
+
+    # Create a placeholder for the clock
+    clock_placeholder = st.empty() 
+    
 with col0:
     # Create a container to hold the image
     image_container = st.empty()
@@ -333,12 +343,6 @@ with col0:
 
 with col1:
 
-    weather = st.markdown(f'<div id="weather"></div>' , unsafe_allow_html= True)
-    try: 
-      update_weather()
-    except:
-      pass
-
     books_read = books_read()
     if(books_read):
         st.markdown(f'<div id="steps"><span><span class="count">{books_read}</span>&nbsp;summer reads</span><span></span><i class="fa-solid fa-book"></i></div>' , unsafe_allow_html= True)
@@ -346,9 +350,6 @@ with col1:
     st.markdown(f'<div id="swims"><span><span class="count">6</span>&nbsp;swim days</span><span></span><i class="fa-solid fa-person-swimming"></i></div>' , unsafe_allow_html= True)
 
     dinner = st.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>No plans</span></p><p><span class="count">Dinner Tomorrow</span><br><span>No plans</span></p></div>' , unsafe_allow_html= True)
-    
-    # Create a placeholder for the clock
-    clock_placeholder = st.empty() 
 
     
 with col2:     
