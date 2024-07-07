@@ -21,7 +21,7 @@ img {
     background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 94px;
+    font-size: 85px;
     text-transform: uppercase;
     border-radius: 20px;
     padding: 0;
@@ -29,7 +29,7 @@ img {
     line-height: .85;  
 }
 .time {
-    font-size: 71px;
+    font-size: 64px;
 }
 
 #weather {
