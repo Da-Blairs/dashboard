@@ -279,8 +279,8 @@ with col0:
         <i class="fa-solid fa-feather"></i>
         <em>Gwen Summer Goals</em>
         <i class="fa-regular fa-circle-check"></i> <label for="icecream">Eat Icecream</label><br>
-        <input type="checkbox" id="audiobooks"> <label for="audiobooks">{gwen_read}/30 books read</label><br>
-        <input type="checkbox" id="dnd"> <label for="dnd">1/4 D&D Sessions</label><br>
+        <i class="fa-regular fa-circle"></i> <label for="audiobooks">{gwen_read}/30 books read</label><br>
+        <i class="fa-regular fa-circle"></i> <label for="dnd">1/4 D&D Sessions</label><br>
     </div>
     '''
     
@@ -293,9 +293,9 @@ with col0:
     <div id="william-goals">
         <i class="fa-solid fa-book-skull"></i>
         <em>Will Summer Goals</em>
-        <input type="checkbox" checked="checked" id="icecream"> <label for="icecream">Eat Icecream</label><br>
-        <input type="checkbox" id="audiobooks"> <label for="audiobooks">{will_read}/5 Ascendant Series</label><br>
-        <input type="checkbox" id="dnd"> <label for="dnd">1/4 D&D Sessions</label><br>
+        <i class="fa-regular fa-circle-check"></i> <label for="icecream">Eat Icecream</label><br>
+        <i class="fa-regular fa-circle"></i> <label for="audiobooks">{will_read}/5 Ascendant Series</label><br>
+        <i class="fa-regular fa-circle"></i> <label for="dnd">1/4 D&D Sessions</label><br>
     </div>
     '''
     
@@ -307,9 +307,9 @@ with col0:
     <div id="sadie-goals">
         <i class="fa-solid fa-heart"></i>
         <em>Sadie Summer Goals</em>
-        <input type="checkbox" checked="checked" id="icecream"> <label for="icecream">Learn to Swim</label><br>
-        <input type="checkbox" id="audiobooks"> <label for="audiobooks">Learn to Read</label><br>
-        <input type="checkbox" checked="checked" id="dnd"> <label for="dnd">Play D&D</label><br>
+        <i class="fa-regular fa-circle-check"></i> <label for="icecream">Learn to Swim</label><br>
+        <i class="fa-regular fa-circle"></i> <label for="audiobooks">Learn to Read</label><br>
+        <i class="fa-regular fa-circle-check"></i> <label for="dnd">Play D&D</label><br>
     </div>
     '''
     
