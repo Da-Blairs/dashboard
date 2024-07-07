@@ -266,7 +266,7 @@ def will_read():
     
 
 # Streamlit setup
-col1, col0, col2 = st.columns((1,1,1.5))
+col3, col1, col0, col2 = st.columns((1,1,1,1.5))
 
 with col0:
     # Create a container to hold the image
