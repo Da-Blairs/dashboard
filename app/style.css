@@ -13,6 +13,8 @@ body, h1, h2, h3, em, .clock-placeholder {
     font-family: 'Azeret Mono', sans-serif;
     color: #000;
 }
+
+#steps,
 iframe {
     border-radius: 20px;
     margin-top: 63px;
