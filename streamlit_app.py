@@ -291,7 +291,7 @@ with col0:
     will_read = will_read() + 2
     html_content = f'''
     <div id="william-goals">
-        <i class="fa-solid fa-skull-crossbones"></i>
+        <i class="fa-solid fa-book-skull"></i>
         <em>Will Summer Goals</em>
         <input type="checkbox" id="icecream"> <label for="icecream">Eat Icecream</label><br>
         <input type="checkbox" id="audiobooks"> <label for="audiobooks">{will_read}/5 Ascendant Series</label><br>
