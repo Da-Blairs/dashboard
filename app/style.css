@@ -5,7 +5,7 @@ footer {visibility: hidden;}
 
 .block-container {
     padding: 0;
-    width: calc(1920px - 2rem); /* 1920x1080 */
+    width: calc(1920px - 4rem); /* 1920x1080 */
     margin: 0 auto;
 }
 
