@@ -127,7 +127,7 @@ def get_google_calendar_events():
     today = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
         
     events_result = service.events().list(calendarId='primary', timeMin=midnight_toronto_iso(),
-                                          maxResults=7, singleEvents=True,
+                                          maxResults=10, singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
 
