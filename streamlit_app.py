@@ -81,7 +81,8 @@ if hasattr(query_params, "code"):
 
 def get_credentials():
     creds = None
-    
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+ 
     # Check for existing credentials in environment variable
     token = os.getenv('GOOGLE_CREDENTIALS_TOKEN')
     if token:
@@ -271,6 +272,18 @@ col3, col1, col0, col2 = st.columns((1,1,1.5,2))
 with col0:
     # Create a container to hold the image
     image_container = st.empty()
+    html_content = '''
+    <style>
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+    </style>
+    <iframe src="http://192.168.4.200:8081/frame.html" scrolling="no" frameborder="0" allowfullscreen></iframe>
+    '''
+    image_container.markdown(html_content, unsafe_allow_html=True)
     
     # Gwen Goals
     gwen_read = gwen_read()
@@ -382,13 +395,6 @@ def updateDinner():
 updateDinner()
 
 # Function to update the image
-def updateImage():
-    # Get the image from the URL
-    response = requests.get(f'http://generationgeneration.ca/frame.jpg')
-    image = Image.open(BytesIO(response.content))
-    # Display the image in the container
-    image_container.image(image, use_column_width=True)
- 
 def updateClock(use_colon=True):
     # Get the current time
     current_time = datetime.datetime.now(toronto_tz).strftime('%I:%M %p' if use_colon else '%I %M %p')
@@ -409,12 +415,6 @@ def run_schedule():
         except: 
             pass
 
-        if current_second % 2 == 0:
-            try:
-                updateImage()
-            except: 
-                pass
-
         if current_minute % 5 == 0:
             try: 
                 update_weather()
@@ -428,6 +428,5 @@ def run_schedule():
         # Wait for 1 second before updating the time again
         sleep(1)
 
-updateImage()
 run_schedule()
 
