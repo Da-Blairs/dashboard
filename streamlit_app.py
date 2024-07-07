@@ -287,7 +287,7 @@ with col0:
         iframe {
             border: none;
             width: 100%;
-            height: 100%;
+            height: 18em;
             border-radius: 20px;
         }
     </style>
