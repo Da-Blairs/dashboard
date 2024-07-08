@@ -348,7 +348,8 @@ with col1:
 
     books_read = books_read()
     if(books_read):
-        st.markdown(f'<div id="steps"><span><span class="count">{books_read}</span>&nbsp;summer reads</span><span class="count">&nbsp;</span><i class="fa-solid fa-book"></i></div>' , unsafe_allow_html= True)
+        st.markdown(f'<div id="steps"><span class="count">{books_read}</span><span>summer<br>reads</span><span class="count">&nbsp;&nbsp;</span><i class="fa-solid fa-book"></i></div>' , unsafe_allow_html= True)
+     
     
     st.markdown(f'<div id="swims"><span><span class="count">6</span>&nbsp;swim days</span><span></span><i class="fa-solid fa-person-swimming"></i></div>' , unsafe_allow_html= True)
 
