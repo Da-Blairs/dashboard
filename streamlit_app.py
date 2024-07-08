@@ -338,8 +338,23 @@ def gwen_read():
 
 def will_read():
     return who_read(name="will")
-    
-    
+
+def updateDinner():    
+    creds = get_credentials()
+    service = build('calendar', 'v3', credentials=creds)
+    events_result = service.events().list(calendarId='d784fd49eb9057cf7c36c7d91c36b40613c3a86da4e351020ae0d1eaa4568cc2@group.calendar.google.com',
+                                          timeMin=midnight_toronto_iso(),
+                                          maxResults=2, singleEvents=True,
+                                          orderBy='startTime').execute()
+    events = events_result.get('items', [])
+    dinners = []
+    for event in events:
+        dinners.append(event['summary'])
+
+    dinner_today = dinners[0] if len(dinners) > 0 else "No plans"
+    dinner_tomorrow = dinners[1] if len(dinners) > 1 else "No plans"
+
+    dinner.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>{dinner_today}</span></p><p><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></p></div>' , unsafe_allow_html= True)
 
 # Streamlit setup
 col3, col1, col0, col2 = st.columns((1,1,1.5,2))
@@ -466,23 +481,6 @@ with col2:
         st.markdown(f'<div class="event-list">{calendar_markdown}</div>', unsafe_allow_html=True)
     else:
         st.write("No events found.")
-
-def updateDinner():    
-    creds = get_credentials()
-    service = build('calendar', 'v3', credentials=creds)
-    events_result = service.events().list(calendarId='d784fd49eb9057cf7c36c7d91c36b40613c3a86da4e351020ae0d1eaa4568cc2@group.calendar.google.com',
-                                          timeMin=midnight_toronto_iso(),
-                                          maxResults=2, singleEvents=True,
-                                          orderBy='startTime').execute()
-    events = events_result.get('items', [])
-    dinners = []
-    for event in events:
-        dinners.append(event['summary'])
-
-    dinner_today = dinners[0] if len(dinners) > 0 else "No plans"
-    dinner_tomorrow = dinners[1] if len(dinners) > 1 else "No plans"
-
-    dinner.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>{dinner_today}</span></p><p><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></p></div>' , unsafe_allow_html= True)
 
 # Function to update the image
 def updateClock(use_colon=True):
