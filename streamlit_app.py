@@ -22,6 +22,15 @@ from io import BytesIO
  
 st.set_page_config(page_title="Blair Dashboard", layout="wide") 
 
+#For the new weather service
+USER_AGENT = "blairs.streamlit.app/1.0 (https://blairs.streamlit.app/contact)"
+
+# Global cache for storing weather data and expiry timestamp
+weather_cache = {
+    "expires": datetime.utcnow() - timedelta(seconds=1),  # already expired
+    "data": None
+}
+
 # Define the timezone for Toronto
 toronto_tz = pytz.timezone('America/Toronto')
   
@@ -213,14 +222,32 @@ def generate_events_markdown(events):
 def update_weather2():
     lat = "42.9836"
     lng = "-81.2497"
-    response_current = requests.get(f'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={lat}&lon={lng}')
-    result_current = json.loads(response_current)
-    #pprint.pp(result_current["properties"]["timeseries"][0]["data"]["instant"]["air_temperature"])
-    temp = result_current["properties"]["timeseries"][0]["data"]["instant"]["air_temperature"]
-    weathercode = result_current["properties"]["timeseries"][0]["data"]["next_1_hours"]["summary"]["symbol_code"]
+    headers = {
+        "User-Agent": USER_AGENT
+    }
+    
+    # Check if cache is expired
+    if datetime.utcnow() > weather_cache["expires"]:
+        response_current = requests.get(f'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={lat}&lon={lng}', headers=headers)
+        
+        if response_current.status_code == 200:
+            result_current = response_current.json()
+            temp = result_current["properties"]["timeseries"][0]["data"]["instant"]["details"]["air_temperature"]
+            weathercode = result_current["properties"]["timeseries"][0]["data"]["next_1_hours"]["summary"]["symbol_code"]
 
-    weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
+            # Update cache
+            weather_cache["data"] = (temp, weathercode)
+            weather_cache["expires"] = datetime.utcnow() + timedelta(hours=1)  # assuming data is valid for 1 hour
+            
+            weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
+        else:
+            st.error("Failed to fetch weather data")
+    else:
+        # Use cached data
+        temp, weathercode = weather_cache["data"]
+        weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
 
+# Call the function to update weather
 update_weather2()
 
 def update_weather():
