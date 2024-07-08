@@ -284,9 +284,11 @@ with col3:
         <i class="fa-solid fa-clapperboard"></i>
         <em>Movie List</em>
         July 4<br>
-        <em>Frozen 2</em>
-        July 11: Kiki's Delivery Service<br>
-        July 18: Inside Out 2<br>
+        <em>Frozen 2</em><br>
+        July 11<br>
+        <em>Kiki's Delivery Service</em><br>
+        July 18<br>
+        <em>Inside Out 2</em><br>
     </div>
     '''
     
