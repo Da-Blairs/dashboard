@@ -279,6 +279,19 @@ with col3:
     except:
       pass
 
+    html_content = f'''
+    <div id="movie-list">
+        <i class="fa-solid fa-clapperboard"></i>
+        <em>Movie List</em>
+        July 4: Frozen 2<br>
+        July 11: Kiki's Delivery Service<br>
+        July 18: Inside Out 2<br>
+    </div>
+    '''
+    
+    # Render the HTML content
+    st.markdown(html_content, unsafe_allow_html=True)
+ 
     # Create a placeholder for the clock
     clock_placeholder = st.empty() 
     
