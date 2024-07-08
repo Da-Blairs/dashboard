@@ -84,6 +84,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     font-family: 'Azeret Mono', sans-serif;
     align-items: baseline;
     flex-flow: row wrap;
+    column-gap: .5em;
 }
 #swims .count, #steps .count {
     font-size: 48px;
