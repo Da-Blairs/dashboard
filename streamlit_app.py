@@ -227,7 +227,7 @@ def update_weather2():
     }
     
     # Check if cache is expired
-    if datetime.utcnow() > weather_cache["expires"]:
+    if datetime.datetime.utcnow() > weather_cache["expires"]:
         response_current = requests.get(f'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={lat}&lon={lng}', headers=headers)
         
         if response_current.status_code == 200:
