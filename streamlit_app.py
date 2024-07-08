@@ -21,6 +21,9 @@ from streamlit_calendar import calendar
 from io import BytesIO
  
 st.set_page_config(page_title="Blair Dashboard", layout="wide") 
+
+# Define the timezone for Toronto
+toronto_tz = pytz.timezone('America/Toronto')
   
 with open( "app/style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
@@ -373,9 +376,6 @@ with col2:
     else:
         st.write("No events found.")
 
-# Define the timezone for Toronto
-toronto_tz = pytz.timezone('America/Toronto')
-
 def updateDinner():    
     creds = get_credentials()
     service = build('calendar', 'v3', credentials=creds)
@@ -392,8 +392,6 @@ def updateDinner():
     dinner_tomorrow = dinners[1] if len(dinners) > 1 else "No plans"
 
     dinner.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>{dinner_today}</span></p><p><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></p></div>' , unsafe_allow_html= True)
-    
-updateDinner()
 
 # Function to update the image
 def updateClock(use_colon=True):
@@ -430,4 +428,3 @@ def run_schedule():
         sleep(1)
 
 run_schedule()
-
