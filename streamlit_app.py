@@ -357,7 +357,7 @@ def updateDinner():
     dinner.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>{dinner_today}</span></p><p><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></p></div>' , unsafe_allow_html= True)
 
 # Streamlit setup
-col3, col1, col0, col2 = st.columns((1,1,1.5,2))
+col3, col1, col0, col2 = st.columns((1,1,1.5,2), vertical_alignment="bottom")
 
 with col3:
     weather = st.markdown(f'<div id="weather"></div>' , unsafe_allow_html= True)
