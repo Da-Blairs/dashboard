@@ -112,7 +112,7 @@ body, h1, h2, h3, em, .clock-placeholder {
      font-size: 16px;
  }
 
-#gwen-goals, #william-goals, #sadie-goals {
+#movie-list, #gwen-goals, #william-goals, #sadie-goals {
     background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);
      color: #000;
      border-radius: 20px;
@@ -122,6 +122,7 @@ body, h1, h2, h3, em, .clock-placeholder {
      position: relative;
 }
 
+#movie-list .fa-solid,
 #swims .fa-solid,
 #steps .fa-solid,
 #weather .big-icon,
