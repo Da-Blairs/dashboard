@@ -263,7 +263,7 @@ def update_weather():
         
         if response_current.status_code == 200:
             result_current = response_current.json()
-            temp = result_current["properties"]["timeseries"][0]["data"]["instant"]["details"]["air_temperature"]
+            temp = round(result_current["properties"]["timeseries"][0]["data"]["instant"]["details"]["air_temperature"])
             weathersymbol = result_current["properties"]["timeseries"][0]["data"]["next_1_hours"]["summary"]["symbol_code"]
             if weathersymbol in weather_icons:
                 weathercode = weather_icons[weathersymbol]
