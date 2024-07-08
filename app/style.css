@@ -80,9 +80,9 @@ body, h1, h2, h3, em, .clock-placeholder {
     padding: .5em 1em;
     margin: 8px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     font-family: 'Azeret Mono', sans-serif;
-    align-items: baseline;
+    align-items: center;
     flex-flow: row wrap;
     column-gap: .5em;
 }
