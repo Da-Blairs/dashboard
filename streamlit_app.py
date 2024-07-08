@@ -282,7 +282,7 @@ with col3:
     html_content = f'''
     <div id="movie-list">
         <i class="fa-solid fa-clapperboard"></i>
-        <em>Movie List</em>
+        <em>Movie List</em><br>
         July 4<br>
         <em>Frozen 2</em><br>
         July 11<br>
