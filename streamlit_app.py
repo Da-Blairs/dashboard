@@ -283,7 +283,8 @@ with col3:
     <div id="movie-list">
         <i class="fa-solid fa-clapperboard"></i>
         <em>Movie List</em>
-        July 4: Frozen 2<br>
+        July 4<br>
+        <em>Frozen 2</em>
         July 11: Kiki's Delivery Service<br>
         July 18: Inside Out 2<br>
     </div>
