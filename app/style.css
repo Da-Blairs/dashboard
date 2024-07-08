@@ -156,6 +156,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     background: linear-gradient(240deg, #FC5C7D 0%, #6A82FB 100%);
 }
 
+#movie-list em,
 #gwen-goals em,
 #william-goals em,
 #sadie-goals em {
