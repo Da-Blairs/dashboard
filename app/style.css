@@ -5,8 +5,9 @@ footer {visibility: hidden;}
 
 .block-container {
     padding: 0;
-    width: calc(1920px - 6rem); /* 1920x1080 */
+    width: calc(1920px - 96px); /* 1920x1080 */
     margin: 0 auto;
+    font-size: 24px;
 }
 
 body, h1, h2, h3, em, .clock-placeholder {
