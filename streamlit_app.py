@@ -282,9 +282,6 @@ def update_weather():
         temp, weathercode = weather_cache["data"]
         weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
 
-# Call the function to update weather
-update_weather2()
-
 def old_update_weather():
     lat = "42.9836"
     lng = "-81.2497"
