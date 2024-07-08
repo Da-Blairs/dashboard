@@ -250,7 +250,7 @@ weather_icons = {
     "fog" : "wi-fog",
 }
 
-def update_weather2():
+def update_weather():
     lat = "42.9836"
     lng = "-81.2497"
     headers = {
@@ -274,18 +274,18 @@ def update_weather2():
             weather_cache["data"] = (temp, weathercode)
             weather_cache["expires"] = datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # assuming data is valid for 1 hour
             
-            st.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
+            weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
         else:
-            st.error("Failed to fetch weather data")
+            weather.error("Failed to fetch weather data")
     else:
         # Use cached data
         temp, weathercode = weather_cache["data"]
-        st.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
+        weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
 
 # Call the function to update weather
 update_weather2()
 
-def update_weather():
+def old_update_weather():
     lat = "42.9836"
     lng = "-81.2497"
     response_current = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lng}&current_weather=true&daily=weather_code&timezone=America%2FNew_York')
