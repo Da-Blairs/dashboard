@@ -237,7 +237,7 @@ def update_weather2():
 
             # Update cache
             weather_cache["data"] = (temp, weathercode)
-            weather_cache["expires"] = datetime.utcnow() + timedelta(hours=1)  # assuming data is valid for 1 hour
+            weather_cache["expires"] = datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # assuming data is valid for 1 hour
             
             weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
         else:
