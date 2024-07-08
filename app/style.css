@@ -148,6 +148,10 @@ body, h1, h2, h3, em, .clock-placeholder {
     transform: rotate(-10deg);
 }
 
+.fa-book {
+    transform: rotate(-10deg);
+}
+
 #weather .big-icon {
     margin-top: -40px;
 }
