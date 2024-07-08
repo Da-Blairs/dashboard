@@ -27,7 +27,7 @@ USER_AGENT = "blairs.streamlit.app/1.0 (https://blairs.streamlit.app/contact)"
 
 # Global cache for storing weather data and expiry timestamp
 weather_cache = {
-    "expires": datetime.utcnow() - timedelta(seconds=1),  # already expired
+    "expires": datetime.datetime.utcnow() - datetime.timedelta(seconds=1),  # already expired
     "data": None
 }
 
