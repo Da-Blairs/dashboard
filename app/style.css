@@ -135,7 +135,7 @@ body, h1, h2, h3, em, .clock-placeholder {
 .event .fa-solid {
     position: absolute;
     font-size: 80px;
-    opacity: 70%;
+    opacity: 85%;
     right: 20px;
     top: 50%;
     margin-top: -18px;
