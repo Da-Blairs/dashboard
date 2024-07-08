@@ -214,7 +214,7 @@ def update_weather2():
     lat = "42.9836"
     lng = "-81.2497"
     response_current = requests.get(f'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={lat}&lon={lng}')
-    result_current = json.loads(response_current._content)
+    result_current = json.loads(response_current)
     #pprint.pp(result_current["properties"]["timeseries"][0]["data"]["instant"]["air_temperature"])
     temp = result_current["properties"]["timeseries"][0]["data"]["instant"]["air_temperature"]
     weathercode = result_current["properties"]["timeseries"][0]["data"]["next_1_hours"]["summary"]["symbol_code"]
