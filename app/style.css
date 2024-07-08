@@ -129,9 +129,9 @@ body, h1, h2, h3, em, .clock-placeholder {
 #steps .fa-solid,
 #weather .big-icon,
 #food .fa-solid,
-#gwen-goals .fa-solid,
-#william-goals .fa-solid,
-#sadie-goals .fa-solid,
+#gwen-goals .fa-solid:not(.fa-circle-check),
+#william-goals .fa-solid:not(.fa-circle-check),
+#sadie-goals .fa-solid:not(.fa-circle-check),
 .event .fa-solid {
     position: absolute;
     font-size: 80px;
