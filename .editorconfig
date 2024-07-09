@@ -1,0 +1,3 @@
+# Set indent size to 4 spaces for all files
+[*]
+indent_size = 4
