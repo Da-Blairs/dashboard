@@ -93,8 +93,16 @@ body, h1, h2, h3, em, .clock-placeholder {
     font-size: 48px;
 }
 
+#steps {
+    height: 320px;
+    justify-content: center;
+}
+
 #steps img {
     mix-blend-mode: color-burn;
+    position: absolute;
+    left: 15px;
+    width: 90%;
 }
 
  #food {
