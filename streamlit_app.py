@@ -9,6 +9,7 @@ import requests
 import pprint
 import threading
 import gspread
+from collections import Counter
 import pandas as pd
 import plotly.express as px
 from PIL import Image 
