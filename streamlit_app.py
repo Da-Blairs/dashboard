@@ -224,7 +224,7 @@ def generate_events_markdown(events):
                 if event['start']['dateTime'].split('T')[0] == date:
                     start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'])
                     start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
-                    end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'][:-6])
+                    end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'])
                     end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
                     markdown_output.append(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{icon} {event_title}</div>')
 
