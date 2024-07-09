@@ -9,7 +9,7 @@ import requests
 import pprint
 import threading
 import gspread
-from math import cos, radians
+from math import cos, radians, sin
 from collections import Counter
 import pandas as pd
 import plotly.express as px
