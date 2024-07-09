@@ -519,6 +519,23 @@ with col3:
     
     # Render the HTML content
     st.markdown(html_content, unsafe_allow_html=True)
+
+    html_content = f'''
+    <div id="movie-list">
+        <i class="fa-solid fa-clapperboard"></i>
+        <em>Movie List</em><br>
+        July 4<br>
+        <em>Frozen 2</em><br>
+        July 11<br>
+        <em>Kiki's Delivery Service</em><br>
+        July 18<br>
+        <em>Inside Out 2</em><br>
+    </div>
+    '''
+    
+    # Render the HTML content
+    st.markdown(html_content, unsafe_allow_html=True)
+
  
     # Create a placeholder for the clock
     clock_placeholder = st.empty() 
