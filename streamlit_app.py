@@ -507,10 +507,10 @@ with col3:
     html_content = f'''
     <div class="event-list">
         <div class="event">
-            <span class="time">Mom Works<br>9:00 am-3:00 pm</span>
+            <span class="time">Mom<br>Works 9-3</span>
         </div>
         <div class="event">    
-            <span class="time">Dad 9:00 am-5:00 pm</span>
+            <span class="time">Dad<br>Works 9-5</span>
             <i class="fa-solid fa-laptop-code"></i>
         </div>
         
