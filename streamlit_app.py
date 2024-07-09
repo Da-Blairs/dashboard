@@ -281,7 +281,7 @@ def update_weather():
                 weathercode = "wi-alien"
 
             # Update cache
-            weather_cache["data"] = (temp, weathercode)
+            weather_cache["data"] = (temp, uv, weathercode)
             weather_cache["expires"] = datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # assuming data is valid for 1 hour
             
             weather.markdown(f'<div id="weather">{temp}°C<br>UVI: {uv}<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
@@ -289,8 +289,8 @@ def update_weather():
             weather.error("Failed to fetch weather data")
     else:
         # Use cached data
-        temp, weathercode = weather_cache["data"]
-        weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
+        temp, uv, weathercode = weather_cache["data"]
+        weather.markdown(f'<div id="weather">{temp}°C<br>UVI: {uv}<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
 
 def old_update_weather():
     lat = "42.9836"
