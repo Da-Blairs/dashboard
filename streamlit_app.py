@@ -418,17 +418,26 @@ def generate_donut_chart_svg_from_counter(counter, colors):
         large_arc_flag = 1 if angle > 180 else 0
 
         # Construct path for the segment
-        segment = f'''
-        <path d="
+        segment_path = f'''
             M {x1_outer},{y1_outer}
             A {outer_radius},{outer_radius} 0 {large_arc_flag},1 {x2_outer},{y2_outer}
             L {x2_inner},{y2_inner}
             A {inner_radius},{inner_radius} 0 {large_arc_flag},0 {x1_inner},{y1_inner}
-            Z"
-            fill="{colors[i]}"
-        />
+            Z
         '''
+
+        # Calculate position for text label
+        label_angle = start_angle + angle / 2
+        label_radius = inner_radius + (outer_radius - inner_radius) / 2
+        label_x = cx + label_radius * cos(radians(label_angle))
+        label_y = cy + label_radius * sin(radians(label_angle))
+
+        # Create SVG elements for segment and label
+        segment = f'<path d="{segment_path}" fill="{colors[i]}" />'
+        label = f'<text x="{label_x}" y="{label_y}" text-anchor="middle" alignment-baseline="middle">{labels[i]}</text>'
+        
         segments.append(segment)
+        segments.append(label)
 
         start_angle += angle
 
@@ -448,6 +457,7 @@ def render_svg_in_div(svg, div_id):
 def render_donut_chart_from_counter(counter, colors, div_id='steps'):
     svg = generate_donut_chart_svg_from_counter(counter, colors)
     render_svg_in_div(svg, div_id)
+
     
 # Streamlit setup
 col3, col1, col0, col2 = st.columns((1,1,1.5,2), vertical_alignment="bottom")
