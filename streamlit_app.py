@@ -554,7 +554,19 @@ with col1:
 
     books_read = books_read()
 
-    colors = ['#f44336', '#2196f3', '#4caf50','#f44336', '#2196f3', '#4caf50']  # Example colors
+    colors = [
+        '#1f77b4',  # Light Blue
+        '#ff7f0e',  # Orange
+        '#2ca02c',  # Green
+        '#d62728',  # Red
+        '#9467bd',  # Purple
+        '#8c564b',  # Brown
+        '#e377c2',  # Pink
+        '#7f7f7f',  # Gray
+        '#bcbd22',  # Yellow
+        '#17becf'   # Cyan
+    ]
+    
     reader_counts = reader_count()
     if reader_counts:
         render_donut_chart_from_counter(reader_counts, colors)
