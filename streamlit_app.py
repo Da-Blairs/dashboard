@@ -42,7 +42,7 @@ weather_cache = {
 # Define the timezone for Toronto
 toronto_tz = pytz.timezone('America/Toronto')
 
-swim_days = 7;
+swim_days = 8;
   
 with open( "app/style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
