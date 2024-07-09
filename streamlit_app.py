@@ -41,6 +41,8 @@ weather_cache = {
 
 # Define the timezone for Toronto
 toronto_tz = pytz.timezone('America/Toronto')
+
+swim_days = 7;
   
 with open( "app/style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
@@ -383,6 +385,12 @@ def reader_count(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hp
     else:
         return None
 
+def swim_day_counter():
+    swim = 6
+    no_swim = 6
+
+    return Counter({'Swim': swim, 'No swim': no_swim})
+
 def generate_donut_chart_svg_from_counter(counter):
     colors = [
         '#92d050',  # Light Green
@@ -461,24 +469,19 @@ def generate_donut_chart_svg_from_counter(counter):
     '''
     return svg_content    
 
-def render_donut_chart_from_counter(counter, div_id='steps'):
+def render_donut_chart_from_counter(counter):
     svg = generate_donut_chart_svg_from_counter(counter)
-    """Renders the given svg string inside a <div> with the specified id."""
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
     books_read = 9
-    html = f'<div id="{div_id}"><span class="count">{books_read}</span><span>summer<br>reads</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
+    html = f'<div id="steps"><span class="count">{books_read}</span><span>summer<br>reads</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
     st.write(html, unsafe_allow_html=True)
-    
 
-def render_swim_days():
-    # Define the target date
-    target_date = datetime(2024, 6, 29)
-    
-    # Get today's date
-    today = datetime.now()
-    
-    # Calculate the difference in days
-    days_since = (today - target_date).days
+def render_swim_donut():
+    counter = swim_day_counter()
+    svg = generate_donut_chart_svg_from_counter(counter)
+    b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
+    html = f'<div id="swim"><span class="count">{swims_days}</span><span>summer<br>reads</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
+    st.write(html, unsafe_allow_html=True)
 
     
 # Streamlit setup
@@ -581,6 +584,8 @@ with col1:
         render_donut_chart_from_counter(reader_counts)
     else:
         st.error("Failed to fetch reader counts.")
+
+    render_swim_donut()
 
     st.markdown(f'<div id="swims"><span class="count">6</span><span>swim<br>days</span><i class="fa-solid fa-person-swimming"></i></div>' , unsafe_allow_html= True)
  
