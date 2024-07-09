@@ -422,6 +422,40 @@ def updateDinner():
 
     dinner.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>{dinner_today}</span></p><p><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></p></div>' , unsafe_allow_html= True)
 
+def generate_pie_chart_svg():
+
+    # Example usage
+    values = [3, 2, 1]  # Example values for the pie chart
+    colors = ['#f44336', '#2196f3', '#4caf50']  # Example colors
+    labels = ['Category 1', 'Category 2', 'Category 3']  # Example labels
+    
+    total = sum(values)
+    angles = [v / total * 360 for v in values]
+
+    cx, cy, r = 50, 50, 40  # Center and radius of the pie chart
+    start_angle = 0
+    segments = []
+
+    for i, angle in enumerate(angles):
+        x1 = cx + r * 0.9 * cos(radians(start_angle))
+        y1 = cy + r * 0.9 * sin(radians(start_angle))
+        x2 = cx + r * 0.9 * cos(radians(start_angle + angle))
+        y2 = cy + r * 0.9 * sin(radians(start_angle + angle))
+
+        large_arc_flag = 1 if angle > 180 else 0
+
+        segment = f'<path d="M {cx},{cy} L {x1},{y1} A {r},{r} 0 {large_arc_flag},1 {x2},{y2} Z" fill="{colors[i]}" />'
+        segments.append(segment)
+
+        start_angle += angle
+
+    svg = f'''
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        {''.join(segments)}
+    </svg>
+    '''
+    return svg
+
 # Streamlit setup
 col3, col1, col0, col2 = st.columns((1,1,1.5,2), vertical_alignment="bottom")
 
@@ -519,41 +553,8 @@ with col1:
 
     # Get the reader count
     reader_count = reader_count()
-   
-    def generate_pie_chart_svg(values, colors, labels):
-        total = sum(values)
-        angles = [v / total * 360 for v in values]
     
-        cx, cy, r = 50, 50, 40  # Center and radius of the pie chart
-        start_angle = 0
-        segments = []
-    
-        for i, angle in enumerate(angles):
-            x1 = cx + r * 0.9 * cos(radians(start_angle))
-            y1 = cy + r * 0.9 * sin(radians(start_angle))
-            x2 = cx + r * 0.9 * cos(radians(start_angle + angle))
-            y2 = cy + r * 0.9 * sin(radians(start_angle + angle))
-    
-            large_arc_flag = 1 if angle > 180 else 0
-    
-            segment = f'<path d="M {cx},{cy} L {x1},{y1} A {r},{r} 0 {large_arc_flag},1 {x2},{y2} Z" fill="{colors[i]}" />'
-            segments.append(segment)
-    
-            start_angle += angle
-    
-        svg = f'''
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            {''.join(segments)}
-        </svg>
-        '''
-        return svg
-    
-    # Example usage
-    values = [3, 2, 1]  # Example values for the pie chart
-    colors = ['#f44336', '#2196f3', '#4caf50']  # Example colors
-    labels = ['Category 1', 'Category 2', 'Category 3']  # Example labels
-    
-    pie_chart_svg = generate_pie_chart_svg(values, colors, labels)
+    pie_chart_svg = generate_pie_chart_svg()
     st.markdown(f'<div id="swims"><span class="count">{sum(values)}</span><span>swim<br>days</span>{pie_chart_svg}</div>', unsafe_allow_html=True)
 
 
