@@ -532,7 +532,7 @@ with col1:
     colors = ['#f44336', '#2196f3', '#4caf50']  # Example colors
     labels = ['Category 1', 'Category 2', 'Category 3']  # Example labels
     
-    pie_chart_svg = generate_pie_chart_svg(values, colors, labels)
+    pie_chart_svg = generate_donut_chart_svg(values, colors, labels)
     st.markdown(f'<div id="swims"><span class="count">{books_read}</span><span>swim<br>days</span>{pie_chart_svg}</div>', unsafe_allow_html=True)
 
     st.markdown(f'<div id="swims"><span class="count">6</span><span>swim<br>days</span><i class="fa-solid fa-person-swimming"></i></div>' , unsafe_allow_html= True)
