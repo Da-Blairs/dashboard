@@ -402,16 +402,16 @@ def swim_day_counter():
 
 def generate_donut_chart_svg_from_counter(counter):
     colors = [
-        '#404040', #Dark Gray
-        '#663300', #Dark Brown
-        '#993300', #Burnt Orange
-        '#cc6600', #Dark Orange
-        '#996633', #Light Brown
-        '#666666', #Medium Gray
-        '#3399cc', #Medium Blue
-        '#333399', #Dark Blue
-        '#660099', #Dark Purple
-        '#cc3399', #Medium Pink
+        '#92d050',  # Light Green
+        '#ffc000',  # Gold
+        '#ff9999',  # Light Salmon
+        '#b6d7a8',  # Pale Green
+        '#cfe2f3',  # Light Blue
+        '#ffcc99',  # Peach
+        '#ffccff',  # Light Pink
+        '#ffeb99',  # Light Yellow
+        '#f0f8ff',  # Alice Blue
+        '#ffe4c4'   # Bisque
     ]
     
     total_books = sum(counter.values())
