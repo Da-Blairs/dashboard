@@ -505,15 +505,12 @@ with col3:
       pass
 
     html_content = f'''
-    <div id="movie-list">
-        <i class="fa-solid fa-clapperboard"></i>
-        <em>Movie List</em><br>
-        July 4<br>
-        <em>Frozen 2</em><br>
-        July 11<br>
-        <em>Kiki's Delivery Service</em><br>
-        July 18<br>
-        <em>Inside Out 2</em><br>
+    <div class="event-list"><div class="event">
+        <span class="time">
+            Mom 9:00 am-3:00 pm<br>
+            Dad 9:00 am-5:00 pm
+        </span>
+        <i class="fa-solid fa-laptop-code"></i>
     </div>
     '''
     
