@@ -9,6 +9,8 @@ import requests
 import pprint
 import threading
 import gspread
+import pandas as pd
+import plotly.express as px
 from PIL import Image 
 from time import sleep, strftime
 from google_auth_oauthlib.flow import Flow
