@@ -13,6 +13,7 @@ from collections import Counter
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import plotly.io as pio
 import streamlit.components.v1 as components
 from PIL import Image 
 from time import sleep, strftime
@@ -521,26 +522,29 @@ with col1:
     
     # Create the pie chart
     fig = create_pie_chart(reader_count)
-    
-    # If the pie chart was created successfully, embed it in custom HTML
+     # If the pie chart was created successfully, save it as an image and embed it in custom HTML
     if fig:
+        # Save the figure as an image
+        image_path = "pie_chart.png"
+        pio.write_image(fig, image_path, format='png')
+    
+        # Embed the image in custom HTML
         html_string = f'''
-        <div id="steps">
-            <div id="chart">
-                {fig.to_html(full_html=False, include_plotlyjs='cdn')}
-            </div>
+        <div id="steps" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <img src="data:image/png;base64,{st.image(image_path, use_column_width=True)}" alt="Pie Chart">
             <span class="count">{sum(reader_count.values())}</span>
             <span>summer<br>reads</span>
             <i class="fa-solid fa-book"></i>
         </div>
         '''
     
-        # Render the HTML with the embedded chart
+        # Render the HTML with the embedded image
         components.html(html_string, height=600)
     
     # Display an error if the data fetching failed
     else:
         st.error("Failed to fetch data")
+    
     st.markdown(f'<div id="swims"><span class="count">6</span><span>swim<br>days</span><i class="fa-solid fa-person-swimming"></i></div>' , unsafe_allow_html= True)
  
     dinner = st.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>No plans</span></p><p><span class="count">Dinner Tomorrow</span><br><span>No plans</span></p></div>' , unsafe_allow_html= True)
