@@ -531,7 +531,6 @@ with col0:
         iframe {
             border: none;
             width: 100%;
-            height: 13em;
             border-radius: 20px;
         }
     </style>
