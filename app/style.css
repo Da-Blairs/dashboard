@@ -75,6 +75,10 @@ body, h1, h2, h3, em, .clock-placeholder {
     width: 100%;
 }
 
+span.date:last-child {
+    display: none;
+}
+
 #swims, #steps {
     background-image: linear-gradient(240deg, rgba(124, 136, 224) 0%, rgba(195, 244, 252) 100%);
     color: #000;
