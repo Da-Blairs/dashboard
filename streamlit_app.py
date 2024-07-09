@@ -316,6 +316,53 @@ def books_read(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5
     else:
         return False
 
+def reader_count(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"):
+    # Fetch the CSV data from the URL
+    response = requests.get(url)
+
+    # Check if request was successful
+    if response.status_code == 200:
+        # Decode the content to text and split it into lines
+        lines = response.content.decode('utf-8').splitlines()
+
+        # Use csv.reader to read the lines
+        csv_reader = csv.reader(lines)
+
+        # Skip the header
+        next(csv_reader)
+
+        # Create a Counter to count the books read by each person
+        reader_count = Counter(row[0] for row in csv_reader)
+
+        return reader_count
+    else:
+        return False
+
+def create_pie_chart(reader_count):
+    if reader_count:
+        # Create a DataFrame from the Counter
+        df = pd.DataFrame(list(reader_count.items()), columns=['Reader', 'Books Read'])
+
+        # Create the pie chart using Plotly
+        fig = px.pie(df, names='Reader', values='Books Read', title='Books Read by Each Person')
+        
+        # Display the pie chart in Streamlit
+        st.plotly_chart(fig)
+    else:
+        st.error("Failed to fetch data")
+
+# Streamlit app
+st.title("Family Reading Log")
+
+# URL of the Google Sheet CSV
+csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
+
+# Get the reader count
+reader_count = books_read(csv_url)
+
+# Create and display the pie chart
+create_pie_chart(reader_count)
+
 def who_read(name):
     url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
     # Fetch the CSV data from the URL
