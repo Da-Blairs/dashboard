@@ -12,6 +12,7 @@ import gspread
 from collections import Counter
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from PIL import Image 
 from time import sleep, strftime
 from google_auth_oauthlib.flow import Flow
