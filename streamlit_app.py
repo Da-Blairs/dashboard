@@ -340,47 +340,6 @@ def reader_count(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hp
     else:
         return False
 
-def create_pie_chart(reader_count):
-    if reader_count:
-        # Create a DataFrame from the Counter
-        df = pd.DataFrame(list(reader_count.items()), columns=['Reader', 'Books Read'])
-
-        # Define colors for the readers, with Gwen having a gradient-like appearance
-        colors = []
-        for reader in df['Reader']:
-            if reader == 'Gwen':
-                colors.append('rgba(185, 159, 237, 1)')
-            else:
-                colors.append(None)
-
-        # Calculate the total number of books read
-        total_books = sum(reader_count.values())
-
-        # Create the pie chart using Plotly
-        fig = go.Figure(data=[go.Pie(
-            labels=df['Reader'],
-            values=df['Books Read'],
-            textinfo='label',
-            marker=dict(colors=colors),
-            hole=0.4
-        )])
-
-        # Add annotation for total books read
-        fig.add_annotation(
-            dict(
-                text=f"Total<br>{total_books}",
-                showarrow=False,
-                font=dict(size=20)
-            )
-        )
-
-        # Update the layout
-        fig.update_layout(title_text='Books Read by Each Person')
-
-        return fig
-    else:
-        return False
-
 def who_read(name):
     url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
     # Fetch the CSV data from the URL
