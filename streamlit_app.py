@@ -555,16 +555,16 @@ with col1:
     books_read = books_read()
 
     colors = [
-        '#1f77b4',  # Light Blue
-        '#ff7f0e',  # Orange
-        '#2ca02c',  # Green
-        '#d62728',  # Red
-        '#9467bd',  # Purple
-        '#8c564b',  # Brown
-        '#e377c2',  # Pink
-        '#7f7f7f',  # Gray
-        '#bcbd22',  # Yellow
-        '#17becf'   # Cyan
+        '#92d050',  # Light Green
+        '#ffc000',  # Gold
+        '#ff9999',  # Light Salmon
+        '#b6d7a8',  # Pale Green
+        '#cfe2f3',  # Light Blue
+        '#ffcc99',  # Peach
+        '#ffccff',  # Light Pink
+        '#ffeb99',  # Light Yellow
+        '#f0f8ff',  # Alice Blue
+        '#ffe4c4'   # Bisque
     ]
     
     reader_counts = reader_count()
