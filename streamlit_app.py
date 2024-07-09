@@ -519,33 +519,7 @@ with col1:
 
     # Get the reader count
     reader_count = reader_count()
-    
-    # Create the pie chart
-    # fig = create_pie_chart(reader_count)
-     # If the pie chart was created successfully, save it as an image and embed it in custom HTML
-    if fig:
-        # Save the figure as an image
-        image_path = "pie_chart.png"
-        pio.write_image(fig, image_path, format='png')
-    
-        # Embed the image in custom HTML
-        html_string = f'''
-        <div id="steps" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-            <img src="data:image/png;base64,{st.image(image_path, use_column_width=True)}" alt="Pie Chart">
-            <span class="count">{sum(reader_count.values())}</span>
-            <span>summer<br>reads</span>
-            <i class="fa-solid fa-book"></i>
-        </div>
-        '''
-    
-        # Render the HTML with the embedded image
-        components.html(html_string, height=600)
-    
-    # Display an error if the data fetching failed
-    else:
-        st.error("Failed to fetch data")
-
-
+   
     def generate_pie_chart_svg(values, colors, labels):
         total = sum(values)
         angles = [v / total * 360 for v in values]
