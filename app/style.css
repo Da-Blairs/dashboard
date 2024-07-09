@@ -193,3 +193,6 @@ iframe {
     border-radius: 20px;
     margin-top: 63px;
 }
+iframe {
+    margin-bottom: 6px;
+}
