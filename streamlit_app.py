@@ -357,7 +357,7 @@ def create_pie_chart(reader_count):
         fig = px.pie(df, names='Reader', values='Books Read', title='Books Read by Each Person')
         
         # Update the colors of the pie chart
-        fig.update_traces(marker=dict(colors=colors))
+        fig.update_traces(textinfo='label', marker=dict(colors=colors))
         
         # Display the pie chart in Streamlit
         st.plotly_chart(fig)
