@@ -477,6 +477,7 @@ def render_donut_chart_from_counter(counter):
     st.write(html, unsafe_allow_html=True)
 
 def render_swim_donut():
+    global swim_days
     counter = swim_day_counter()
     svg = generate_donut_chart_svg_from_counter(counter)
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
