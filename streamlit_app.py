@@ -545,9 +545,9 @@ with col1:
 
     render_donut_chart(values, colors, labels)
     
-    pie_chart_svg = generate_donut_chart_svg(values, colors, labels)
-    st.markdown(f'<div id="swims"><span class="count">{sum(values)}</span><span>swim<br>days</span>{donut_chart_svg}</div>', unsafe_allow_html=True)
-    st.markdown(f'<div id="swims"><span class="count">{books_read}</span><span>swim<br>days</span>{pie_chart_svg}</div>', unsafe_allow_html=True)
+    #pie_chart_svg = generate_donut_chart_svg(values, colors, labels)
+    #st.markdown(f'<div id="swims"><span class="count">{sum(values)}</span><span>swim<br>days</span>{donut_chart_svg}</div>', unsafe_allow_html=True)
+    #st.markdown(f'<div id="swims"><span class="count">{books_read}</span><span>swim<br>days</span>{pie_chart_svg}</div>', unsafe_allow_html=True)
 
     st.markdown(f'<div id="swims"><span class="count">6</span><span>swim<br>days</span><i class="fa-solid fa-person-swimming"></i></div>' , unsafe_allow_html= True)
  
