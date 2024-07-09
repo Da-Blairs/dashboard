@@ -382,23 +382,42 @@ def updateDinner():
 
     dinner.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>{dinner_today}</span></p><p><span class="count">Dinner Tomorrow</span><br><span>{dinner_tomorrow}</span></p></div>' , unsafe_allow_html= True)
 
-def generate_pie_chart_svg(values, colors, labels):
+def generate_donut_chart_svg(values, colors, labels, inner_radius=20):
     total = sum(values)
     angles = [v / total * 360 for v in values]
 
-    cx, cy, r = 50, 50, 40  # Center and radius of the pie chart
+    cx, cy = 50, 50  # Center of the pie chart
+    outer_radius = 40  # Outer radius of the pie chart
+
     start_angle = 0
     segments = []
 
     for i, angle in enumerate(angles):
-        x1 = cx + r * cos(radians(start_angle))
-        y1 = cy + r * sin(radians(start_angle))
-        x2 = cx + r * cos(radians(start_angle + angle))
-        y2 = cy + r * sin(radians(start_angle + angle))
+        # Calculate outer arc points
+        x1_outer = cx + outer_radius * cos(radians(start_angle))
+        y1_outer = cy + outer_radius * sin(radians(start_angle))
+        x2_outer = cx + outer_radius * cos(radians(start_angle + angle))
+        y2_outer = cy + outer_radius * sin(radians(start_angle + angle))
+
+        # Calculate inner arc points
+        x1_inner = cx + inner_radius * cos(radians(start_angle))
+        y1_inner = cy + inner_radius * sin(radians(start_angle))
+        x2_inner = cx + inner_radius * cos(radians(start_angle + angle))
+        y2_inner = cy + inner_radius * sin(radians(start_angle + angle))
 
         large_arc_flag = 1 if angle > 180 else 0
 
-        segment = f'<path d="M {cx},{cy} L {x1},{y1} A {r},{r} 0 {large_arc_flag},1 {x2},{y2} Z" fill="{colors[i]}" />'
+        # Construct path for the segment
+        segment = f'''
+        <path d="
+            M {x1_outer},{y1_outer}
+            A {outer_radius},{outer_radius} 0 {large_arc_flag},1 {x2_outer},{y2_outer}
+            L {x2_inner},{y2_inner}
+            A {inner_radius},{inner_radius} 0 {large_arc_flag},0 {x1_inner},{y1_inner}
+            Z"
+            fill="{colors[i]}"
+        />
+        '''
         segments.append(segment)
 
         start_angle += angle
