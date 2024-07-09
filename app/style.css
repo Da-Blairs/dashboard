@@ -88,16 +88,14 @@ body, h1, h2, h3, em, .clock-placeholder {
     flex-flow: row wrap;
     column-gap: .5em;
     line-height: 1em;
+    height: 320px;
+    justify-content: center;
 }
 #swims .count, #steps .count {
     font-size: 48px;
 }
 
-#steps {
-    height: 320px;
-    justify-content: center;
-}
-
+#swim img,
 #steps img {
     mix-blend-mode: color-burn;
     position: absolute;
