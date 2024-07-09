@@ -358,7 +358,7 @@ st.title("Family Reading Log")
 csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
 
 # Get the reader count
-reader_count = books_read(csv_url)
+reader_count = reader_count(csv_url)
 
 # Create and display the pie chart
 create_pie_chart(reader_count)
