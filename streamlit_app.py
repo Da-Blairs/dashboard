@@ -422,12 +422,22 @@ def generate_donut_chart_svg(values, colors, labels, inner_radius=20):
 
         start_angle += angle
 
-    svg = f'''
+    svg_content = f'''
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         {''.join(segments)}
     </svg>
     '''
-    return svg
+    return svg_content
+
+def render_svg(svg):
+    """Renders the given svg string."""
+    b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
+    html = r'<img src="data:image/svg+xml;base64,%s"/>' % b64
+    st.write(html, unsafe_allow_html=True)
+
+def render_donut_chart(values, colors, labels):
+    svg = generate_donut_chart_svg(values, colors, labels)
+    render_svg(svg)
     
 # Streamlit setup
 col3, col1, col0, col2 = st.columns((1,1,1.5,2), vertical_alignment="bottom")
@@ -531,8 +541,11 @@ with col1:
     values = [3, 2, 1]  # Example values for the pie chart
     colors = ['#f44336', '#2196f3', '#4caf50']  # Example colors
     labels = ['Category 1', 'Category 2', 'Category 3']  # Example labels
+
+    render_donut_chart(values, colors, labels)
     
     pie_chart_svg = generate_donut_chart_svg(values, colors, labels)
+    st.markdown(f'<div id="swims"><span class="count">{sum(values)}</span><span>swim<br>days</span>{donut_chart_svg}</div>', unsafe_allow_html=True)
     st.markdown(f'<div id="swims"><span class="count">{books_read}</span><span>swim<br>days</span>{pie_chart_svg}</div>', unsafe_allow_html=True)
 
     st.markdown(f'<div id="swims"><span class="count">6</span><span>swim<br>days</span><i class="fa-solid fa-person-swimming"></i></div>' , unsafe_allow_html= True)
