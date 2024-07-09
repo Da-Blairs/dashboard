@@ -307,8 +307,9 @@ def old_update_weather():
     is_day = current["is_day"]
     weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi wi-wmo4680-{weathercode}"></i></div>', unsafe_allow_html=True)
 
-def books_read(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"):
+def books_read():
     # Fetch the CSV data from the URL
+    url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
     response = requests.get(url)
 
     # Check if request was successful
