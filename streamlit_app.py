@@ -387,7 +387,16 @@ def reader_count(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hp
 
 def swim_day_counter():
     global swim_days
-    no_swim = 6
+
+    summer_start = datetime(2024, 6, 29)
+    
+    # Get today's date
+    today = datetime.now()
+    
+    # Calculate the difference in days
+    days_summer = (today - summer_start).days
+    
+    no_swim = max(0, days_summer - swim_days)
 
     return Counter({'Swim': swim_days, 'Landlubber': no_swim})
 
