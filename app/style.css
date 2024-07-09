@@ -196,4 +196,7 @@ iframe {
 iframe {
     margin-bottom: 6px;
     height: 275px;
+    border: none;
+    width: 100%;
+    border-radius: 20px;
 }
