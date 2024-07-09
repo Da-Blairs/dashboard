@@ -329,9 +329,6 @@ def reader_count(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hp
         # Use csv.reader to read the lines
         csv_reader = csv.reader(lines)
 
-        # Skip the header
-        next(csv_reader)
-
         # Create a Counter to count the books read by each person
         reader_count = Counter(row[0] for row in csv_reader)
 
