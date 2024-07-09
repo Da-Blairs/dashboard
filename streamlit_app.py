@@ -569,7 +569,7 @@ with col0:
     <div id="william-goals">
         <i class="fa-solid fa-book-skull"></i>
         <em>Will Summer Goals</em>
-        <i class="fa-solid fa-circle"></i> <label for="icecream">Build Lego Tallneck</label><br>
+        <i class="fa-regular fa-circle"></i> <label for="icecream">Build Lego Tallneck</label><br>
         <i class="fa-regular fa-circle"></i> <label for="audiobooks">{will_read}/5 Ascendant Series</label><br>
         <i class="fa-regular fa-circle"></i> <label for="dnd">1/4 D&D Sessions</label><br>
     </div>
