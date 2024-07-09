@@ -451,7 +451,8 @@ def generate_donut_chart_svg_from_counter(counter, colors):
 def render_svg_in_div(svg, div_id):
     """Renders the given svg string inside a <div> with the specified id."""
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
-    html = f'<div id="{div_id}"><span class="count">{books_read()}</span><span>swim<br>days</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
+    books_read = books_read()
+    html = f'<div id="{div_id}"><span class="count">{books_read}</span><span>swim<br>days</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
     st.write(html, unsafe_allow_html=True)
 
 def render_donut_chart_from_counter(counter, colors, div_id='steps'):
