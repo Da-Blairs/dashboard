@@ -434,7 +434,7 @@ def generate_donut_chart_svg_from_counter(counter, colors):
 
         # Create SVG elements for segment and label
         segment = f'<path d="{segment_path}" fill="{colors[i]}" />'
-        label = f'<text font-size="35" x="{label_x}" y="{label_y}" text-anchor="middle" alignment-baseline="middle">{labels[i]}</text>'
+        label = f'<text font-size="15" x="{label_x}" y="{label_y}" text-anchor="middle" alignment-baseline="middle">{labels[i]}</text>'
         
         segments.append(segment)
         segments.append(label)
