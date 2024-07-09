@@ -386,6 +386,7 @@ def reader_count(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hp
         return None
 
 def swim_day_counter():
+    global swim_days
     no_swim = 6
 
     return Counter({'Swim': swim_days, 'No swim': no_swim})
