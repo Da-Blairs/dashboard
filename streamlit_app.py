@@ -479,11 +479,10 @@ def generate_donut_chart_svg_from_counter(counter):
     '''
     return svg_content    
 
-def render_donut_chart_from_counter(counter):
+def render_donut_chart_from_counter(counter, total):
     svg = generate_donut_chart_svg_from_counter(counter)
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
-    books_read = books_read()
-    html = f'<div id="steps"><span class="count">{books_read}</span><span>summer<br>reads</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
+    html = f'<div id="steps"><span class="count">{total}</span><span>summer<br>reads</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
     st.write(html, unsafe_allow_html=True)
 
 def render_swim_donut():
@@ -598,10 +597,10 @@ with col0:
 with col1:
 
     books_read = books_read()
-    
     reader_counts = reader_count()
-    if reader_counts:
-        render_donut_chart_from_counter(reader_counts)
+    
+    if reader_counts and books_read:
+        render_donut_chart_from_counter(reader_counts, books_read)
     else:
         st.error("Failed to fetch reader counts.")
 
