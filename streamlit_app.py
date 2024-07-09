@@ -398,13 +398,13 @@ def swim_day_counter():
     
     no_swim = max(0, days_summer - swim_days)
 
-    return Counter({'Swim': swim_days, 'Landlubber': no_swim})
+    return Counter({'Swashbuckler': swim_days, 'Landlubber': no_swim})
 
 def generate_donut_chart_svg_from_counter(counter):
     colors = [
         '#92d050',  # Light Green
-        '#ffc000',  # Gold
         '#ff9999',  # Light Salmon
+        '#ffc000',  # Gold
         '#b6d7a8',  # Pale Green
         '#cfe2f3',  # Light Blue
         '#ffcc99',  # Peach
