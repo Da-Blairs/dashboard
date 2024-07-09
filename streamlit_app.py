@@ -13,6 +13,7 @@ from collections import Counter
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import streamlit.components.v1 as components
 from PIL import Image 
 from time import sleep, strftime
 from google_auth_oauthlib.flow import Flow
@@ -517,7 +518,6 @@ with col1:
 
     # Get the reader count
     reader_count = reader_count(csv_url)
-    
     
     # Create the pie chart
     fig = create_pie_chart(reader_count)
