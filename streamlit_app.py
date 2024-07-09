@@ -388,10 +388,10 @@ def reader_count(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hp
 def swim_day_counter():
     global swim_days
 
-    summer_start = datetime(2024, 6, 29)
+    summer_start = datetime.datetime(2024, 6, 29)
     
     # Get today's date
-    today = datetime.now()
+    today = datetime.datetime.now()
     
     # Calculate the difference in days
     days_summer = (today - summer_start).days
