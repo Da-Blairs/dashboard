@@ -11,3 +11,4 @@ colormap
 easydev
 Pillow
 gspread
+plotly
