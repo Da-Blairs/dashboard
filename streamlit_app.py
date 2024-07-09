@@ -446,18 +446,38 @@ def generate_donut_chart_svg_from_counter(counter, colors):
         {''.join(segments)}
     </svg>
     '''
-    return svg_content
+    return svg_content    
 
-def render_svg_in_div(svg, div_id):
+def render_donut_chart_from_counter(counter, div_id='steps'):
+    colors = [
+        '#92d050',  # Light Green
+        '#ffc000',  # Gold
+        '#ff9999',  # Light Salmon
+        '#b6d7a8',  # Pale Green
+        '#cfe2f3',  # Light Blue
+        '#ffcc99',  # Peach
+        '#ffccff',  # Light Pink
+        '#ffeb99',  # Light Yellow
+        '#f0f8ff',  # Alice Blue
+        '#ffe4c4'   # Bisque
+    ]
+    svg = generate_donut_chart_svg_from_counter(counter, colors)
     """Renders the given svg string inside a <div> with the specified id."""
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
     books_read = 9
     html = f'<div id="{div_id}"><span class="count">{books_read}</span><span>summer<br>reads</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
     st.write(html, unsafe_allow_html=True)
+    
 
-def render_donut_chart_from_counter(counter, colors, div_id='steps'):
-    svg = generate_donut_chart_svg_from_counter(counter, colors)
-    render_svg_in_div(svg, div_id)
+def render_swim_days():
+    # Define the target date
+    target_date = datetime(2024, 6, 29)
+    
+    # Get today's date
+    today = datetime.now()
+    
+    # Calculate the difference in days
+    days_since = (today - target_date).days
 
     
 # Streamlit setup
@@ -554,23 +574,10 @@ with col0:
 with col1:
 
     books_read = books_read()
-
-    colors = [
-        '#92d050',  # Light Green
-        '#ffc000',  # Gold
-        '#ff9999',  # Light Salmon
-        '#b6d7a8',  # Pale Green
-        '#cfe2f3',  # Light Blue
-        '#ffcc99',  # Peach
-        '#ffccff',  # Light Pink
-        '#ffeb99',  # Light Yellow
-        '#f0f8ff',  # Alice Blue
-        '#ffe4c4'   # Bisque
-    ]
     
     reader_counts = reader_count()
     if reader_counts:
-        render_donut_chart_from_counter(reader_counts, colors)
+        render_donut_chart_from_counter(reader_counts)
     else:
         st.error("Failed to fetch reader counts.")
 
