@@ -93,6 +93,10 @@ body, h1, h2, h3, em, .clock-placeholder {
     font-size: 48px;
 }
 
+#steps img {
+    mix-blend-mode: color-burn;
+}
+
  #food {
      background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 90%);
      color: #000;
