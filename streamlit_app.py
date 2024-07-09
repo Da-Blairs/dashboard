@@ -141,7 +141,7 @@ def midnight_toronto_iso():
     # Convert to ISO format
     return midnight_toronto.isoformat()
 
-
+@st.cache_data(ttl=300)
 def get_google_calendar_events():
     creds = get_credentials()
     service = build('calendar', 'v3', credentials=creds)
