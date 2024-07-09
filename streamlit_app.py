@@ -527,13 +527,6 @@ with col0:
     # Create a container to hold the image
     image_container = st.empty()
     html_content = '''
-    <style>
-        iframe {
-            border: none;
-            width: 100%;
-            border-radius: 20px;
-        }
-    </style>
     <iframe src="http://192.168.4.200:8081/frame.html" scrolling="no" frameborder="0" allowfullscreen></iframe>
     '''
     image_container.markdown(html_content, unsafe_allow_html=True)
