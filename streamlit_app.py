@@ -154,6 +154,8 @@ def get_google_calendar_events():
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
 
+    pprint.pp(events)
+
     calendar_events = []
     for event in events:
         calendar_events.append({
