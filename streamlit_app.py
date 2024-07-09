@@ -404,12 +404,12 @@ def generate_donut_chart_svg_from_counter(counter):
     colors = [
         '#92d050',  # Light Green
         '#ff9999',  # Light Salmon
-        '#ffc000',  # Gold
-        '#b6d7a8',  # Pale Green
-        '#cfe2f3',  # Light Blue
-        '#ffcc99',  # Peach
-        '#ffccff',  # Light Pink
         '#ffeb99',  # Light Yellow
+        '#b6d7a8',  # Pale Green
+        '#ffcc99',  # Peach
+        '#cfe2f3',  # Light Blue
+        '#ffccff',  # Light Pink
+        '#ffc000',  # Gold
         '#f0f8ff',  # Alice Blue
         '#ffe4c4'   # Bisque
     ]
@@ -481,7 +481,7 @@ def generate_donut_chart_svg_from_counter(counter):
 def render_donut_chart_from_counter(counter):
     svg = generate_donut_chart_svg_from_counter(counter)
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
-    books_read = 9
+    books_read = books_read()
     html = f'<div id="steps"><span class="count">{books_read}</span><span>summer<br>reads</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
     st.write(html, unsafe_allow_html=True)
 
