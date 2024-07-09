@@ -374,22 +374,9 @@ def create_pie_chart(reader_count):
         # Update the layout
         fig.update_layout(title_text='Books Read by Each Person')
 
-        # Display the pie chart in Streamlit
-        st.plotly_chart(fig)
+        return fig
     else:
-        st.error("Failed to fetch data")
-
-# Streamlit app
-st.title("Family Reading Log")
-
-# URL of the Google Sheet CSV
-csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
-
-# Get the reader count
-reader_count = reader_count(csv_url)
-
-# Create and display the pie chart
-create_pie_chart(reader_count)
+        return False
 
 def who_read(name):
     url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
@@ -527,9 +514,33 @@ with col0:
 with col1:
 
     books_read = books_read()
-    if(books_read):
-        st.markdown(f'<div id="steps"><span class="count">{books_read}</span><span>summer<br>reads</span><i class="fa-solid fa-book"></i></div>' , unsafe_allow_html= True)
-     
+
+    # Get the reader count
+    reader_count = reader_count(csv_url)
+    
+    
+    # Create the pie chart
+    fig = create_pie_chart(reader_count)
+    
+    # If the pie chart was created successfully, embed it in custom HTML
+    if fig:
+        html_string = f'''
+        <div id="steps">
+            <div id="chart">
+                {fig.to_html(full_html=False, include_plotlyjs='cdn')}
+            </div>
+            <span class="count">{sum(reader_count.values())}</span>
+            <span>summer<br>reads</span>
+            <i class="fa-solid fa-book"></i>
+        </div>
+        '''
+    
+        # Render the HTML with the embedded chart
+        components.html(html_string, height=600)
+    
+    # Display an error if the data fetching failed
+    else:
+        st.error("Failed to fetch data")
     st.markdown(f'<div id="swims"><span class="count">6</span><span>swim<br>days</span><i class="fa-solid fa-person-swimming"></i></div>' , unsafe_allow_html= True)
  
     dinner = st.markdown(f'<div id="food"><i class="fa-solid fa-utensils"></i><p><span class="count">Dinner Today</span><br><span>No plans</span></p><p><span class="count">Dinner Tomorrow</span><br><span>No plans</span></p></div>' , unsafe_allow_html= True)
