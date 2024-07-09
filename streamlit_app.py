@@ -521,7 +521,7 @@ with col1:
     reader_count = reader_count()
     
     # Create the pie chart
-    fig = create_pie_chart(reader_count)
+    # fig = create_pie_chart(reader_count)
      # If the pie chart was created successfully, save it as an image and embed it in custom HTML
     if fig:
         # Save the figure as an image
