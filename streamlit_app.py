@@ -386,10 +386,9 @@ def reader_count(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hp
         return None
 
 def swim_day_counter():
-    swim = 6
     no_swim = 6
 
-    return Counter({'Swim': swim, 'No swim': no_swim})
+    return Counter({'Swim': swim_days, 'No swim': no_swim})
 
 def generate_donut_chart_svg_from_counter(counter):
     colors = [
