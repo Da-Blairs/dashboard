@@ -383,7 +383,20 @@ def reader_count(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hp
     else:
         return None
 
-def generate_donut_chart_svg_from_counter(counter, colors):
+def generate_donut_chart_svg_from_counter(counter):
+    colors = [
+        '#92d050',  # Light Green
+        '#ffc000',  # Gold
+        '#ff9999',  # Light Salmon
+        '#b6d7a8',  # Pale Green
+        '#cfe2f3',  # Light Blue
+        '#ffcc99',  # Peach
+        '#ffccff',  # Light Pink
+        '#ffeb99',  # Light Yellow
+        '#f0f8ff',  # Alice Blue
+        '#ffe4c4'   # Bisque
+    ]
+    
     total_books = sum(counter.values())
     labels = list(counter.keys())
     values = list(counter.values())
@@ -449,19 +462,7 @@ def generate_donut_chart_svg_from_counter(counter, colors):
     return svg_content    
 
 def render_donut_chart_from_counter(counter, div_id='steps'):
-    colors = [
-        '#92d050',  # Light Green
-        '#ffc000',  # Gold
-        '#ff9999',  # Light Salmon
-        '#b6d7a8',  # Pale Green
-        '#cfe2f3',  # Light Blue
-        '#ffcc99',  # Peach
-        '#ffccff',  # Light Pink
-        '#ffeb99',  # Light Yellow
-        '#f0f8ff',  # Alice Blue
-        '#ffe4c4'   # Bisque
-    ]
-    svg = generate_donut_chart_svg_from_counter(counter, colors)
+    svg = generate_donut_chart_svg_from_counter(counter)
     """Renders the given svg string inside a <div> with the specified id."""
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
     books_read = 9
