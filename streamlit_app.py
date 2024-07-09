@@ -273,6 +273,7 @@ def update_weather():
         if response_current.status_code == 200:
             result_current = response_current.json()
             temp = round(result_current["properties"]["timeseries"][0]["data"]["instant"]["details"]["air_temperature"])
+            uv = result_current["properties"]["timeseries"][0]["data"]["instant"]["details"]["ultraviolet_index_clear_sky"]
             weathersymbol = result_current["properties"]["timeseries"][0]["data"]["next_1_hours"]["summary"]["symbol_code"]
             if weathersymbol in weather_icons:
                 weathercode = weather_icons[weathersymbol]
@@ -283,7 +284,7 @@ def update_weather():
             weather_cache["data"] = (temp, weathercode)
             weather_cache["expires"] = datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # assuming data is valid for 1 hour
             
-            weather.markdown(f'<div id="weather">{temp}°C<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
+            weather.markdown(f'<div id="weather">{temp}°C<br>UVI: {uv}<i class="big-icon wi {weathercode}"></i></div>', unsafe_allow_html=True)
         else:
             weather.error("Failed to fetch weather data")
     else:
