@@ -515,7 +515,7 @@ with col1:
     reader_count = reader_count()
     
     pie_chart_svg = generate_pie_chart_svg()
-    st.markdown(f'<div id="swims"><span class="count">{sum(values)}</span><span>swim<br>days</span>{pie_chart_svg}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div id="swims"><span class="count">{books_read}</span><span>swim<br>days</span>{pie_chart_svg}</div>', unsafe_allow_html=True)
 
 
 
