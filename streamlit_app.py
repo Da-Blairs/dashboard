@@ -395,7 +395,7 @@ def generate_donut_chart_svg_from_counter(counter, colors):
     # Generate donut chart SVG
     cx, cy = 50, 50  # Center of the pie chart
     outer_radius = 50  # Outer radius of the pie chart
-    inner_radius = 20  # Inner radius for the donut hole
+    inner_radius = 30  # Inner radius for the donut hole
 
     start_angle = 0
     segments = []
