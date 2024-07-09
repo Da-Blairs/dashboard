@@ -346,16 +346,33 @@ def create_pie_chart(reader_count):
         for reader in df['Reader']:
             if reader == 'Gwen':
                 colors.append('rgba(185, 159, 237, 1)')
-                colors.append('rgba(237, 185, 218, 1)')
             else:
                 colors.append(None)
-        
+
+        # Calculate the total number of books read
+        total_books = sum(reader_count.values())
+
         # Create the pie chart using Plotly
-        fig = px.pie(df, names='Reader', values='Books Read', title='Books Read by Each Person')
-        
-        # Update the colors of the pie chart
-        fig.update_traces(textinfo='label', marker=dict(colors=colors))
-        
+        fig = go.Figure(data=[go.Pie(
+            labels=df['Reader'],
+            values=df['Books Read'],
+            textinfo='label',
+            marker=dict(colors=colors),
+            hole=0.4
+        )])
+
+        # Add annotation for total books read
+        fig.add_annotation(
+            dict(
+                text=f"Total<br>{total_books}",
+                showarrow=False,
+                font=dict(size=20)
+            )
+        )
+
+        # Update the layout
+        fig.update_layout(title_text='Books Read by Each Person')
+
         # Display the pie chart in Streamlit
         st.plotly_chart(fig)
     else:
