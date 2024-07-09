@@ -344,8 +344,20 @@ def create_pie_chart(reader_count):
         # Create a DataFrame from the Counter
         df = pd.DataFrame(list(reader_count.items()), columns=['Reader', 'Books Read'])
 
+        # Define colors for the readers, with Gwen having a gradient-like appearance
+        colors = []
+        for reader in df['Reader']:
+            if reader == 'Gwen':
+                colors.append('rgba(185, 159, 237, 1)')
+                colors.append('rgba(237, 185, 218, 1)')
+            else:
+                colors.append(None)
+        
         # Create the pie chart using Plotly
         fig = px.pie(df, names='Reader', values='Books Read', title='Books Read by Each Person')
+        
+        # Update the colors of the pie chart
+        fig.update_traces(marker=dict(colors=colors))
         
         # Display the pie chart in Streamlit
         st.plotly_chart(fig)
