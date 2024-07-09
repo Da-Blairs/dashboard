@@ -481,7 +481,7 @@ def render_swim_donut():
     counter = swim_day_counter()
     svg = generate_donut_chart_svg_from_counter(counter)
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
-    html = f'<div id="swim"><span class="count">{swims_days}</span><span>summer<br>reads</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
+    html = f'<div id="swim"><span class="count">{swim_days}</span><span>summer<br>reads</span><img src="data:image/svg+xml;base64,{b64}" /></div>'
     st.write(html, unsafe_allow_html=True)
 
     
