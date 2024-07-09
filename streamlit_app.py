@@ -517,7 +517,7 @@ with col1:
     books_read = books_read()
 
     # Get the reader count
-    reader_count = reader_count(csv_url)
+    reader_count = reader_count()
     
     # Create the pie chart
     fig = create_pie_chart(reader_count)
