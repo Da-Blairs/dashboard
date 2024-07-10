@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify
 import requests
 import datetime
+import os
 
 app = Flask(__name__)
 
@@ -11,13 +12,44 @@ def read_css(file_path):
 
 @app.route('/')
 def home():
-    styles_css = read_css(os.path.join(app.root_path, 'static', 'styles.css'))
-    weather_icons_css = read_css(os.path.join(app.root_path, 'static', 'weather-icons.css'))
+    styles_css = read_css(os.path.join(app.root_path, 'static', 'style.css'))
+    weather_icons_css = read_css(os.path.join(app.root_path, 'static', 'weather-icons.min.css'))
     return render_template('index.html', styles_css=styles_css, weather_icons_css=weather_icons_css)
 
 @app.route('/weather')
 def weather():
     USER_AGENT = "blairs.streamlit.app/1.0 (https://blairs.streamlit.app/contact)"
+
+    weather_icons = {
+        "clearsky_day" : "wi-day-sunny",
+        "clearsky_night" : "wi-night-clear",
+        "fair_day" : "wi-day-sunny-overcast",
+        "fair_night" : "wi-night-alt-partly-cloudy",
+        "partlycloudy_day" : "wi-day-cloudy",
+        "partlycloudy_night" : "wi-night-alt-cloudy",
+        "cloudy" : "wi-cloudy",
+        "lightrainshowers_day" : "wi-day-showers",
+        "lightrainshowers_night" : "wi-night-alt-showers",
+        "rainshowers_day" : "wi-day-rain",
+        "rainshowers_night" : "wi-night-alt-rain",
+        "heavyrainshowers_day" : "wi-day-rain-wind",
+        "heavyrainshowers_night" : "wi-night-alt-rain-wind",
+        "lightsnowshowers_day" : "wi-day-snow",
+        "lightsnowshowers_night" : "wi-night-alt-snow",
+        "snowshowers_day" : "wi-day-snow-wind",
+        "snowshowers_night" : "wi-night-alt-snow-wind",
+        "heavysnowshowers_day" : "wi-day-snow-thunderstorm",
+        "heavysnowshowers_night" : "wi-night-alt-snow-thunderstorm",
+        "lightrain" : "wi-rain-mix",
+        "rain" : "wi-rain",
+        "heavyrain" : "wi-rain-wind",
+        "lightsnow" : "wi-snow",
+        "snow" : "wi-snow",
+        "heavysnow" : "wi-snow-wind",
+        "sleet" : "wi-sleet",
+        "thunderstorm" : "wi-thunderstorm",
+        "fog" : "wi-fog",
+    }
 
     # Global cache for storing weather data and expiry timestamp
     weather_cache = {
@@ -26,6 +58,8 @@ def weather():
     }
     # Check if cache is expired
     if datetime.datetime.utcnow() > weather_cache["expires"]:
+        lat = "42.9836"
+        lng = "-81.2497"
         headers = {"User-Agent": USER_AGENT}
         response_current = requests.get(
             f'https://api.met.no/weatherapi/locationforecast/2.0/complete?lat={lat}&lon={lng}',
