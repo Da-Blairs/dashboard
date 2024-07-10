@@ -390,7 +390,7 @@ def work_schedule():
     for event_summary in work:
         html_content += f'''
         <div class="event">
-            <span class="time">{event_summary}</span>
+            <span class="time">dad</span> #{event_summary}
             <i class="fa-solid fa-laptop-code"></i>
         </div>
         '''
