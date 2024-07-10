@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="stylesheet" href="path/to/weather-icons.css"> <!-- Update with actual path to weather icons CSS -->
+    <style>
+        .big-icon {
+            font-size: 48px;
+        }
+    </style>
     <script>
         function fetchWeather() {
             fetch('/weather')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('weather').innerText = `Temperature: ${data.temperature}, Condition: ${data.condition}`;
+                    if (data.error) {
+                        document.getElementById('weather').innerText = data.error;
+                    } else {
+                        document.getElementById('weather').innerHTML = `
+                            ${data.temperature}<br>
+                            ${data.uv}<br>
+                            <i class="big-icon wi ${data.weathercode}"></i>
+                        `;
+                    }
                 })
                 .catch(error => {
                     console.error('Error fetching weather data:', error);
