@@ -381,7 +381,7 @@ def work_schedule():
         orderBy='startTime'
     ).execute()
     events = events_result.get('items', [])
-    work = [event['summary'].replace(' ', '<br>') for event in events]
+    work = [event['summary'].replace(' ', '<br>Work ') for event in events]
 
     if not work:
         return  # If work is empty, do not render anything
