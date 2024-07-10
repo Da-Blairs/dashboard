@@ -689,11 +689,6 @@ def run_schedule():
         current_minute = current_time.minute
         current_second = current_time.second
 
-        try:
-            #updateClock(current_second % 2)
-        except: 
-            pass
-
         if current_minute % 5 == 0:
             try: 
                 update_weather()
