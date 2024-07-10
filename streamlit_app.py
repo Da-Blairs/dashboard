@@ -505,7 +505,7 @@ with col3:
       pass
 
     html_content = f'''
-    <div class="event-list">
+    <div class="work event-list">
         <div class="event">
             <span class="time">Mom<br>Works 9-3</span>
         </div>
