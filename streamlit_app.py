@@ -351,13 +351,25 @@ def will_read():
     return who_read(name="will")
 
 def work_schedule():
+    creds = get_credentials()
+    service = build('calendar', 'v3', credentials=creds)
+    events_result = service.events().list(calendarId='e8342c59acacdfd8607daa42f2696eee46f300f96ac7d1149c484502c04102a8@group.calendar.google.com',
+                                          timeMin=midnight_toronto_iso(),
+                                          maxResults=2, singleEvents=True,
+                                          orderBy='startTime').execute()
+    events = events_result.get('items', [])
+    work = []
+    for event in events:
+        work.append(event['summary']) #todo: replace all spaces with <br>
+
+    #todo: make this a loop that doesn't print anything if work is empty
     html_content = f'''
     <div class="work event-list">
         <div class="event">
-            <span class="time">Mom<br>Works 9-3</span>
+            <span class="time">{work[0]}</span>
         </div>
         <div class="event">    
-            <span class="time">Dad<br>Works 9-5</span>
+            <span class="time">{work[1]</span>
             <i class="fa-solid fa-laptop-code"></i>
         </div>
         
