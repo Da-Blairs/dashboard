@@ -4,9 +4,16 @@ import datetime
 
 app = Flask(__name__)
 
+# Read CSS files
+def read_css(file_path):
+    with open(file_path, 'r') as file:
+        return file.read()
+
 @app.route('/')
 def home():
-    return render_template('index.html')
+    styles_css = read_css(os.path.join(app.root_path, 'static', 'styles.css'))
+    weather_icons_css = read_css(os.path.join(app.root_path, 'static', 'weather-icons.css'))
+    return render_template('index.html', styles_css=styles_css, weather_icons_css=weather_icons_css)
 
 @app.route('/weather')
 def weather():
