@@ -50,8 +50,60 @@ with open( "app/style.css" ) as css:
 with open( "app/weather-icons.min.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
-with open( "app/script.js" ) as js:
-    st.markdown( f'<script>{js.read()}</script>' , unsafe_allow_html= True)
+#with open( "app/script.js" ) as js:
+#    st.markdown( f'<script>{js.read()}</script>' , unsafe_allow_html= True)
+
+script = """
+/**
+ * Simple JS Clock
+ */
+(function() {
+
+  var Clock = function () {
+    
+    var el = document.querySelector('#js-clock');
+    
+    /**
+     * Time Format
+     */
+    var timeFormat = new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute:'2-digit',
+      second:'2-digit'
+    });
+     
+    /** 
+     * Render Util
+     */
+    render = function(template, node) {
+      
+      if (!node) return;
+      node.innerHTML = (typeof template === 'function' ? template() : template);
+      
+      var event = new CustomEvent('elementRenderer', {
+        bubbles: true
+      });
+      
+      node.dispatchEvent(event);
+      return node;
+    };
+    
+    /**
+     * Pass vars to out Render Util
+     */
+    render(timeFormat, el);
+  }
+  
+  /**
+   * Start the Clock Interval
+   */
+  window.setInterval(Clock, 1000);
+
+}());
+
+"""
+
+components.html(f'<script>{script}</script>')
 
 st.markdown("""
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
