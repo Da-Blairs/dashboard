@@ -350,6 +350,23 @@ def gwen_read():
 def will_read():
     return who_read(name="will")
 
+def work_schedule():
+    html_content = f'''
+    <div class="work event-list">
+        <div class="event">
+            <span class="time">Mom<br>Works 9-3</span>
+        </div>
+        <div class="event">    
+            <span class="time">Dad<br>Works 9-5</span>
+            <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        
+    </div>
+    '''
+
+    # Render the HTML content
+    st.markdown(html_content, unsafe_allow_html=True)
+
 def updateDinner():    
     creds = get_credentials()
     service = build('calendar', 'v3', credentials=creds)
@@ -504,21 +521,7 @@ with col3:
     except:
       pass
 
-    html_content = f'''
-    <div class="work event-list">
-        <div class="event">
-            <span class="time">Mom<br>Works 9-3</span>
-        </div>
-        <div class="event">    
-            <span class="time">Dad<br>Works 9-5</span>
-            <i class="fa-solid fa-laptop-code"></i>
-        </div>
-        
-    </div>
-    '''
-    
-    # Render the HTML content
-    st.markdown(html_content, unsafe_allow_html=True)
+    work_schedule()
 
     html_content = f'''
     <div id="movie-list">
