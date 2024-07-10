@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel="stylesheet" href="path/to/weather-icons.css"> <!-- Update with actual path to weather icons CSS -->
     <style>
-        .big-icon {
-            font-size: 48px;
-        }
+        {{ styles_css|safe }}
+    </style>
+    <style>
+        {{ weather_icons_css|safe }}
     </style>
     <script>
         function fetchWeather() {
