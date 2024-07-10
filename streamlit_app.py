@@ -363,7 +363,6 @@ def gwen_read():
 def will_read():
     return who_read(name="will")
 
-@st.cache_data(ttl=300)
 def work_schedule_fetch():
     global timezone
     creds = get_credentials()
