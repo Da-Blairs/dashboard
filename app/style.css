@@ -146,6 +146,7 @@ span.date:last-child {
 #gwen-goals .fa-solid:not(.fa-circle-check),
 #william-goals .fa-solid:not(.fa-circle-check),
 #sadie-goals .fa-solid:not(.fa-circle-check),
+.work .fa-solid,
 .event .fa-solid {
     position: absolute;
     font-size: 80px;
@@ -156,7 +157,11 @@ span.date:last-child {
     mix-blend-mode: soft-light;
 }
 
-.work .event .fa-solid {
+.work {
+    position: relative;
+}
+
+.work .fa-solid {
     right: 97px;
     top: 22px;
     font-size: 100px;
