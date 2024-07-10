@@ -371,7 +371,7 @@ def work_schedule():
     
     # Get the start and end of today in ISO format
     
-    timeMin = midnight_toronto_iso():
+    timeMin = midnight_toronto_iso()
     timeMax = day_end_iso()
 
     events_result = service.events().list(
