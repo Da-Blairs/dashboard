@@ -156,6 +156,11 @@ span.date:last-child {
     mix-blend-mode: soft-light;
 }
 
+.work .event .fa-solid {
+    right: 110px;
+    top: 35px;
+}
+
 #movie-list .fa-solid {
     bottom: 16px;
     top: auto;
