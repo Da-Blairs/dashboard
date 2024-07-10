@@ -388,13 +388,9 @@ def work_schedule():
 
     html_content = '<div class="work event-list">'
     for event_summary in work:
-        html_content += f'''
-        <div class="event">
-            <span class="time">dad</span>
-            <i class="fa-solid fa-laptop-code"></i>
-        </div>
-        '''
+        html_content += '<div class="event"><span class="time">dad</span></div>'
     html_content += '</div>'
+    #<i class="fa-solid fa-laptop-code"></i>
     #{event_summary}
     # Render the HTML content
     st.markdown(html_content, unsafe_allow_html=True)
