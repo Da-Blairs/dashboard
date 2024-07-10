@@ -363,7 +363,8 @@ def gwen_read():
 def will_read():
     return who_read(name="will")
 
-def work_schedule():
+@st.cache_data(ttl=300)
+def work_schedule_fetch():
     global timezone
     creds = get_credentials()
     service = build('calendar', 'v3', credentials=creds)
@@ -380,7 +381,10 @@ def work_schedule():
         singleEvents=True,
         orderBy='startTime'
     ).execute()
-    events = events_result.get('items', [])
+    return events_result.get('items', [])
+
+def work_schedule():
+    events = work_schedule_fetch()
     work = [event['summary'] for event in events] #.replace(' ', '<br>')
 
     if not work:
