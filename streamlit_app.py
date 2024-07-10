@@ -405,7 +405,6 @@ def generate_donut_chart_svg_from_counter(counter):
     colors = [
         '#92d050',  # Light Green
         '#ffc000',  # Gold
-        '#b6d7a8',  # Pale Green
         '#ffe4c4',  # Bisque
         '#cfe2f3',  # Light Blue
         '#ff9999',  # Light Salmon
@@ -413,6 +412,7 @@ def generate_donut_chart_svg_from_counter(counter):
         '#f0f8ff',  # Alice Blue
         '#ffeb99',  # Light Yellow
         '#ffccff'  # Light Pink
+        '#b6d7a8',  # Pale Green
     ]
     
     total_books = sum(counter.values())
