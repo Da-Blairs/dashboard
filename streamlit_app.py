@@ -404,7 +404,7 @@ def swim_day_counter():
 def generate_donut_chart_svg_from_counter(counter):
     colors = [
         '#92d050',  # Light Green
-        '#ffccff',  # Light Pink
+        '#fa5bfa',  # Light Pink
         '#ffc000',  # Gold
         '#b6d7a8',  # Pale Green
         '#ffcc99',  # Peach
