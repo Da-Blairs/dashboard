@@ -126,11 +126,10 @@ def get_credentials():
     return creds
 
 def midnight_toronto_iso():
+    global toronto_tz
+    
     # Get the current UTC time
     now_utc = datetime.datetime.utcnow()
-    
-    # Define the Toronto timezone
-    toronto_tz = pytz.timezone('America/Toronto')
     
     # Convert the current UTC time to Toronto time
     now_toronto = now_utc.astimezone(toronto_tz)
@@ -140,6 +139,21 @@ def midnight_toronto_iso():
     
     # Convert to ISO format
     return midnight_toronto.isoformat()
+
+def day_end_iso():
+    global toronto_tz
+    # Get the current UTC time
+    now_utc = datetime.datetime.utcnow()
+    
+    # Convert the current UTC time to Toronto time
+    now_toronto = now_utc.astimezone(toronto_tz)
+    
+    # Replace the time to midnight
+    midnight_toronto = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0)
+    end_of_today = start_of_today + timedelta(days=1)
+    
+    # Convert to ISO format
+    return end_of_today.isoformat()
 
 @st.cache_data(ttl=300)
 def get_google_calendar_events():
@@ -351,30 +365,37 @@ def will_read():
     return who_read(name="will")
 
 def work_schedule():
+    global timezone
     creds = get_credentials()
     service = build('calendar', 'v3', credentials=creds)
-    events_result = service.events().list(calendarId='e8342c59acacdfd8607daa42f2696eee46f300f96ac7d1149c484502c04102a8@group.calendar.google.com',
-                                          timeMin=midnight_toronto_iso(),
-                                          maxResults=2, singleEvents=True,
-                                          orderBy='startTime').execute()
-    events = events_result.get('items', [])
-    work = []
-    for event in events:
-        work.append(event['summary']) #todo: replace all spaces with <br>
+    
+    # Get the start and end of today in ISO format
+    
+    timeMin = midnight_toronto_iso():
+    timeMax = day_end_iso()
 
-    #todo: make this a loop that doesn't print anything if work is empty
-    html_content = f'''
-    <div class="work event-list">
+    events_result = service.events().list(
+        calendarId='e8342c59acacdfd8607daa42f2696eee46f300f96ac7d1149c484502c04102a8@group.calendar.google.com',
+        timeMin=timeMin,
+        timeMax=timeMax,
+        singleEvents=True,
+        orderBy='startTime'
+    ).execute()
+    events = events_result.get('items', [])
+    work = [event['summary'].replace(' ', '<br>') for event in events]
+
+    if not work:
+        return  # If work is empty, do not render anything
+
+    html_content = '<div class="work event-list">'
+    for event_summary in work:
+        html_content += f'''
         <div class="event">
-            <span class="time">{work[0]}</span>
-        </div>
-        <div class="event">    
-            <span class="time">{work[1]</span>
+            <span class="time">{event_summary}</span>
             <i class="fa-solid fa-laptop-code"></i>
         </div>
-        
-    </div>
-    '''
+        '''
+    html_content += '</div>'
 
     # Render the HTML content
     st.markdown(html_content, unsafe_allow_html=True)
