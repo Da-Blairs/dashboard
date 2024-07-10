@@ -50,6 +50,9 @@ with open( "app/style.css" ) as css:
 with open( "app/weather-icons.min.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
+with open( "app/script.js" ) as js:
+    st.markdown( f'<script>{js.read()}</script>' , unsafe_allow_html= True)
+
 st.markdown("""
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     """, unsafe_allow_html=True)
@@ -571,7 +574,9 @@ with col3:
 
  
     # Create a placeholder for the clock
-    clock_placeholder = st.empty() 
+    
+    current_date = datetime.datetime.now(toronto_tz).strftime('%b %d')
+    st.markdown(f'<div class="clock-placeholder"><span id="js-clock"></span><br>{current_date}</div>', unsafe_allow_html=True)
     
 with col0:
     # Create a container to hold the image
@@ -685,7 +690,7 @@ def run_schedule():
         current_second = current_time.second
 
         try:
-            updateClock(current_second % 2)
+            #updateClock(current_second % 2)
         except: 
             pass
 
