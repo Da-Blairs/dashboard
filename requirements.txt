@@ -1,3 +1,4 @@
+flask
 altair
 pandas
 python-dotenv
