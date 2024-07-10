@@ -406,12 +406,12 @@ def generate_donut_chart_svg_from_counter(counter):
         '#92d050',  # Light Green
         '#ffc000',  # Gold
         '#b6d7a8',  # Pale Green
-        '#ffeb99',  # Light Yellow
-        '#ffe4c4',   # Bisque
+        '#ffe4c4',  # Bisque
         '#cfe2f3',  # Light Blue
         '#ff9999',  # Light Salmon
         '#ffcc99',  # Peach
         '#f0f8ff',  # Alice Blue
+        '#ffeb99',  # Light Yellow
         '#ffccff'  # Light Pink
     ]
     
