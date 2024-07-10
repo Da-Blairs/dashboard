@@ -31,12 +31,44 @@
                 });
         }
 
-        setInterval(fetchWeather, 5000); // Update every 5 seconds
+        setInterval(fetchWeather, 300000); // Update every 5 seconds
         window.onload = fetchWeather; // Fetch weather data when the page loads
     </script>
 </head>
 <body>
-    <h1>Weather App</h1>
-    <div id="weather">Loading...</div>
+    <div id="col0">
+        <div id="weather">Loading...</div>
+    </div>
+    <div id="col1">
+        <div id="movie-list">
+            <i class="fa-solid fa-clapperboard"></i>
+            <em>Movie List</em><br>
+            July 4<br>
+            <em>Frozen 2</em><br>
+            July 11<br>
+            <em>Kiki's Delivery Service</em><br>
+            July 18<br>
+            <em>Inside Out 2</em><br>
+        </div>
+    </div>
+    <div id="col2">
+        <iframe src="http://192.168.4.200:8081/frame.html" scrolling="no" frameborder="0" allowfullscreen=""></iframe>
+    </div>
+    <div id="col3">
+        <div class="event-list"><span class="date"><span>Wed</span><span>Jul 10</span></span>
+            <div class="event"><span class="time">3:00 pm-4:00 pm</span><br> Sadie RPG</div>
+            <div class="event"><span class="time">5:00 pm-6:00 pm</span><br><i class="fa-solid fa-person-swimming"></i> Swim</div>
+            <div class="event"><span class="time">7:00 pm-8:00 pm</span><br><i class="fa-solid fa-user-astronaut"></i> Among Us</div>
+            <span class="date"><span>Thu</span><span>Jul 11</span></span>
+            <div class="event"><span class="time">5:00 pm-6:00 pm</span><br><i class="fa-solid fa-person-swimming"></i> Swim</div>
+            <div class="event"><span class="time">6:30 pm-8:30 pm</span><br><i class="fa-solid fa-clapperboard"></i> Movie Night!</div>
+            <span class="date"><span>Fri</span><span>Jul 12</span></span>
+            <div class="event"><span class="time">9:00 am-11:00 am</span><br><i class="fa-solid fa-person-hiking"></i> Splorin'</div>
+            <div class="event"><span class="time">5:00 pm-6:00 pm</span><br><i class="fa-solid fa-person-swimming"></i> Swim</div>
+            <div class="event"><span class="time">7:00 pm-8:00 pm</span><br><i class="fa-solid fa-user-astronaut"></i> Among Us</div>
+            <div class="event"><span class="time">10:30 pm-11:59 pm</span><br><i class="fa-solid fa-gamepad"></i> Zoe and Gavin TV Time</div>
+            <span class="date"><span>Sat</span><span>Jul 13</span></span>
+            <div class="event"><span class="time">5:00 pm-6:00 pm</span><br><i class="fa-solid fa-person-swimming"></i> Swim</div></div>
+    </div>
 </body>
 </html>
