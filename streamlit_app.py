@@ -385,7 +385,7 @@ def work_schedule_fetch():
 
 def work_schedule():
     events = work_schedule_fetch()
-    work = [event['summary'] for event in events] #.replace(' ', '<br>')
+    work = [event['summary'].replace(' ', '<br>') for event in events]
 
     if not work:
         return  # If work is empty, do not render anything
