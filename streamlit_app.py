@@ -381,7 +381,7 @@ def work_schedule():
         orderBy='startTime'
     ).execute()
     events = events_result.get('items', [])
-    work = [event['summary'].replace(' ', '<br>Work ') for event in events]
+    work = [event['summary'].replace(' ', '<br>') for event in events]
 
     if not work:
         return  # If work is empty, do not render anything
@@ -391,10 +391,9 @@ def work_schedule():
         html_content += f'''
         <div class="event">
             <span class="time">{event_summary}</span>
-            <i class="fa-solid fa-laptop-code"></i>
         </div>
         '''
-    html_content += '</div>'
+    html_content += '<i class="fa-solid fa-laptop-code"></i></div>'
 
     # Render the HTML content
     st.markdown(html_content, unsafe_allow_html=True)
