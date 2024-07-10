@@ -149,7 +149,7 @@ def day_end_iso():
     now_toronto = now_utc.astimezone(toronto_tz)
     
     # Replace the time to midnight
-    end_of_today = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
+    end_of_today = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0) + datetime.timedelta(days=1)
     
     # Convert to ISO format
     return end_of_today.isoformat()
