@@ -163,8 +163,10 @@ span.date:last-child {
 
 .work .fa-solid {
     right: 97px;
-    top: 22px;
+    top: 30px;
     font-size: 100px;
+    mix-blend-mode: soft-light;
+    color: black;
 }
 
 #movie-list .fa-solid {
