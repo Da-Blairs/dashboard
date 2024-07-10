@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap');
+
+@media screen and ( max-height: 768px ) {
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+}
+
+.block-container {
+    padding: 0;
+    width: calc(1920px - 96px); /* 1920x1080 */
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+body, h1, h2, h3, em, .clock-placeholder {
+    font-family: 'Azeret Mono', sans-serif;
+    color: #000;
+}
+
+.clock-placeholder {
+    background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 80px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    padding: 0;
+    margin: -11px 0 0;
+    line-height: .85;  
+}
+.time {
+    font-size: 60px;
+}
+
+#weather {
+    background: linear-gradient(240deg, rgba(252, 142, 190) 0%, rgba(252, 229, 195) 100%);
+    color: #000;
+    border-radius: 20px;
+    padding: .5em;
+    margin: 65px 0 8px;
+    display: flex;
+    font-family: 'Azeret Mono', sans-serif;
+    font-size: 33px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.event-list {
+    display: flex;
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-family: 'Azeret Mono', sans-serif;
+    column-gap: 16px;
+    justify-content: space-between;
+}
+.event-list .event {
+    background: linear-gradient(240deg, rgba(151, 231, 209) 0%, rgba(236, 252, 195) 100%);
+    color: #000;
+    border-radius: 20px;
+    padding: .5em;
+    margin: 8px 0;
+    width: calc(50% - 8px);
+    position: relative;
+}
+.event-list .time {
+    font-size: 20px;
+    font-weight: normal;
+}
+.event-list .date {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px 0;
+    width: 100%;
+}
+
+span.date:last-child {
+    display: none;
+}
+
+#swims, #steps {
+    background-image: linear-gradient(240deg, rgba(124, 136, 224) 0%, rgba(195, 244, 252) 100%);
+    color: #000;
+    border-radius: 20px;
+    padding: 1em;
+    margin: 8px 0;
+    display: flex;
+    justify-content: left;
+    font-family: 'Azeret Mono', sans-serif;
+    align-items: center;
+    flex-flow: row wrap;
+    column-gap: .5em;
+    line-height: 1em;
+    height: 320px;
+    justify-content: center;
+}
+#swims .count, #steps .count {
+    font-size: 48px;
+}
+
+#swims img,
+#steps img {
+    mix-blend-mode: color-burn;
+    position: absolute;
+    left: 15px;
+    width: 90%;
+}
+
+ #food {
+     background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 90%);
+     color: #000;
+     border-radius: 20px;
+     padding: 1em;
+     margin: 8px 0;
+     font-family: 'Azeret Mono', sans-serif;
+    align-items: baseline;
+    flex-flow: row wrap;
+     positing: relative;
+ }
+#food p {
+    font-family: "Azeret Mono", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+}
+ #food p .count {
+     font-weight: normal;
+     font-size: 16px;
+ }
+
+#movie-list, #gwen-goals, #william-goals, #sadie-goals {
+    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);
+     color: #000;
+     border-radius: 20px;
+     padding: 1em;
+     margin: 8px 0;
+     font-family: 'Azeret Mono', sans-serif;  
+     position: relative;
+}
+
+#movie-list .fa-solid,
+#swims .fa-solid,
+#steps .fa-solid,
+#weather .big-icon,
+#food .fa-solid,
+#gwen-goals .fa-solid:not(.fa-circle-check),
+#william-goals .fa-solid:not(.fa-circle-check),
+#sadie-goals .fa-solid:not(.fa-circle-check),
+.work .fa-solid,
+.event .fa-solid {
+    position: absolute;
+    font-size: 80px;
+    opacity: 85%;
+    right: 20px;
+    top: 50%;
+    margin-top: -18px;
+    mix-blend-mode: soft-light;
+}
+
+.work {
+    position: relative;
+}
+
+.work .fa-solid {
+    right: 97px;
+    top: 30px;
+    font-size: 100px;
+    mix-blend-mode: soft-light;
+    color: black;
+}
+
+#movie-list .fa-solid {
+    bottom: 16px;
+    top: auto;
+    transform: rotate(-10deg);
+}
+
+.fa-book {
+    transform: rotate(-10deg);
+}
+
+#weather .big-icon {
+    margin-top: -40px;
+}
+
+#gwen-goals {
+    margin-top: 0;
+}
+
+#william-goals {
+     background: linear-gradient(240deg, #ee9ca7 0%, #ffdde1 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#sadie-goals {
+    background: linear-gradient(240deg, #FC5C7D 0%, #6A82FB 100%);
+}
+
+#movie-list em,
+#gwen-goals em,
+#william-goals em,
+#sadie-goals em {
+    font-weight: bold;
+    font-size: 28px;
+    font-style: normal;
+    display: block;
+}
+
+#steps,
+iframe {
+    border-radius: 20px;
+    margin-top: 63px;
+}
+iframe {
+    margin-bottom: 6px;
+    height: 275px;
+    border: none;
+    width: 100%;
+    border-radius: 20px;
+}
