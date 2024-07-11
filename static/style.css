@@ -12,7 +12,7 @@ body  {
     gap: 16px;
     align-items: end;
     width: calc(1920px - 96px);/* 1920x1080 */
-    padding: 0;
+    padding: 1em 0 0;
     margin: 0 auto;
     font-size: 20px;
     font-family: 'Azeret Mono', sans-serif;
@@ -30,8 +30,20 @@ body > div {
     footer {visibility: hidden;}
 }
 
-.block-container {
+div#error {
+    color: #0f1117;
+    position: absolute;
+    top: 3px;
+    z-index: 12;
+    font-size: 48px;
+}
 
+#error.events-error,
+#error.work-error,
+#error.swim-error,
+#error.reads-error,
+#error.dinner-error {
+    color: #dc0000;
 }
 
 body, h1, h2, h3, em, .clock-placeholder {
