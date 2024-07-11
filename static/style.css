@@ -1,12 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap');
 
-body  {
+html {
     color: #fff;
     background: #0f1117;
+
+}
+
+body  {
     display: grid;
     grid-template-columns: 1fr 1fr 1.5fr 2fr;
     gap: 16px;
     align-items: end;
+    width: calc(1920px - 96px);/* 1920x1080 */
+    padding: 0;
+    margin: 0 auto;
+    font-size: 20px;
+    font-family: 'Azeret Mono', sans-serif;
+    line-height: 1.6;
+}
+
+body > div {
+    display: flex;
+    flex-flow: column;
+    row-gap: 16px;
 }
 
 @media screen and ( max-height: 768px ) {
@@ -15,10 +31,7 @@ body  {
 }
 
 .block-container {
-    padding: 0;
-    width: calc(1920px - 96px); /* 1920x1080 */
-    margin: 0 auto;
-    font-size: 20px;
+
 }
 
 body, h1, h2, h3, em, .clock-placeholder {
@@ -34,10 +47,10 @@ body, h1, h2, h3, em, .clock-placeholder {
     text-transform: uppercase;
     border-radius: 20px;
     padding: 0;
-    margin: -11px 0 0;
-    line-height: .85;  
+    line-height: .85;
+    margin-top:-16px;
 }
-.time {
+#time {
     font-size: 60px;
 }
 
@@ -46,7 +59,6 @@ body, h1, h2, h3, em, .clock-placeholder {
     color: #000;
     border-radius: 20px;
     padding: .5em;
-    margin: 65px 0 8px;
     display: flex;
     font-family: 'Azeret Mono', sans-serif;
     font-size: 33px;
@@ -60,16 +72,16 @@ body, h1, h2, h3, em, .clock-placeholder {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 25px;
-    font-family: 'Azeret Mono', sans-serif;
-    column-gap: 16px;
+    gap: 16px;
     justify-content: space-between;
+    color: white;
 }
 .event-list .event {
+    color: black;
     background: linear-gradient(240deg, rgba(151, 231, 209) 0%, rgba(236, 252, 195) 100%);
     color: #000;
     border-radius: 20px;
     padding: .5em;
-    margin: 8px 0;
     width: calc(50% - 34px);
     position: relative;
 }
@@ -93,16 +105,14 @@ span.date:last-child {
     color: #000;
     border-radius: 20px;
     padding: 1em;
-    margin: 8px 0;
     display: flex;
-    justify-content: left;
-    font-family: 'Azeret Mono', sans-serif;
     align-items: center;
     flex-flow: row wrap;
     column-gap: .5em;
     line-height: 1em;
-    height: 320px;
+    height: 280px;
     justify-content: center;
+    position: relative;
 }
 #swims .count, #steps .count {
     font-size: 48px;
@@ -117,15 +127,13 @@ span.date:last-child {
 }
 
  #food {
+     position: relative;
      background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 90%);
      color: #000;
      border-radius: 20px;
      padding: 1em;
-     margin: 8px 0;
-     font-family: 'Azeret Mono', sans-serif;
-    align-items: baseline;
-    flex-flow: row wrap;
-     positing: relative;
+     align-items: baseline;
+     flex-flow: row wrap;
  }
 #food p {
     font-family: "Azeret Mono", sans-serif;
@@ -142,8 +150,6 @@ span.date:last-child {
      color: #000;
      border-radius: 20px;
      padding: 1em;
-     margin: 8px 0;
-     font-family: 'Azeret Mono', sans-serif;  
      position: relative;
 }
 
@@ -172,7 +178,7 @@ span.date:last-child {
 
 .work .fa-solid {
     right: 97px;
-    top: 30px;
+    top: 22px;
     font-size: 100px;
     mix-blend-mode: soft-light;
     color: black;
@@ -190,10 +196,6 @@ span.date:last-child {
 
 #weather .big-icon {
     margin-top: -40px;
-}
-
-#gwen-goals {
-    margin-top: 0;
 }
 
 #william-goals {
@@ -217,10 +219,8 @@ span.date:last-child {
 #steps,
 iframe {
     border-radius: 20px;
-    margin-top: 63px;
 }
 iframe {
-    margin-bottom: 6px;
     height: 275px;
     border: none;
     width: 100%;

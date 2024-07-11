@@ -5,15 +5,14 @@
 
   var Clock = function () {
     
-    var el = document.querySelector('#js-clock');
+    var el = document.querySelector('#time');
     
     /**
      * Time Format
      */
     var timeFormat = new Date().toLocaleTimeString([], {
       hour: '2-digit',
-      minute:'2-digit',
-      second:'2-digit'
+      minute:'2-digit'
     });
      
     /** 

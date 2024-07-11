@@ -3,14 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <style>
-        {{ styles_css|safe }}
-    </style>
-    <style>
-        {{ weather_icons_css|safe }}
-    </style>
+    <title>Blair Dashboard</title>
+    <style>{{ styles_css|safe }}</style>
+    <style>{{ weather_icons_css|safe }}</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="{{ url_for('static', filename='clock.js') }}"></script>
     <script>
+
+        function updateEvents() {
+            fetch('/events')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data updated successfully');
+                    document.getElementById('event-list').innerHTML = data.html;
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                });
+        }
+        function updateWork() {
+            fetch('/work')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data updated successfully');
+                    // Update count and svg elements
+                    document.getElementById('work1').innerHTML = data.work1.replace(/ /g, '<br>');
+                    document.getElementById('work2').innerHTML = data.work2.replace(/ /g, '<br>');
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                })
+        }
+        function updateDinner() {
+            fetch('/dinner')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data updated successfully');
+                    // Update count and svg elements
+                    document.getElementById('dinner_today').textContent = data.dinner_today;
+                    document.getElementById('dinner_tomorrow').textContent = data.dinner_tomorrow;
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                })
+        }
+        function updateSwims() {
+            fetch('/summer_swims')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data updated successfully');
+                    // Update count and svg elements
+                    document.getElementById('swim_count').textContent = data.count;
+                    document.getElementById('swim_svg').src = "data:image/svg+xml;base64," + data.svg;
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                });
+        }
+        function updateReads() {
+            fetch('/summer_reads')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data updated successfully');
+                    // Update count and svg elements
+                    document.getElementById('read_count').textContent = data.count;
+                    document.getElementById('read_svg').src = "data:image/svg+xml;base64," + data.svg;
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                });
+        }
         function fetchWeather() {
             fetch('/weather')
                 .then(response => response.json())
@@ -31,44 +94,103 @@
                 });
         }
 
-        setInterval(fetchWeather, 300000); // Update every 5 seconds
-        window.onload = fetchWeather; // Fetch weather data when the page loads
+        setInterval(fetchWeather, 300000); // Update every 5 minutes
+        setInterval(updateDinner, 300000); // Update every 5 minutes
+        setInterval(updateWork, 300000); // Update every 5 minutes
+        setInterval(updateReads, 300000); // Update every 5 minutes
+        setInterval(updateSwims, 300000); // Update every 5 minutes
+        setInterval(updateEvents, 300000); // Update every 5 minutes
+        window.onload = function() {
+            updateSwims();
+            updateWork();
+            updateReads();
+            updateDinner();
+            updateEvents();
+            fetchWeather();
+        };
     </script>
 </head>
 <body>
     <div id="col0">
         <div id="weather">Loading...</div>
-    </div>
-    <div id="col1">
+        <div class="work event-list">
+            <div class="event">
+                <span id="work1"></span>
+            </div>
+            <div class="event">
+                <span id="work2"></span>
+            </div>
+            <i class="fa-solid fa-laptop-code"></i>
+        </div>
         <div id="movie-list">
             <i class="fa-solid fa-clapperboard"></i>
-            <em>Movie List</em><br>
-            July 4<br>
-            <em>Frozen 2</em><br>
-            July 11<br>
-            <em>Kiki's Delivery Service</em><br>
+<!--            July 4: Frozen 2<br>-->
+<!--            July 10: Kiki's Delivery Service<br><br>-->
             July 18<br>
             <em>Inside Out 2</em><br>
+            July 25<br>
+            <em>IF</em><br>
+            Aug 2<br>
+            <em>Kung Fu Panda 4</em><br>
+            Aug 8<br>
+            <em>Casagrandes Movie</em><br>
+        </div>
+        <div class="clock-placeholder">
+            <span id="time"></span><br>
+            {{ current_date }}
+        </div>
+    </div>
+    <div id="col1">
+        <div id="steps">
+            <span id="read_count" class="count">{{ read_count }}</span>
+            <span>summer<br>reads</span>
+            <img id="read_svg">
+        </div>
+        <div id="swims">
+            <span id="swim_count" class="count">{{ swim_count }}</span>
+            <span>swim<br>days</span>
+            <img id="swim_svg">
+        </div>
+        <div id="food">
+            <i class="fa-solid fa-utensils"></i>
+            <p>
+                <span class="count">Dinner Today</span><br>
+                <span id="dinner_today">No plans</span>
+            </p>
+            <p>
+                <span class="count">Dinner Tomorrow</span><br>
+                <span id="dinner_tomorrow">No plans</span>
+            </p>
         </div>
     </div>
     <div id="col2">
         <iframe src="http://192.168.4.200:8081/frame.html" scrolling="no" frameborder="0" allowfullscreen=""></iframe>
+        <div id="gwen-goals">
+            <em>Gwen Summer Goals</em>
+            <i class="fa-solid fa-feather"></i>
+            <i class="fa-solid fa-circle-check"></i> Eat Icecream<br>
+            <i class="fa-regular fa-circle"></i> {{gwen_read}}/30 books read<br>
+            <i class="fa-regular fa-circle"></i> 1/4 D&D Sessions<br>
+        </div>
+        <div id="william-goals">
+            <em>Will Summer Goals</em>
+            <i class="fa-solid fa-book-skull"></i>
+            <i class="fa-regular fa-circle"></i> Build Lego Tallneck<br>
+            <i class="fa-regular fa-circle"></i> {{will_read}}/5 Ascendant Series<br>
+            <i class="fa-regular fa-circle"></i> 1/4 D&D Sessions<br>
+        </div>
+        <div id="sadie-goals">
+            <em>Sadie Summer Goals</em>
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-circle-check"></i> Learn to Swim<br>
+            <i class="fa-regular fa-circle"></i> Learn to Read<br>
+            <i class="fa-solid fa-circle-check"></i> Play D&D<br>
+        </div>
     </div>
     <div id="col3">
-        <div class="event-list"><span class="date"><span>Wed</span><span>Jul 10</span></span>
+        <div id="event-list" class="event-list">
+            <span class="date"><span>Wed</span><span>Jul 10</span></span>
             <div class="event"><span class="time">3:00 pm-4:00 pm</span><br> Sadie RPG</div>
-            <div class="event"><span class="time">5:00 pm-6:00 pm</span><br><i class="fa-solid fa-person-swimming"></i> Swim</div>
-            <div class="event"><span class="time">7:00 pm-8:00 pm</span><br><i class="fa-solid fa-user-astronaut"></i> Among Us</div>
-            <span class="date"><span>Thu</span><span>Jul 11</span></span>
-            <div class="event"><span class="time">5:00 pm-6:00 pm</span><br><i class="fa-solid fa-person-swimming"></i> Swim</div>
-            <div class="event"><span class="time">6:30 pm-8:30 pm</span><br><i class="fa-solid fa-clapperboard"></i> Movie Night!</div>
-            <span class="date"><span>Fri</span><span>Jul 12</span></span>
-            <div class="event"><span class="time">9:00 am-11:00 am</span><br><i class="fa-solid fa-person-hiking"></i> Splorin'</div>
-            <div class="event"><span class="time">5:00 pm-6:00 pm</span><br><i class="fa-solid fa-person-swimming"></i> Swim</div>
-            <div class="event"><span class="time">7:00 pm-8:00 pm</span><br><i class="fa-solid fa-user-astronaut"></i> Among Us</div>
-            <div class="event"><span class="time">10:30 pm-11:59 pm</span><br><i class="fa-solid fa-gamepad"></i> Zoe and Gavin TV Time</div>
-            <span class="date"><span>Sat</span><span>Jul 13</span></span>
-            <div class="event"><span class="time">5:00 pm-6:00 pm</span><br><i class="fa-solid fa-person-swimming"></i> Swim</div></div>
     </div>
 </body>
 </html>
