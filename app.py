@@ -42,8 +42,14 @@ def home():
     )
 @app.route('/movies')
 def movies():
-    return movie_list()
-    
+    movies_data = movie_list()
+    if movies_data:
+        movies = movies_data.json  # Assuming movie_list() returns a response object
+        html_content = render_template('movie_list.html', movies=movies['movies'])
+        return jsonify({'html': html_content})
+    else:
+        return "Failed to fetch movie list."
+
 @app.route('/weather')
 def weather():
     return weather_forecast()

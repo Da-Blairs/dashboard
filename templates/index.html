@@ -10,40 +10,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="{{ url_for('static', filename='clock.js') }}"></script>
     <script>
-
-        function updateMovies() {
-            fetch('/movies')
+        function fetchData(url, targetId, errorClass) {
+            fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     console.log('Data updated successfully');
-                    document.getElementById('movie-list').innerHTML = data.html;
-                    document.getElementById('error').classList.remove('movies-error');
+                    document.getElementById(targetId).innerHTML = data.html;
+                    document.getElementById('error').classList.remove(errorClass + '-error');
                 })
                 .catch(error => {
                     console.error('Error updating data:', error);
                     let errorElement = document.getElementById('error');
-                    if (!errorElement.classList.contains('movies-error')) {
-                        errorElement.classList.add('movies-error');
+                    if (!errorElement.classList.contains(errorClass + '-error')) {
+                        errorElement.classList.add(errorClass + '-error');
                     }
                 });
+        }
+
+        function updateMovies() {
+            fetchData('/movies', 'movie-list', 'movies');
         }
 
         function updateEvents() {
-            fetch('/events')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Data updated successfully');
-                    document.getElementById('event-list').innerHTML = data.html;
-                    document.getElementById('error').classList.remove('events-error');
-                })
-                .catch(error => {
-                    console.error('Error updating data:', error);
-                    let errorElement = document.getElementById('error');
-                    if (!errorElement.classList.contains('events-error')) {
-                        errorElement.classList.add('events-error');
-                    }
-                });
+            fetchData('/events', 'event-list', 'events');
         }
+
         function updateWork() {
             fetch('/work')
                 .then(response => response.json())
@@ -62,6 +53,7 @@
                     }
                 })
         }
+
         function updateDinner() {
             fetch('/dinner')
                 .then(response => response.json())
@@ -145,6 +137,7 @@
                 });
         }
 
+        setInterval(updateMovies, 300000); // Update every 5 minutes
         setInterval(fetchWeather, 300000); // Update every 5 minutes
         setInterval(updateDinner, 300000); // Update every 5 minutes
         setInterval(updateWork, 300000); // Update every 5 minutes
@@ -157,6 +150,7 @@
             updateReads();
             updateDinner();
             updateEvents();
+            updateMovies();
             fetchWeather();
         };
     </script>
@@ -176,16 +170,7 @@
         </div>
         <div id="movie-list">
             <i class="fa-solid fa-clapperboard"></i>
-<!--            July 4: Frozen 2<br>-->
-<!--            July 10: Kiki's Delivery Service<br><br>-->
-            July 18<br>
-            <em>Inside Out 2</em><br>
-            July 25<br>
-            <em>IF</em><br>
-            Aug 2<br>
-            <em>Kung Fu Panda 4</em><br>
-            Aug 8<br>
-            <em>Casagrandes Movie</em><br>
+            ...
         </div>
         <div class="clock-placeholder">
             <span id="time"></span><br>

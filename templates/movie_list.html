@@ -1,0 +1,7 @@
+<i class="fa-solid fa-clapperboard"></i>
+{% for movie in movies %}
+<div class="movie-item">
+    {{ movie.date }}<br>
+    <em>{{ movie.movie_name }}</em><br>
+</div>
+{% endfor %}

@@ -202,6 +202,10 @@ span.date:last-child {
     transform: rotate(-10deg);
 }
 
+.movie-item:last-child {
+    margin-bottom: -1em;
+}
+
 .fa-book {
     transform: rotate(-10deg);
 }
