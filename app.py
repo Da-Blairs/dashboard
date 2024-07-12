@@ -9,6 +9,7 @@ from google.auth.transport.requests import Request
 import json
 import os
 import pytz
+from movies import movie_list
 from summer_reads import summer_reads_total, summer_reads_svg, gwen_read, will_read
 from summer_swims import summer_swims_total, summer_swims_svg
 from gcal import google_authorize, google_callback, gcal_dinner, gcal_work, gcal_events
@@ -39,7 +40,10 @@ def home():
         gwen_read=gwen_read(),
         will_read=will_read()
     )
-
+@app.route('/movies')
+def movies():
+    return movie_list()
+    
 @app.route('/weather')
 def weather():
     return weather_forecast()
