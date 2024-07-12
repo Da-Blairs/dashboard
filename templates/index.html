@@ -11,6 +11,23 @@
     <script src="{{ url_for('static', filename='clock.js') }}"></script>
     <script>
 
+        function updateMovies() {
+            fetch('/movies')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data updated successfully');
+                    document.getElementById('movie-list').innerHTML = data.html;
+                    document.getElementById('error').classList.remove('movies-error');
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                    let errorElement = document.getElementById('error');
+                    if (!errorElement.classList.contains('movies-error')) {
+                        errorElement.classList.add('movies-error');
+                    }
+                });
+        }
+
         function updateEvents() {
             fetch('/events')
                 .then(response => response.json())
