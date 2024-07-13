@@ -3,11 +3,11 @@ from math import cos, sin, radians
 
 def pie_chart_svg(counter):
     colors = [
-        '#92d050',  # Light Green
+        '#57A63A',  # Light Green
         '#ffc000',  # Gold
-        '#ffe4c4',  # Bisque
-        '#cfe2f3',  # Light Blue
-        '#ff9999',  # Light Salmon
+        'tomato',  # Light Blue
+        'cadetblue',  # Light Blue
+        'palevioletred',  # Light Salmon
         '#ffcc99',  # Peach
         '#f0f8ff',  # Alice Blue
         '#ffeb99',  # Light Yellow

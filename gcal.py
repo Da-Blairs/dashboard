@@ -1,6 +1,7 @@
 import datetime
 from dotenv import load_dotenv
 import os
+import pprint
 import pytz
 from flask import Flask, request, redirect, session, render_template, jsonify
 from google_auth_oauthlib.flow import Flow
@@ -106,11 +107,8 @@ def get_credentials():
 def midnight_toronto_iso():
     global toronto_tz
 
-    # Get the current UTC time
-    now_utc = datetime.datetime.utcnow()
-
-    # Convert the current UTC time to Toronto time
-    now_toronto = now_utc.astimezone(toronto_tz)
+    # Current Toronto time
+    now_toronto = datetime.datetime.now(toronto_tz)
 
     # Replace the time to midnight
     midnight_toronto = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0)

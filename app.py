@@ -8,6 +8,7 @@ from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 import json
 import os
+from pprint import pprint
 import pytz
 from movies import movie_list
 from summer_reads import summer_reads_total, summer_reads_svg, gwen_read, will_read
