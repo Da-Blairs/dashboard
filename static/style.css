@@ -10,9 +10,9 @@ body  {
     display: grid;
     grid-template-columns: 1fr 1fr 1.5fr 2fr;
     gap: 16px;
-    align-items: end;
+    align-items: start;
     width: calc(1920px - 96px);/* 1920x1080 */
-    padding: 1em 0 0;
+    padding: 3em 0 0;
     margin: 0 auto;
     font-size: 20px;
     font-family: 'Azeret Mono', sans-serif;
@@ -88,6 +88,11 @@ body, h1, h2, h3, em, .clock-placeholder {
     justify-content: space-between;
     color: white;
 }
+
+.event-list:not(.work) {
+    margin-top: -71px;
+}
+
 .event-list .event {
     color: black;
     background: linear-gradient(240deg, rgba(151, 231, 209) 0%, rgba(236, 252, 195) 100%);
@@ -105,6 +110,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     display: flex;
     justify-content: space-between;
     padding: 15px 15px 0;
+    margin: 0 0 -11px;
     width: 100%;
 }
 
