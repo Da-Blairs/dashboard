@@ -3,7 +3,6 @@
 html {
     color: #fff;
     background: #0f1117;
-
 }
 
 body  {
@@ -17,6 +16,9 @@ body  {
     font-size: 20px;
     font-family: 'Azeret Mono', sans-serif;
     line-height: 1.6;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
 }
 
 body > div {
@@ -90,7 +92,9 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 .event-list:not(.work) {
-    margin-top: -71px;
+    margin-top: -59px;
+    /*max-height: 1000px;*/
+    /*overflow: scroll;*/
 }
 
 .event-list .event {

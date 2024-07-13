@@ -153,6 +153,19 @@
             updateMovies();
             fetchWeather();
         };
+
+        document.addEventListener('keydown', function(event) {
+            const col3 = document.getElementById('col3');
+            const step = 20; // Adjust this value to change the scroll speed
+            let currentMarginTop = parseInt(window.getComputedStyle(col3).marginTop) || 0;
+
+            if (event.key === 'ArrowUp') {
+                col3.style.marginTop = (currentMarginTop + step) + 'px';
+            } else if (event.key === 'ArrowDown') {
+                col3.style.marginTop = (currentMarginTop - step) + 'px';
+            }
+        });
+
     </script>
 </head>
 <body>
