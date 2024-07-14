@@ -5,7 +5,7 @@ import datetime
 from math import cos, sin, radians
 from pie_chart_svg import pie_chart_svg
 
-swim_days = 9
+swim_days = 10
 
 def summer_swims_total():
     global swim_days
