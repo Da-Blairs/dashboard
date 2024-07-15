@@ -197,6 +197,9 @@ span.date:last-child {
 .work {
     position: relative;
 }
+#work1, #work2 {
+    white-space: pre-wrap;
+}
 
 .work .fa-solid {
     right: 97px;

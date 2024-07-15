@@ -36,22 +36,7 @@
         }
 
         function updateWork() {
-            fetch('/work')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Data updated successfully');
-                    // Update count and svg elements
-                    document.getElementById('work1').innerHTML = data.work1.replace(/ /g, '<br>');
-                    document.getElementById('work2').innerHTML = data.work2.replace(/ /g, '<br>');
-                    document.getElementById('error').classList.remove('work-error');
-                })
-                .catch(error => {
-                    console.error('Error updating data:', error);
-                    let errorElement = document.getElementById('error');
-                    if (!errorElement.classList.contains('work-error')) {
-                        errorElement.classList.add('work-error');
-                    }
-                })
+            fetchData('/work', 'work-list', 'work');
         }
 
         function updateDinner() {
@@ -172,14 +157,7 @@
     <div id="col0">
         <div id="error"><i class="fa-solid fa-triangle-exclamation"></i></div>
         <div id="weather">Loading...</div>
-        <div class="work event-list">
-            <div class="event">
-                <span id="work1"></span>
-            </div>
-            <div class="event">
-                <span id="work2"></span>
-            </div>
-            <i class="fa-solid fa-laptop-code"></i>
+        <div id="work-list" class="work event-list">
         </div>
         <div id="movie-list">
             <i class="fa-solid fa-clapperboard"></i>

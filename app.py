@@ -8,7 +8,7 @@ from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 import json
 import os
-from pprint import pprint
+import pprint
 import pytz
 from movies import movie_list
 from summer_reads import summer_reads_total, summer_reads_svg, gwen_read, will_read
@@ -61,7 +61,14 @@ def dinner():
 
 @app.route('/work')
 def work():
-    return gcal_work()
+    work_data = gcal_work()
+    if work_data:
+        work = work_data.json
+        pprint.pprint(work)
+        html_content = render_template('work.html', work1=work['work1'], work2=work['work2'])
+        return jsonify({'html': html_content})
+    else:
+        return "Failed to fetch work data"
 
 @app.route('/events')
 def event():

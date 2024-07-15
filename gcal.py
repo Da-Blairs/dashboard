@@ -119,7 +119,7 @@ def midnight_toronto_iso():
 def day_end_iso():
     global toronto_tz
     # Get the current Toronto time
-    now_utc = datetime.datetime.utcnow(toronto_tz)
+    now_toronto = datetime.datetime.now(toronto_tz)
 
     # Replace the time to midnight + add a day
     end_of_today = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0) + datetime.timedelta(days=1)
