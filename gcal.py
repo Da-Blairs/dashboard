@@ -1,5 +1,6 @@
 import datetime
 from dotenv import load_dotenv
+import json
 import os
 import pprint
 import pytz
@@ -40,6 +41,58 @@ credentials_info = {
    }
 }
 
+
+CREDENTIALS_FILE = 'credentials.json'
+
+def save_credentials_to_file(credentials):
+    with open(CREDENTIALS_FILE, 'w') as f:
+        json.dump(credentials_to_dict(credentials), f)
+
+def load_credentials_from_file():
+    if os.path.exists(CREDENTIALS_FILE):
+        with open(CREDENTIALS_FILE, 'r') as f:
+            credentials_data = json.load(f)
+            return Credentials.from_authorized_user_info(credentials_data)
+    return None
+
+def credentials_to_dict(credentials):
+    return {
+        'token': credentials.token,
+        'refresh_token': credentials.refresh_token,
+        'token_uri': credentials.token_uri,
+        'client_id': credentials.client_id,
+        'client_secret': credentials.client_secret,
+        'scopes': credentials.scopes
+    }
+
+def get_credentials():
+    creds = None
+
+    # Check if credentials exist in the session
+    if 'credentials' in session:
+        creds = Credentials(**session['credentials'])
+
+    # Check for existing credentials in the JSON file
+    if not creds or not creds.valid:
+        creds = load_credentials_from_file()
+
+    # Refresh the token if it's expired
+    if creds and creds.expired and creds.refresh_token:
+        creds.refresh(Request())
+        # Save the refreshed credentials to the JSON file
+        save_credentials_to_file(creds)
+
+    # Perform OAuth flow if credentials are invalid or do not exist
+    if not creds or not creds.valid:
+        flow = Flow.from_client_config(credentials_info, SCOPES)
+        flow.redirect_uri = redirect_uri
+
+        auth_url, _ = flow.authorization_url(access_type='offline', include_granted_scopes='true', prompt='consent')
+        print(f"Please go to this URL for authorization: {auth_url}")
+        return None
+
+    return creds
+
 def google_authorize(redirect):
     global redirect_uri
     global credentials_info
@@ -68,41 +121,11 @@ def google_callback(request, redirect):
 
     credentials = flow.credentials
     session['credentials'] = credentials_to_dict(credentials)
+
+    # Save credentials to file
+    save_credentials_to_file(credentials)
+
     return redirect('/')
-
-def credentials_to_dict(credentials):
-    return {
-        'token': credentials.token,
-        'refresh_token': credentials.refresh_token,
-        'token_uri': credentials.token_uri,
-        'client_id': credentials.client_id,
-        'client_secret': credentials.client_secret,
-        'scopes': credentials.scopes
-    }
-
-def get_credentials():
-    creds = Credentials(**session['credentials'])
-    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-
-    # Check for existing credentials in environment variable
-    token = os.getenv('GOOGLE_CREDENTIALS_TOKEN')
-    if token:
-        creds = Credentials.from_authorized_user_info(json.loads(token), SCOPES)
-
-    # Refresh or perform OAuth flow if credentials are invalid
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-            # Update the environment variable with the refreshed token
-            os.environ['GOOGLE_CREDENTIALS_TOKEN'] = creds.to_json()
-        else:
-            flow = Flow.from_client_config(credentials_info, SCOPES)
-            flow.redirect_uri = redirect_uri
-
-            auth_url, _ = flow.authorization_url(access_type='offline', include_granted_scopes='true', prompt='consent')
-            print(f"Please go to this URL for authorization: {auth_url}")
-
-    return creds
 
 def midnight_toronto_iso():
     global toronto_tz

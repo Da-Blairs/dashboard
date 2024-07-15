@@ -13,7 +13,7 @@ import pytz
 from movies import movie_list
 from summer_reads import summer_reads_total, summer_reads_svg, gwen_read, will_read
 from summer_swims import summer_swims_total, summer_swims_svg
-from gcal import google_authorize, google_callback, gcal_dinner, gcal_work, gcal_events
+from gcal import get_credentials, google_authorize, google_callback, gcal_dinner, gcal_work, gcal_events
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -25,9 +25,10 @@ def read_css(file_path):
 
 @app.route('/')
 def home():
-    if 'credentials' not in session:
+    credentials = get_credentials()
+    if not credentials:
         return redirect('/authorize')
-    credentials = Credentials(**session['credentials'])
+
     styles_css = read_css(os.path.join(app.root_path, 'static', 'style.css'))
     weather_icons_css = read_css(os.path.join(app.root_path, 'static', 'weather-icons.min.css'))
 
@@ -64,7 +65,6 @@ def work():
     work_data = gcal_work()
     if work_data:
         work = work_data.json
-        pprint.pprint(work)
         html_content = render_template('work.html', work1=work['work1'], work2=work['work2'])
         return jsonify({'html': html_content})
     else:
