@@ -254,4 +254,5 @@ iframe {
     border: none;
     width: 100%;
     border-radius: 20px;
+    transform: rotate(180deg);
 }

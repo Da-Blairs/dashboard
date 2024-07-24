@@ -78,17 +78,17 @@ def get_credentials():
 
     # Refresh the token if it's expired
     if creds and creds.expired and creds.refresh_token:
-        creds.refresh(Request())
-        # Save the refreshed credentials to the JSON file
-        save_credentials_to_file(creds)
+        try:
+            creds.refresh(Request())
+            # Save the refreshed credentials to the session and JSON file
+            session['credentials'] = creds_to_dict(creds)
+            save_credentials_to_file(creds)
+        except Exception as e:
+            print(f"Error refreshing token: {e}")
+            return None
 
     # Perform OAuth flow if credentials are invalid or do not exist
     if not creds or not creds.valid:
-        flow = Flow.from_client_config(credentials_info, SCOPES)
-        flow.redirect_uri = redirect_uri
-
-        auth_url, _ = flow.authorization_url(access_type='offline', include_granted_scopes='true', prompt='consent')
-        print(f"Please go to this URL for authorization: {auth_url}")
         return None
 
     return creds

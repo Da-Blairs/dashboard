@@ -4,15 +4,24 @@ from collections import Counter
 import datetime
 from math import cos, sin, radians
 from pie_chart_svg import pie_chart_svg
+import os
 
-swim_days = 14
+def get_swim_days_from_file():
+    static_folder = os.path.join(os.path.dirname(__file__), 'static')
+    file_path = os.path.join(static_folder, 'swim_days.txt')
+    try:
+        with open(file_path, 'r') as file:
+            swim_days = int(file.read().strip())
+            return swim_days
+    except (FileNotFoundError, ValueError) as e:
+        print(f"Error reading swim days from file: {e}")
+        return 0  # Default value if file not found or invalid
 
 def summer_swims_total():
-    global swim_days
-    return swim_days
+    return get_swim_days_from_file()
 
 def swim_count():
-    global swim_days
+    swim_days = get_swim_days_from_file()
 
     summer_start = datetime.datetime(2024, 6, 29)
 
