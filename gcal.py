@@ -150,6 +150,17 @@ def day_end_iso():
     # Convert to ISO format
     return end_of_today.isoformat()
 
+def tomorrow_iso():
+    global toronto_tz
+    # Get the current Toronto time
+    now_toronto = datetime.datetime.now(toronto_tz)
+
+    # Replace the time to midnight + add a day
+    end_of_tomorrow = now_toronto.replace(hour=0, minute=0, second=0, microsecond=0) + datetime.timedelta(days=2)
+
+    # Convert to ISO format
+    return end_of_tomorrow.isoformat()
+
 
 
 def get_event_dates(events):
@@ -237,6 +248,7 @@ def gcal_dinner():
     service = build('calendar', 'v3', credentials=creds)
     events_result = service.events().list(calendarId=url,
                                           timeMin=midnight_toronto_iso(),
+                                          timeMax=tomorrow_iso(),
                                           maxResults=2,
                                           singleEvents=True,
                                           orderBy='startTime').execute()
