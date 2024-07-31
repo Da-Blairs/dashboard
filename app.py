@@ -65,7 +65,9 @@ def work():
     work_data = gcal_work()
     if work_data:
         work = work_data.json
-        html_content = render_template('work.html', work1=work['work1'], work2=work['work2'])
+        html_content = ''
+        if work:
+            html_content = render_template('work.html', work1=work['work1'], work2=work['work2'])
         return jsonify({'html': html_content})
     else:
         return "Failed to fetch work data"
