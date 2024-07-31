@@ -207,7 +207,7 @@ def gcal_events():
     events_result = service.events().list(
         calendarId=url,
         timeMin=midnight_toronto_iso(),
-        maxResults=20,
+        maxResults=10,
         singleEvents=True,
         orderBy='startTime'
     ).execute()
