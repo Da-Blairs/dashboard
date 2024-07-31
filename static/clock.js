@@ -1,18 +1,26 @@
 /**
- * Simple JS Clock
+ * Simple JS Clock and Date Updater
  */
 (function() {
 
   var Clock = function () {
     
-    var el = document.querySelector('#time');
+    var timeElement = document.querySelector('#time');
+    var dateElement = document.querySelector('#date');
     
     /**
-     * Time Format
+     * Time and Date Format
      */
     var timeFormat = new Date().toLocaleTimeString([], {
       hour: '2-digit',
       minute:'2-digit'
+    });
+    
+    var dateFormat = new Date().toLocaleDateString([], {
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric'
     });
      
     /** 
@@ -32,9 +40,10 @@
     };
     
     /**
-     * Pass vars to out Render Util
+     * Pass vars to our Render Util
      */
-    render(timeFormat, el);
+    render(timeFormat, timeElement);
+    render(dateFormat, dateElement);
   }
   
   /**
