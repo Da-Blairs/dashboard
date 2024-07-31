@@ -282,7 +282,10 @@ def gcal_work():
     for event in events:
         work.append(event['summary'])
 
-    return jsonify({
-            "work1": work[0],
-            "work2": work[1],
-        })
+    if work:
+        return jsonify({
+                "work1": work[0],
+                "work2": work[1],
+            })
+
+    return jsonify({})
