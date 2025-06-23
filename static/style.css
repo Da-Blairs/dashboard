@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Macondo&family=Macondo+Swash+Caps&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+/**
+ * "Macondo Swash Caps", "cursive"
+ * Macondo, cursive;
+ * Raleway, sans-serif
+ */
 html {
-    color: #fff;
-    background: #0f1117;
+    color: #fee9c5;
+    background: #3a372e; /*#0f1117;*/
 }
 
 body  {
@@ -14,7 +18,7 @@ body  {
     padding: 61px 0 0;
     margin: 0 auto;
     font-size: 20px;
-    font-family: 'Azeret Mono', sans-serif;
+    font-family: 'Raleway', sans-serif;
     line-height: 1.6;
     position: relative;
     height: 100vh;
@@ -48,33 +52,48 @@ div#error {
     color: #dc0000;
 }
 
+h1, h2, h3, em, .clock-placeholder {
+    font-family: "Macondo Swash Caps", cursive;
+}
+
 body, h1, h2, h3, em, .clock-placeholder {
-    font-family: 'Azeret Mono', sans-serif;
-    color: #000;
+    color: #fee9c5;
 }
 
 .clock-placeholder {
     background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 80px;
+    font-size: 100px;
     text-transform: uppercase;
     border-radius: 20px;
     padding: 0;
-    line-height: .85;
     margin-top:-16px;
 }
+
+#time, #date {
+    display: block;
+    text-align-last: justify;
+    width: 100%;
+}
+#date {
+    margin-top: -0.65em;
+}
 #time {
-    font-size: 60px;
+    font-size: 72px;
+    font-family: Macondo, cursive;
+    text-align-last: justify;
 }
 
 #weather {
-    background: linear-gradient(240deg, rgba(252, 142, 190) 0%, rgba(252, 229, 195) 100%);
-    color: #000;
+    background: #ce336f; 
+/*    background: linear-gradient(240deg, rgba(252, 142, 190) 0%, rgba(252, 229, 195) 100%);*/
+    color: #fee9c5;
+/*    color: #000;*/
     border-radius: 20px;
     padding: .5em;
     display: flex;
-    font-family: 'Azeret Mono', sans-serif;
+    font-family: "Macondo Swash Caps", sans-serif;
     font-size: 33px;
     justify-content: space-between;
     position: relative;
@@ -88,7 +107,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     font-size: 25px;
     gap: 16px;
     justify-content: space-between;
-    color: white;
+    color: #fee9c5;
 }
 
 .event-list:not(.work) {
@@ -100,22 +119,27 @@ body, h1, h2, h3, em, .clock-placeholder {
 .event-list .event {
     color: black;
     background: linear-gradient(240deg, rgba(151, 231, 209) 0%, rgba(236, 252, 195) 100%);
+    background: #4f9d50;
     color: #000;
+    color: #fee9c5;
     border-radius: 20px;
     padding: .5em;
     width: calc(50% - 34px);
     position: relative;
+    overflow: hidden;
 }
 .event-list .time {
     font-size: 20px;
     font-weight: normal;
 }
 .event-list .date {
+    font-family: "Macondo Swash Caps", cursive;
     display: flex;
     justify-content: space-between;
     padding: 15px 15px 0;
     margin: 0 0 -11px;
     width: 100%;
+    text-transform: none;
 }
 
 span.date:last-child {
@@ -123,9 +147,10 @@ span.date:last-child {
 }
 
 #swims, #steps {
-    background-image: linear-gradient(240deg, rgba(124, 136, 224) 0%, rgba(195, 244, 252) 100%);
+/*    background-image: linear-gradient(240deg, rgba(124, 136, 224) 0%, rgba(195, 244, 252) 100%);*/
+    background: #b5aa92;
     color: #000;
-    border-radius: 20px;
+
     padding: 1em;
     display: flex;
     align-items: center;
@@ -135,6 +160,15 @@ span.date:last-child {
     height: 280px;
     justify-content: center;
     position: relative;
+}
+#swims:after, #steps:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    background-size: 22px 22px;
+    background-image: 
+        radial-gradient(circle, #837c6c 1px, rgba(0, 0, 0, 0) 1px);
 }
 #swims .count, #steps .count {
     font-size: 48px;
@@ -146,19 +180,21 @@ span.date:last-child {
     position: absolute;
     left: 15px;
     width: 90%;
+    z-index: 1;
 }
 
  #food {
      position: relative;
-     background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 90%);
-     color: #000;
+/*     background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 90%);*/
+     background: #009391;
+     color: #fee9c5;
      border-radius: 20px;
      padding: 1em;
      align-items: baseline;
      flex-flow: row wrap;
  }
 #food p {
-    font-family: "Azeret Mono", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 25px;
     font-weight: 700;
 }
@@ -168,8 +204,10 @@ span.date:last-child {
  }
 
 #movie-list, #gwen-goals, #william-goals, #sadie-goals {
-    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);
-     color: #000;
+/*    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);*/
+    background: #d88036;
+/*     color: #000;*/
+     color: #fee9c5;
      border-radius: 20px;
      padding: 1em;
      position: relative;
@@ -228,11 +266,13 @@ span.date:last-child {
 }
 
 #william-goals {
-     background: linear-gradient(240deg, #ee9ca7 0%, #ffdde1 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/*     background: linear-gradient(240deg, #ee9ca7 0%, #ffdde1 100%);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #009391;
 }
 
 #sadie-goals {
-    background: linear-gradient(240deg, #FC5C7D 0%, #6A82FB 100%);
+/*    background: linear-gradient(240deg, #FC5C7D 0%, #6A82FB 100%);*/
+    background: #ce336f;
 }
 
 #movie-list em,
@@ -245,7 +285,6 @@ span.date:last-child {
     display: block;
 }
 
-#steps,
 iframe {
     border-radius: 20px;
 }

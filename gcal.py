@@ -182,6 +182,10 @@ event_icons = {
     "among": "<i class='fa-solid fa-user-astronaut'></i>",
     "game": "<i class='fa-solid fa-dice'></i>",
     "birthday": "<i class='fa-solid fa-cake-candles'></i>",
+    "grad": "<i class='fa-solid fa-graduation-cap'></i>",
+    "retire": "<i class='fa-solid fa-umbrella-beach'></i>",
+    "babysit": "<i class='fa-solid fa-person-running'></i>",
+    "recital": "<i class='fa-solid fa-music'></i>",
     "d&d": "<i class='fa-solid fa-dragon'></i>",
     "oma": "<i class='fa-solid fa-face-grin-hearts'></i>",
     "goderich": "<i class='fa-solid fa-face-grin-hearts'></i>",
@@ -218,7 +222,7 @@ def gcal_events():
 
     for date in date_list:
         header = datetime.datetime.strptime(date, "%Y-%m-%d")
-        html_output.append(f"<span class='date'><span>{header.strftime('%a')}</span><span>{header.strftime('%b %d')}</span></span>")
+        html_output.append(f"<span class='date'><span>{header.strftime('%A')}, {header.strftime('%B %d')}</span><span></span></span>")
 
         for event in events:
             icon = ""
