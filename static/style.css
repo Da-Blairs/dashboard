@@ -145,6 +145,10 @@ body, h1, h2, h3, em, .clock-placeholder {
     text-transform: none;
 }
 
+.work .event {
+    background: #4f9d50;
+}
+
 span.date:last-child {
     display: none;
 }
