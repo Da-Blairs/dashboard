@@ -3,11 +3,11 @@ from math import cos, sin, radians
 
 def pie_chart_svg(counter):
     colors = [
-        '#57A63A',  # Light Green
-        '#ffc000',  # Gold
-        'tomato',  # Light Blue
-        'cadetblue',  # Light Blue
+        '#4f9d50',  # Light Green
+        '#d88036',  # Gold
+        '#009391',  # Light Blue
         'palevioletred',  # Light Salmon
+        '#837a6d',  # Light Blue
         '#ffcc99',  # Peach
         '#f0f8ff',  # Alice Blue
         '#ffeb99',  # Light Yellow
@@ -65,7 +65,7 @@ def pie_chart_svg(counter):
 
         # Create SVG elements for segment and label
         segment = f'<path d="{segment_path}" fill="{colors[i]}" />'
-        label = f'<text font-family="Arial, Helvetica, sans-serif" font-size="5" x="{label_x}" y="{label_y}" text-anchor="middle" alignment-baseline="middle">{labels[i]}</text>'
+        label = f'<text fill="#fee9c5" font-family="Arial, Helvetica, sans-serif" font-size="5" x="{label_x}" y="{label_y}" text-anchor="middle" alignment-baseline="middle">{labels[i]}</text>'
 
         segments.append(segment)
         segments.append(label)

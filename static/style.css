@@ -7,6 +7,9 @@
 html {
     color: #fee9c5;
     background: #000; /*#3a372e; /*#0f1117;*/
+    background: url(static/paper2.jpg) #3a372e;
+    background-blend-mode: multiply;
+    background-size: cover;
 }
 
 body  {
@@ -64,7 +67,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 100px;
+    font-size: 99px;
     text-transform: uppercase;
     border-radius: 20px;
     padding: 0;
@@ -148,9 +151,8 @@ span.date:last-child {
 
 #swims, #steps {
 /*    background-image: linear-gradient(240deg, rgba(124, 136, 224) 0%, rgba(195, 244, 252) 100%);*/
-    background: #b5aa92;
-    color: #000;
-
+    background: #837a6d;
+    color: #fee9c5;
     padding: 1em;
     display: flex;
     align-items: center;
@@ -168,7 +170,8 @@ span.date:last-child {
     content: " ";
     background-size: 22px 22px;
     background-image: 
-        radial-gradient(circle, #837c6c 1px, rgba(0, 0, 0, 0) 1px);
+        radial-gradient(circle, #3a372e 1px, rgba(0, 0, 0, 0) 1px);
+    background-position: -3px -3px;
 }
 #swims .count, #steps .count {
     font-size: 48px;
@@ -176,7 +179,7 @@ span.date:last-child {
 
 #swims img,
 #steps img {
-    mix-blend-mode: color-burn;
+/*    mix-blend-mode: color-burn;*/
     position: absolute;
     left: 15px;
     width: 90%;
@@ -244,7 +247,7 @@ span.date:last-child {
     top: 22px;
     font-size: 100px;
     mix-blend-mode: soft-light;
-    color: black;
+    color: #fee9c5;
 }
 
 #movie-list .fa-solid {
