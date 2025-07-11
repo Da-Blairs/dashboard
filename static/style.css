@@ -4,6 +4,7 @@
  * Macondo, cursive;
  * Raleway, sans-serif
  */
+
 html {
     color: #fee9c5;
     background: #000; /*#3a372e; /*#0f1117;*/
@@ -14,12 +15,12 @@ html {
 
 body  {
     display: grid;
-    grid-template-columns: 1fr 1fr 1.5fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
     gap: 16px;
     align-items: start;
     width: calc(1920px - 96px);/* 1920x1080 */
     padding: 61px 0 0;
-    margin: 0 auto;
+    margin: 3em auto 0;
     font-size: 20px;
     font-family: 'Raleway', sans-serif;
     line-height: 1.6;
@@ -40,7 +41,7 @@ body > div {
 }
 
 div#error {
-    color: #0f1117;
+    color: rgba(220, 0, 0, 0);
     position: absolute;
     top: 3px;
     z-index: 12;
@@ -52,7 +53,7 @@ div#error {
 #error.swim-error,
 #error.reads-error,
 #error.dinner-error {
-    color: #dc0000;
+    color: rgba(220, 0, 0, 1);
 }
 
 h1, h2, h3, em, .clock-placeholder {
@@ -67,7 +68,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 99px;
+    font-size: 115px;
     text-transform: uppercase;
     border-radius: 20px;
     padding: 0;
@@ -81,9 +82,11 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 #date {
     margin-top: -0.65em;
+    padding-left: 25px;
+    width: calc(100% - 25px);
 }
 #time {
-    font-size: 72px;
+    font-size: 78px;
     font-family: Macondo, cursive;
     text-align-last: justify;
 }
@@ -163,7 +166,7 @@ span.date:last-child {
     flex-flow: row wrap;
     column-gap: .5em;
     line-height: 1em;
-    height: 280px;
+    height: 260px;
     justify-content: center;
     position: relative;
 }
@@ -179,14 +182,14 @@ span.date:last-child {
 }
 #swims .count, #steps .count {
     font-size: 48px;
+    font-family: 'Macondo';
 }
 
 #swims img,
 #steps img {
 /*    mix-blend-mode: color-burn;*/
     position: absolute;
-    left: 15px;
-    width: 90%;
+    width: 280px;
     z-index: 1;
 }
 
@@ -210,7 +213,7 @@ span.date:last-child {
      font-size: 16px;
  }
 
-#movie-list, #gwen-goals, #william-goals, #sadie-goals {
+#palworld, #movie-list, #gwen-goals, #william-goals, #sadie-goals {
 /*    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);*/
     background: #d88036;
 /*     color: #000;*/
@@ -219,7 +222,7 @@ span.date:last-child {
      padding: 1em;
      position: relative;
 }
-
+#palworld .fa-solid,
 #movie-list .fa-solid,
 #swims .fa-solid,
 #steps .fa-solid,
@@ -229,6 +232,7 @@ span.date:last-child {
 #william-goals .fa-solid:not(.fa-circle-check),
 #sadie-goals .fa-solid:not(.fa-circle-check),
 .work .fa-solid,
+.event .fa-brands, 
 .event .fa-solid {
     position: absolute;
     font-size: 80px;
@@ -245,13 +249,24 @@ span.date:last-child {
 #work1, #work2 {
     white-space: pre-wrap;
 }
-
+#work2 {
+    padding-left: 60px;
+    display: inline-block;
+    text-align: right;
+}
+.work .event {
+    overflow: hidden;
+}
 .work .fa-solid {
-    right: 97px;
+    right: -63px;
     top: 22px;
     font-size: 100px;
     mix-blend-mode: soft-light;
     color: #fee9c5;
+}
+
+.work .event:nth-child(even) .fa-solid {
+    right: 107px;
 }
 
 #movie-list .fa-solid {
@@ -282,6 +297,11 @@ span.date:last-child {
     background: #4f9d50;
 }
 
+#palworld {
+    background: #ce336f; 
+}
+
+#palworld em,
 #movie-list em,
 #gwen-goals em,
 #william-goals em,

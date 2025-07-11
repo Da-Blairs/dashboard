@@ -57,24 +57,24 @@
                     }
                 })
         }
-        function updateSwims() {
-            fetch('/summer_swims')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Data updated successfully');
-                    // Update count and svg elements
-                    document.getElementById('swim_count').textContent = data.count;
-                    document.getElementById('swim_svg').src = "data:image/svg+xml;base64," + data.svg;
-                    document.getElementById('error').classList.remove('swim-error');
-                })
-                .catch(error => {
-                    console.error('Error updating data:', error);
-                    let errorElement = document.getElementById('error');
-                    if (!errorElement.classList.contains('swim-error')) {
-                        errorElement.classList.add('swim-error');
-                    }
-                });
-        }
+        // function updateSwims() {
+        //     fetch('/summer_swims')
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log('Data updated successfully');
+        //             // Update count and svg elements
+        //             document.getElementById('swim_count').textContent = data.count;
+        //             document.getElementById('swim_svg').src = "data:image/svg+xml;base64," + data.svg;
+        //             document.getElementById('error').classList.remove('swim-error');
+        //         })
+        //         .catch(error => {
+        //             console.error('Error updating data:', error);
+        //             let errorElement = document.getElementById('error');
+        //             if (!errorElement.classList.contains('swim-error')) {
+        //                 errorElement.classList.add('swim-error');
+        //             }
+        //         });
+        // }
         function updateReads() {
             fetch('/summer_reads')
                 .then(response => response.json())
@@ -127,10 +127,10 @@
         setInterval(updateDinner, 300000); // Update every 5 minutes
         setInterval(updateWork, 300000); // Update every 5 minutes
         setInterval(updateReads, 300000); // Update every 5 minutes
-        setInterval(updateSwims, 300000); // Update every 5 minutes
+        // setInterval(updateSwims, 300000); // Update every 5 minutes
         setInterval(updateEvents, 300000); // Update every 5 minutes
         window.onload = function() {
-            updateSwims();
+            // updateSwims();
             updateWork();
             updateReads();
             updateDinner();
@@ -167,6 +167,7 @@
             <span id="time"></span>
             <span id="date"></span>
         </div>
+
     </div>
     <div id="col1">
         <div id="steps">
@@ -174,11 +175,8 @@
             <span>summer<br>reads</span>
             <img id="read_svg">
         </div>
-        <div id="swims">
-            <span id="swim_count" class="count">{{ swim_count }}</span>
-            <span>swim<br>days</span>
-            <img id="swim_svg">
-        </div>
+
+        <!-- iframe src="http://192.168.4.200:8081/frame.html" scrolling="no" frameborder="0" allowfullscreen=""></iframe -->
         <div id="food">
             <i class="fa-solid fa-utensils"></i>
             <p>
@@ -190,9 +188,28 @@
                 <span id="dinner_tomorrow">No plans</span>
             </p>
         </div>
+
+        <div id="palworld">
+            <i class="fa-solid fa-paw"></i>
+            <em>Palworld: 1 online</em>
+            radshak
+        </div>
+        <!-- <div id="swims">
+            <span id="swim_count" class="count">{{ swim_count }}</span>
+            <span>swim<br>days</span>
+            <img id="swim_svg">
+        </div> -->
+        
     </div>
     <div id="col2">
-        <!-- iframe src="http://192.168.4.200:8081/frame.html" scrolling="no" frameborder="0" allowfullscreen=""></iframe -->
+        <div id="william-goals">
+            <em>Will Summer Goals</em>
+            <i class="fa-solid fa-user-secret"></i>
+            <i class="fa-solid fa-circle-check"></i> Tie Dye Sheets<br>
+            <i class="fa-regular fa-circle"></i> Make a mimic<br>
+            <i class="fa-regular fa-circle"></i> Have a sleepover<br>
+            <i class="fa-regular fa-circle"></i> {{will_read}}/15 books read<br>
+        </div>
         <div id="gwen-goals">
             <em>Gwen Summer Goals</em>
             <i class="fa-solid fa-feather"></i>
@@ -201,14 +218,6 @@
             <i class="fa-regular fa-circle"></i> Clear Dresser<br>
             <i class="fa-regular fa-circle"></i> {{gwen_read}}/30 books read<br>
         </div>
-        <div id="william-goals">
-            <em>Will Summer Goals</em>
-            <i class="fa-solid fa-book-skull"></i>
-            <i class="fa-solid fa-circle-check"></i> Tie Dye Sheets<br>
-            <i class="fa-regular fa-circle"></i> Make a mimic<br>
-            <i class="fa-regular fa-circle"></i> Have a sleepover<br>
-            <i class="fa-regular fa-circle"></i> {{will_read}}/15 books read<br>
-        </div>
         <div id="sadie-goals">
             <em>Sadie Summer Goals</em>
             <i class="fa-solid fa-leaf"></i>
@@ -216,6 +225,7 @@
             <i class="fa-regular fa-circle"></i> Watch Wicked<br>
             <i class="fa-regular fa-circle"></i> Have FUN!<br>
         </div>
+        
     </div>
     <div id="col3">
         <div id="event-list" class="event-list"></div>

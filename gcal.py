@@ -187,6 +187,7 @@ event_icons = {
     "babysit": "<i class='fa-solid fa-person-running'></i>",
     "recital": "<i class='fa-solid fa-music'></i>",
     "d&d": "<i class='fa-solid fa-dragon'></i>",
+    "d&d": "<i class='fa-brands fa-d-and-d'></i>",
     "oma": "<i class='fa-solid fa-face-grin-hearts'></i>",
     "goderich": "<i class='fa-solid fa-face-grin-hearts'></i>",
     "movie": "<i class='fa-solid fa-clapperboard'></i>",
@@ -200,6 +201,7 @@ event_icons = {
     "school": "<i class='fa-solid fa-pencil'></i>",
     "home": "<i class='fa-solid fa-suitcase'></i>",
     "camp": "<i class='fa-solid fa-campground'></i>",
+    "tania": "<i class='fa-solid fa-fire'></i>",
 
 }
 

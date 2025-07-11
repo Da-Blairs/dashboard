@@ -6,13 +6,8 @@ def pie_chart_svg(counter):
         '#4f9d50',  # Light Green
         '#d88036',  # Gold
         '#009391',  # Light Blue
-        'palevioletred',  # Light Salmon
-        '#837a6d',  # Light Blue
-        '#ffcc99',  # Peach
-        '#f0f8ff',  # Alice Blue
-        '#ffeb99',  # Light Yellow
-        '#ffccff',  # Light Pink
-        '#b6d7a8'   # Pale Green
+        '#ce336f',  # Light Salmon
+        '#d88036',  # Gold
     ]
 
     total_books = sum(counter.values())
