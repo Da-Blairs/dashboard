@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blair Dashboard</title>
+    <style>{{ styles_css|safe }}</style>
+    <style>{{ weather_icons_css|safe }}</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="{{ url_for('static', filename='clock.js') }}"></script>
+    <script>
+        function fetchData(url, targetId, errorClass) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data updated successfully');
+                    document.getElementById(targetId).innerHTML = data.html;
+                    document.getElementById('error').classList.remove(errorClass + '-error');
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                    let errorElement = document.getElementById('error');
+                    if (!errorElement.classList.contains(errorClass + '-error')) {
+                        errorElement.classList.add(errorClass + '-error');
+                    }
+                });
+        }
+
+        function updateMovies() {
+            fetchData('/movies', 'movie-list', 'movies');
+        }
+
+        function updateEvents() {
+            fetchData('/events', 'event-list', 'events');
+        }
+
+        function updateWork() {
+            fetchData('/work', 'work-list', 'work');
+        }
+
+        function updateDinner() {
+            fetch('/dinner')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data updated successfully');
+                    // Update count and svg elements
+                    document.getElementById('dinner_today').textContent = data.dinner_today;
+                    document.getElementById('dinner_tomorrow').textContent = data.dinner_tomorrow;
+                    document.getElementById('error').classList.remove('dinner-error');
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                    let errorElement = document.getElementById('error');
+                    if (!errorElement.classList.contains('dinner-error')) {
+                        errorElement.classList.add('dinner-error');
+                    }
+                })
+        }
+        // function updateSwims() {
+        //     fetch('/summer_swims')
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log('Data updated successfully');
+        //             // Update count and svg elements
+        //             document.getElementById('swim_count').textContent = data.count;
+        //             document.getElementById('swim_svg').src = "data:image/svg+xml;base64," + data.svg;
+        //             document.getElementById('error').classList.remove('swim-error');
+        //         })
+        //         .catch(error => {
+        //             console.error('Error updating data:', error);
+        //             let errorElement = document.getElementById('error');
+        //             if (!errorElement.classList.contains('swim-error')) {
+        //                 errorElement.classList.add('swim-error');
+        //             }
+        //         });
+        // }
+        function updateReads() {
+            fetch('/summer_reads')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data updated successfully');
+                    // Update count and svg elements
+                    document.getElementById('read_count').textContent = data.count;
+                    document.getElementById('read_svg').src = "data:image/svg+xml;base64," + data.svg;
+                    document.getElementById('error').classList.remove('reads-error');
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                    let errorElement = document.getElementById('error');
+                    if (!errorElement.classList.contains('reads-error')) {
+                        errorElement.classList.add('reads-error');
+                    }
+                });
+        }
+        function fetchWeather() {
+            fetch('/weather')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById('weather').innerText = data.error;
+                        let errorElement = document.getElementById('error');
+                        if (!errorElement.classList.contains('weather-error')) {
+                            errorElement.classList.add('weather-error');
+                        }
+                    } else {
+                        document.getElementById('weather').innerHTML = `
+                            ${data.temperature}<br>
+                            ${data.uv}<br>
+                            <i class="big-icon wi ${data.weathercode}"></i>
+                        `;
+                        document.getElementById('error').classList.remove('weather-error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                    document.getElementById('weather').innerText = 'Error fetching weather data.';
+                    let errorElement = document.getElementById('error');
+                    if (!errorElement.classList.contains('weather-error')) {
+                        errorElement.classList.add('weather-error');
+                    }
+                });
+        }
+
+        setInterval(updateMovies, 300000); // Update every 5 minutes
+        setInterval(fetchWeather, 300000); // Update every 5 minutes
+        setInterval(updateDinner, 300000); // Update every 5 minutes
+        setInterval(updateWork, 300000); // Update every 5 minutes
+        setInterval(updateReads, 300000); // Update every 5 minutes
+        // setInterval(updateSwims, 300000); // Update every 5 minutes
+        setInterval(updateEvents, 300000); // Update every 5 minutes
+        window.onload = function() {
+            // updateSwims();
+            updateWork();
+            updateReads();
+            updateDinner();
+            updateEvents();
+            updateMovies();
+            fetchWeather();
+        };
+
+        document.addEventListener('keydown', function(event) {
+            const col3 = document.getElementById('col3');
+            const step = 20; // Adjust this value to change the scroll speed
+            let currentMarginTop = parseInt(window.getComputedStyle(col3).marginTop) || 0;
+
+            if (event.key === 'ArrowUp') {
+                col3.style.marginTop = (currentMarginTop + step) + 'px';
+            } else if (event.key === 'ArrowDown') {
+                col3.style.marginTop = (currentMarginTop - step) + 'px';
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <div id="col0">
+        <div id="error"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div id="weather">Loading...</div>
+        <div id="work-list" class="work event-list">
+        </div>
+        <div id="movie-list">
+            <i class="fa-solid fa-dice"></i>
+            ...
+        </div>
+        <div class="clock-placeholder">
+            <span id="time"></span>
+            <span id="date"></span>
+        </div>
+
+    </div>
+    <div id="col1">
+        <div id="steps">
+            <span id="read_count" class="count">{{ read_count }}</span>
+            <span>summer<br>reads</span>
+            <img id="read_svg">
+        </div>
+
+        <!-- iframe src="http://192.168.4.200:8081/frame.html" scrolling="no" frameborder="0" allowfullscreen=""></iframe -->
+        <div id="food">
+            <i class="fa-solid fa-utensils"></i>
+            <p>
+                <span class="count">Dinner Today</span><br>
+                <span id="dinner_today">No plans</span>
+            </p>
+            <p>
+                <span class="count">Dinner Tomorrow</span><br>
+                <span id="dinner_tomorrow">No plans</span>
+            </p>
+        </div>
+
+        <div id="palworld">
+            <i class="fa-solid fa-paw"></i>
+            <em>Palworld: 1 online</em>
+            radshak
+        </div>
+        <!-- <div id="swims">
+            <span id="swim_count" class="count">{{ swim_count }}</span>
+            <span>swim<br>days</span>
+            <img id="swim_svg">
+        </div> -->
+        
+    </div>
+    <div id="col2">
+        <div id="william-goals">
+            <em>Will Summer Goals</em>
+            <i class="fa-solid fa-user-secret"></i>
+            <i class="fa-solid fa-circle-check"></i> Tie Dye Sheets<br>
+            <i class="fa-regular fa-circle"></i> Make a mimic<br>
+            <i class="fa-regular fa-circle"></i> Have a sleepover<br>
+            <i class="fa-regular fa-circle"></i> {{will_read}}/15 books read<br>
+        </div>
+        <div id="gwen-goals">
+            <em>Gwen Summer Goals</em>
+            <i class="fa-solid fa-feather"></i>
+            <i class="fa-regular fa-circle"></i> Finish crochet frog<br>
+            <i class="fa-regular fa-circle"></i> Finish crochet panda<br>
+            <i class="fa-regular fa-circle"></i> Clear Dresser<br>
+            <i class="fa-regular fa-circle"></i> {{gwen_read}}/30 books read<br>
+        </div>
+        <div id="sadie-goals">
+            <em>Sadie Summer Goals</em>
+            <i class="fa-solid fa-leaf"></i>
+            <i class="fa-regular fa-circle"></i> 0/5 Projects Completed<br>
+            <i class="fa-regular fa-circle"></i> Watch Wicked<br>
+            <i class="fa-regular fa-circle"></i> Have FUN!<br>
+        </div>
+        
+    </div>
+    <div id="col3">
+        <div id="event-list" class="event-list"></div>
+    </div>
+</body>
+</html>
