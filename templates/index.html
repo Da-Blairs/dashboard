@@ -31,6 +31,10 @@
             fetchData('/movies', 'movie-list', 'movies');
         }
 
+        function updateGoals() {
+            fetchData('/goals', 'goals', 'goals');
+        }
+
         function updateEvents() {
             fetchData('/events', 'event-list', 'events');
         }
@@ -123,6 +127,7 @@
         }
 
         setInterval(updateMovies, 300000); // Update every 5 minutes
+        setInterval(updateGoals, 300000); // Update every 5 minutes
         setInterval(fetchWeather, 300000); // Update every 5 minutes
         setInterval(updateDinner, 300000); // Update every 5 minutes
         setInterval(updateWork, 300000); // Update every 5 minutes
@@ -136,6 +141,7 @@
             updateDinner();
             updateEvents();
             updateMovies();
+            updateGoals();
             fetchWeather();
         };
 
@@ -202,30 +208,9 @@
         
     </div>
     <div id="col2">
-        <div id="william-goals">
-            <em>Will Summer Goals</em>
-            <i class="fa-solid fa-user-secret"></i>
-            <i class="fa-solid fa-circle-check"></i> Tie Dye Sheets<br>
-            <i class="fa-regular fa-circle"></i> Make a mimic<br>
-            <i class="fa-regular fa-circle"></i> Have a sleepover<br>
-            <i class="fa-regular fa-circle"></i> {{will_read}}/15 books read<br>
+        <div id="goals">
+            ...
         </div>
-        <div id="gwen-goals">
-            <em>Gwen Summer Goals</em>
-            <i class="fa-solid fa-feather"></i>
-            <i class="fa-regular fa-circle"></i> Finish crochet frog<br>
-            <i class="fa-regular fa-circle"></i> Finish crochet panda<br>
-            <i class="fa-regular fa-circle"></i> Clear Dresser<br>
-            <i class="fa-regular fa-circle"></i> {{gwen_read}}/30 books read<br>
-        </div>
-        <div id="sadie-goals">
-            <em>Sadie Summer Goals</em>
-            <i class="fa-solid fa-leaf"></i>
-            <i class="fa-regular fa-circle"></i> 1/5 Projects Completed<br>
-            <i class="fa-regular fa-circle"></i> Watch Wicked<br>
-            <i class="fa-regular fa-circle"></i> Have FUN!<br>
-        </div>
-        
     </div>
     <div id="col3">
         <div id="event-list" class="event-list"></div>

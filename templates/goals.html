@@ -1,0 +1,23 @@
+<div id="goals">
+{% for person_name, person_data in goals.items() %}
+    {% set person_icon = {
+        'will': 'fa-solid fa-user-secret',
+        'gwen': 'fa-solid fa-feather',
+        'sadie': 'fa-solid fa-leaf'
+    }.get(person_name|lower, 'fa-screwdriver-wrench') %}
+<div id="{{person_name|lower}}-goals">
+    <em>{{person_name}} Summer Goals</em>
+    <i class="{{ person_icon }}"></i>
+    {% for goal in person_data.goals %}
+        <i class="{% if goal.status == 1 %}fa-regular fa-circle-check{% else %}fa-regular fa-circle{% endif %}"></i> 
+            {{ goal.goal
+        |replace('{{gwen_read}}', gwen_read|string)
+        |replace('{{will_read}}', will_read|string)
+        |replace('{{gavin_read}}', gavin_read|string)
+        |replace('{{zoe_read}}', zoe_read|string)
+        |replace('{{sadie_read}}', sadie_read|string)
+    }}<br>
+    {% endfor %}
+</div>
+{% endfor %}
+</div>

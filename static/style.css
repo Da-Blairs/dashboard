@@ -212,8 +212,10 @@ span.date:last-child {
      font-weight: normal;
      font-size: 16px;
  }
-
-#palworld, #movie-list, #gwen-goals, #william-goals, #sadie-goals {
+#gwen-goals, #will-goals, #sadie-goals {
+    margin-bottom: 16px;
+}
+#palworld, #movie-list, #gwen-goals, #will-goals, #sadie-goals {
 /*    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);*/
     background: #d88036;
 /*     color: #000;*/
@@ -229,7 +231,7 @@ span.date:last-child {
 #weather .big-icon,
 #food .fa-solid,
 #gwen-goals .fa-solid:not(.fa-circle-check),
-#william-goals .fa-solid:not(.fa-circle-check),
+#will-goals .fa-solid:not(.fa-circle-check),
 #sadie-goals .fa-solid:not(.fa-circle-check),
 .work .fa-solid,
 .event .fa-brands, 
@@ -287,7 +289,7 @@ span.date:last-child {
     margin-top: -40px;
 }
 
-#william-goals {
+#will-goals {
 /*     background: linear-gradient(240deg, #ee9ca7 0%, #ffdde1 100%);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: #009391;
 }
@@ -304,7 +306,7 @@ span.date:last-child {
 #palworld em,
 #movie-list em,
 #gwen-goals em,
-#william-goals em,
+#will-goals em,
 #sadie-goals em {
     font-weight: bold;
     font-size: 28px;

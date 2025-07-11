@@ -29,6 +29,15 @@ def gwen_read():
 def will_read():
     return who_read(name="will")
 
+def sadie_read():
+    return who_read(name="sadie")
+
+def gavin_read():
+    return who_read(name="gavin")
+
+def zoe_read():
+    return who_read(name="zoe")
+
 def reader_count():
     url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
 
