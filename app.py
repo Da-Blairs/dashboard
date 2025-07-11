@@ -12,6 +12,7 @@ import pprint
 import pytz
 from movies import movie_list
 from goals import goal_list
+from palworld import palworld_list
 from summer_reads import summer_reads_total, summer_reads_svg, gwen_read, will_read, sadie_read, zoe_read, gavin_read
 from summer_swims import summer_swims_total, summer_swims_svg
 from gcal import get_credentials, google_authorize, google_callback, gcal_dinner, gcal_work, gcal_events
@@ -75,7 +76,7 @@ def goals():
 def palworld():
     palworld_data = palworld_list()
     if palworld_data:
-        palworld = palworld_data.json  # Assuming goals_list() returns a response object
+        palworld = palworld_data.json
         html_content = render_template('palworld.html', palworld=palworld['palworld'])
         return jsonify({'html': html_content})
     else:
