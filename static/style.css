@@ -212,10 +212,10 @@ span.date:last-child {
      font-weight: normal;
      font-size: 16px;
  }
-#gwen-goals, #will-goals, #sadie-goals {
+#goals div {
     margin-bottom: 16px;
 }
-#palworld, #movie-list, #gwen-goals, #will-goals, #sadie-goals {
+#palworld, #movie-list, #goals div {
 /*    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);*/
     background: #d88036;
 /*     color: #000;*/
@@ -230,9 +230,7 @@ span.date:last-child {
 #steps .fa-solid,
 #weather .big-icon,
 #food .fa-solid,
-#gwen-goals .fa-solid:not(.fa-circle-check),
-#will-goals .fa-solid:not(.fa-circle-check),
-#sadie-goals .fa-solid:not(.fa-circle-check),
+#goals div .fa-solid:not(.fa-circle-check),
 .work .fa-solid,
 .event .fa-brands, 
 .event .fa-solid {
@@ -289,14 +287,18 @@ span.date:last-child {
     margin-top: -40px;
 }
 
-#will-goals {
+#goals #will-goals {
 /*     background: linear-gradient(240deg, #ee9ca7 0%, #ffdde1 100%);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: #009391;
 }
 
-#sadie-goals {
+#goals #sadie-goals {
 /*    background: linear-gradient(240deg, #FC5C7D 0%, #6A82FB 100%);*/
     background: #4f9d50;
+}
+
+#goals #gavin-goals {
+    background: #ce336f; 
 }
 
 #palworld {
@@ -305,9 +307,7 @@ span.date:last-child {
 
 #palworld em,
 #movie-list em,
-#gwen-goals em,
-#will-goals em,
-#sadie-goals em {
+#goals div em {
     font-weight: bold;
     font-size: 28px;
     font-style: normal;
