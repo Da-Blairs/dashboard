@@ -12,9 +12,9 @@ def palworld_list():
         players = response.json()
         # Extract just the names from each player object
         player_names = [player['name'] for player in players if 'name' in player]
-        return {
+        return jsonify({"palworld":{
             "total_players": len(player_names),
             "player_list": player_names
-        }
+        }})
     except Exception as e:
         return False

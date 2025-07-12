@@ -4,7 +4,10 @@
 .idea/
 credentials.json
 credentials.json
+credentials.json.bak
+nohup.out
 .env
+nohup.out
 __pycache__/
 env/
 .DS_Store

@@ -31,6 +31,10 @@
             fetchData('/movies', 'movie-list', 'movies');
         }
 
+	    function updatePalworld() {
+            fetchData('/palworld', 'palworld', 'palworld');
+        }
+
         function updateGoals() {
             fetchData('/goals', 'goals', 'goals');
         }
@@ -127,6 +131,7 @@
         }
 
         setInterval(updateMovies, 300000); // Update every 5 minutes
+	    setInterval(updatePalworld,30000);
         setInterval(updateGoals, 300000); // Update every 5 minutes
         setInterval(fetchWeather, 300000); // Update every 5 minutes
         setInterval(updateDinner, 300000); // Update every 5 minutes
@@ -141,6 +146,7 @@
             updateDinner();
             updateEvents();
             updateMovies();
+	        updatePalworld();
             updateGoals();
             fetchWeather();
         };
@@ -196,9 +202,7 @@
         </div>
 
         <div id="palworld">
-            <i class="fa-solid fa-paw"></i>
-            <em>Palworld: 1 online</em>
-            radshak
+		...
         </div>
         <!-- <div id="swims">
             <span id="swim_count" class="count">{{ swim_count }}</span>

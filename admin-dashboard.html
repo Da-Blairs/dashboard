@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TV Dashboard Controller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .dashboard {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .auto-btn {
+            grid-column: span 2;
+            background-color: {{ '#f44336' if auto_shift_active else '#2196F3' }};
+        }
+        .auto-btn:hover {
+            background-color: {{ '#d32f2f' if auto_shift_active else '#0b7dda' }};
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>TV Dashboard Controller</h1>
+        <div class="btn-grid">
+            {% for command in commands %}
+    	        <button onclick="runCommand('{{ command }}')">{{ command }}</button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        function runCommand(command) {
+            fetch(`/run/${encodeURIComponent(command)}`)
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
