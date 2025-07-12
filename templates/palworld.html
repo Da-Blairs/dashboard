@@ -1,7 +1,7 @@
 <i class="fa-solid fa-paw"></i>
-<em>Palworld: {{total_players}} online</em>
-{% if player_list %}
-    {{ player_list|join(', ') }}
+<em>Palworld: {{palworld.total_players}} online</em>
+{% if palworld.player_list %}
+    {{ palworld.player_list|join(', ') }}
 {% else %}
 	No players online
 {% endif %}
