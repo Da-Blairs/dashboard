@@ -215,7 +215,7 @@ span.date:last-child {
 #goals div {
     margin-bottom: 16px;
 }
-#palworld, #movie-list, #goals div {
+#palworld, #movie-list, #game-list, #goals div {
 /*    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);*/
     background: #d88036;
 /*     color: #000;*/
@@ -225,8 +225,13 @@ span.date:last-child {
      position: relative;
      overflow: hidden;
 }
+
+#game-list {
+    background: #4f9d50;
+}
 #palworld .fa-solid,
 #movie-list .fa-solid,
+#game-list .fa-solid,
 #swims .fa-solid,
 #steps .fa-solid,
 #weather .big-icon,
@@ -270,12 +275,14 @@ span.date:last-child {
     right: 107px;
 }
 
+#game-list .fa-solid,
 #movie-list .fa-solid {
-    bottom: 16px;
+    bottom: calc(50% - 45px);
     top: auto;
     transform: rotate(-10deg);
 }
 
+.game-item:last-child,
 .movie-item:last-child {
     margin-bottom: -1em;
 }
@@ -308,6 +315,7 @@ span.date:last-child {
 
 #palworld em,
 #movie-list em,
+#game-list em,
 #goals div em {
     font-weight: bold;
     font-size: 28px;

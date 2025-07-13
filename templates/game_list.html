@@ -1,0 +1,7 @@
+<i class="fa-solid fa-dice"></i>
+{% for game in games %}
+<div class="game-item">
+    {{ game.date }}<br>
+    <em>{{ game.game_name }}</em><br>
+</div>
+{% endfor %}

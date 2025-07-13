@@ -11,6 +11,7 @@ import os
 import pprint
 import pytz
 from movies import movie_list
+from games import game_list
 from goals import goal_list
 from palworld import palworld_list
 from summer_reads import summer_reads_total, summer_reads_svg, summer_reads_bar_chart, gwen_read, will_read, sadie_read, zoe_read, gavin_read
@@ -54,6 +55,16 @@ def movies():
         return jsonify({'html': html_content})
     else:
         return "Failed to fetch movie list."
+
+@app.route('/games')
+def games():
+    games_data = game_list()
+    if games_data:
+        games = games_data.json
+        html_content = render_template('game_list.html', games=games['games'])
+        return jsonify({'html': html_content})
+    else:
+        return "Failed to fetch game list."
 
 @app.route('/goals')
 def goals():

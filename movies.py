@@ -51,7 +51,7 @@ def movie_list():
         upcoming_movies = [
             {"date": movie["date"].strftime('%B %e'), "movie_name": movie["movie_name"]}
             for movie in movies if movie["date"].date() >= datetime.now().date()
-        ][:4]
+        ][:2]
 
         return jsonify({"movies": upcoming_movies})
 
