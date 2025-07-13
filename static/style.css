@@ -133,6 +133,10 @@ body, h1, h2, h3, em, .clock-placeholder {
     width: 100%;
     position: relative;
     overflow: hidden;
+    
+}
+.event-list .event:nth-child(-n+8) {
+    box-shadow: rgba(0, 0, 0, .6) 0px -10px 25px, rgba(0, 0, 0, .6) 0px 10px 25px;
 }
 .event-list .time {
     font-size: 20px;
@@ -214,6 +218,9 @@ span.date:last-child {
      font-weight: normal;
      font-size: 16px;
  }
+#gwen-goals, #sadie-goals, #will-goals {
+    box-shadow: rgba(0, 0, 0, 0.7) 20px 0px 25px;
+}
 #goals div {
     margin-bottom: 16px;
 }
@@ -309,12 +316,12 @@ span.date:last-child {
 #goals #will-goals {
 /*     background: linear-gradient(240deg, #ee9ca7 0%, #ffdde1 100%);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: #009391;
+    overflow: visible;
 }
 
 #goals #sadie-goals {
 /*    background: linear-gradient(240deg, #FC5C7D 0%, #6A82FB 100%);*/
     background: #4f9d50;
-    overflow: visible;
 }
 
 .fa-lightbulb:after {
@@ -331,6 +338,22 @@ span.date:last-child {
     filter: blur(8px);
     mix-blend-mode: soft-light;
     background: radial-gradient(rgb(254, 233, 197, 0) 35%, #fee9c5 80%);
+}
+
+#will-goals:after {
+    height: 400px;
+    width: 400px;
+    z-index: -1;
+    top: -299px;
+    left: 189px;
+    background: radial-gradient(rgb(254, 233, 197, 0) 35%, rgb(254, 233, 197, 0.8) 50%);
+    content: " ";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    opacity: .7;
+    filter: blur(8px);
+    mix-blend-mode: soft-light;
 }
 
 #goals #gavin-goals {
