@@ -309,6 +309,23 @@ span.date:last-child {
 #goals #sadie-goals {
 /*    background: linear-gradient(240deg, #FC5C7D 0%, #6A82FB 100%);*/
     background: #4f9d50;
+    overflow: visible;
+}
+
+.fa-lightbulb:after {
+    content: "";
+    width: 200px;
+    height: 200px;
+    display: block;
+    position: absolute;
+    background: #fee9c5;
+    top: -63px;
+    left: -73px;
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(8px);
+    mix-blend-mode: soft-light;
+    background: radial-gradient(rgb(254, 233, 197, 0) 35%, #fee9c5 80%);
 }
 
 #goals #gavin-goals {
