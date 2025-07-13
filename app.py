@@ -13,7 +13,7 @@ import pytz
 from movies import movie_list
 from goals import goal_list
 from palworld import palworld_list
-from summer_reads import summer_reads_total, summer_reads_svg, gwen_read, will_read, sadie_read, zoe_read, gavin_read
+from summer_reads import summer_reads_total, summer_reads_svg, summer_reads_bar_chart, gwen_read, will_read, sadie_read, zoe_read, gavin_read
 from summer_swims import summer_swims_total, summer_swims_svg
 from gcal import get_credentials, google_authorize, google_callback, gcal_dinner, gcal_work, gcal_events
 
@@ -110,6 +110,7 @@ def event():
 def summer_reads():
     count = summer_reads_total()
     svg = summer_reads_svg()
+    svg = summer_reads_bar_chart()
     svg = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
 
     return jsonify({'count': count, 'svg': svg})
