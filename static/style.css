@@ -88,7 +88,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     width: calc(100% - 25px);
 }
 #time {
-    font-size: 98px;
+    font-size: 95px;
     font-family: Macondo, cursive;
 }
 
@@ -110,7 +110,6 @@ body, h1, h2, h3, em, .clock-placeholder {
     display: flex;
     flex-flow: row wrap;
     font-weight: bold;
-    text-transform: uppercase;
     font-size: 25px;
     gap: 16px;
     justify-content: space-between;
@@ -143,10 +142,9 @@ body, h1, h2, h3, em, .clock-placeholder {
     font-family: "Macondo Swash Caps", cursive;
     display: flex;
     justify-content: space-between;
-    padding: 15px 15px 0;
-    margin: 0 0 -11px;
-    width: 100%;
-    text-transform: none;
+    padding: 15px 15px 5px;
+    margin: 0 auto -19px;
+    width: auto;
 }
 
 .work .event {
