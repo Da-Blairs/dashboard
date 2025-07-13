@@ -97,7 +97,7 @@ def bar_chart_svg(counter, colors):
     bar_height = 40
     bar_spacing = 15
     label_width = 70
-    chart_width = 225
+    chart_width = 375
     margin_left = 0
     margin_top = 0
     text_padding = 15
@@ -111,7 +111,7 @@ def bar_chart_svg(counter, colors):
     total_height = margin_top * 2 + total_bars * (bar_height + bar_spacing)
     
     # Calculate total SVG width
-    total_width = margin_left + label_width + chart_width + 100
+    total_width = margin_left + label_width + chart_width
     
     # Create SVG with embedded font
     svg = [

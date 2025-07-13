@@ -160,7 +160,7 @@ span.date:last-child {
 /*    background-image: linear-gradient(240deg, rgba(124, 136, 224) 0%, rgba(195, 244, 252) 100%);*/
 /*    background: #837a6d;*/
     color: #fee9c5;
-    padding: 0 0 2.5em 0;
+    padding: 20px;
     display: flex;
     align-items: center;
     flex-flow: row wrap;
@@ -170,6 +170,8 @@ span.date:last-child {
     justify-content: right;
     position: relative;
     font-size: 30px;
+    border-radius: 20px;
+    border: 1px solid #fee9c5;
 }
 #swims:after, #steps:after {
     position: absolute;
@@ -187,7 +189,7 @@ span.date:last-child {
 
 #swims img,
 #steps img {
-    margin-bottom: -2.5em;
+    margin-bottom: -90px;
     width: 100%;
 }
 
