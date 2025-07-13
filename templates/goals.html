@@ -1,8 +1,9 @@
 {% for person_name, person_data in goals.items() %}
     {% set person_icon = {
-        'will': 'fa-solid fa-user-secret',
-        'gwen': 'fa-solid fa-feather',
-        'sadie': 'fa-solid fa-leaf'
+        'gavin': 'fa-solid fa-palette',
+        'will': 'fa-solid fa-paper-plane',
+        'gwen': 'fa-solid fa-cat',
+        'sadie': 'fa-solid fa-triangle-exclamation'
     }.get(person_name|lower, 'fa-solid fa-bullseye') %}
     <div id="{{person_name|lower}}-goals">
         <em>{{person_name}} Summer Goals</em>
