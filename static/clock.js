@@ -17,7 +17,7 @@
     });
     
     var dateFormat = new Date().toLocaleDateString([], {
-      month: 'short', 
+      month: 'long', 
       day: 'numeric'
     });
      
