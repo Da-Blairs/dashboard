@@ -256,6 +256,11 @@ span.date:last-child {
     display: flex;
     flex-flow: row wrap;
 }
+
+#work-list:empty {
+    display: none;
+}
+
 #work1, #work2 {
     white-space: pre-wrap;
 }
