@@ -4,8 +4,11 @@ from collections import Counter
 from math import cos, sin, radians
 from pie_chart_svg import pie_chart_svg
 
+url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
+
 def who_read(name):
-    url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
+    global url
+    
     # Fetch the CSV data from the URL
     response = requests.get(url)
 
@@ -39,7 +42,7 @@ def zoe_read():
     return who_read(name="zoe")
 
 def reader_count():
-    url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
+    global url
 
     # Fetch the CSV data from the URL
     response = requests.get(url)
@@ -61,8 +64,7 @@ def reader_count():
 
 
 def summer_reads_total():
-    # Fetch the CSV data from the URL
-    url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTRhgd6hpw5XvVvS-dRtPPcQQTVigYRk7zzKCXiEtrW-LbwJn9qI8LEa8RFnz5mNd95h8Zb_bjWkaJ/pub?gid=0&single=true&output=csv"
+    global url
     response = requests.get(url)
 
     # Check if request was successful
@@ -163,9 +165,9 @@ def bar_chart_svg(counter, colors):
 def summer_reads_bar_chart():
     counter = reader_count()
     colors = [
+        '#009391',  # Light Blue
         '#4f9d50',  # Light Green
         '#d88036',  # Gold
-        '#009391',  # Light Blue
         '#ce336f',  # Light Salmon
         '#d88036',  # Gold
     ]
