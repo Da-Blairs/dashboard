@@ -143,7 +143,7 @@ def bar_chart_svg(counter, colors):
         # Add bar starting after the label
         color = colors[color_idx % len(colors)]
         bar_x = margin_left + label_width
-        svg.append(f'<rect x="{bar_x}" y="{y_pos}" width="{bar_width}" height="{bar_height}" fill="{color}" rx="4" ry="4" />')
+        svg.append(f'<rect x="{bar_x}" y="{y_pos}" width="{bar_width}" height="{bar_height}" fill="{color}" rx="10" ry="10" />')
         
         # Add count label inside the bar
         if bar_width > 50:
