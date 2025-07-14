@@ -209,6 +209,7 @@ span.date:last-child {
     color: #fee9c5;
     border-radius: 20px;
     padding: 1em;
+    padding-right: 90px;
     align-items: baseline;
     flex-flow: row wrap;
  }
@@ -317,12 +318,13 @@ i.fa-solid.fa-dragon:after {
 .event .fa-brands, 
 .event .fa-solid {
     position: absolute;
+    color: #fee9c5;
     font-size: 80px;
-    opacity: 85%;
+    opacity: 60%;
     right: 20px;
     top: 50%;
     margin-top: -18px;
-    mix-blend-mode: soft-light;
+    mix-blend-mode: hard-light;
 }
 
 .work {
