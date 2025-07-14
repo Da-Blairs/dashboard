@@ -92,7 +92,7 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 #weather {
-    background: url(static/grunge2.jpg) #ce336f;
+    background: url(static/grunge2.jpg) #b03b59;
     background-blend-mode: multiply;
     background-size: cover;
     background-position: bottom;
@@ -115,7 +115,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     font-size: 25px;
     gap: 16px;
     justify-content: space-between;
-    color: #009391;
+    color: #355b91;
 }
 
 .event-list:not(.work) {
@@ -125,7 +125,7 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 .event-list .event {
-    background: url(static/grunge3.jpg) #ce336f;
+    background: url(static/grunge3.jpg) #b03b59;
     background-blend-mode: multiply;
     background-size: cover;
     color: #000;
@@ -155,7 +155,7 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 .work .event {
-    background: #4f9d50;
+    background: #4e825f;
     width: calc(50% - 33px);
 }
 
@@ -203,7 +203,7 @@ span.date:last-child {
 
  #food {
     position: relative;
-    background: url(static/grunge4.jpg) #009391;
+    background: url(static/grunge4.jpg) #355b91;
     background-blend-mode: multiply;
     background-size: cover;
     color: #fee9c5;
@@ -302,7 +302,7 @@ i.fa-solid.fa-dragon:after {
 }
 
 #movie-list {
-    background: url(static/grunge2.jpg) #4f9d50;
+    background: url(static/grunge2.jpg) #4e825f;
     background-blend-mode: multiply;
     background-size: cover;
 }
@@ -383,7 +383,7 @@ i.fa-solid.fa-dragon:after {
 }
 
 #goals #will-goals {
-    background-color: #009391;
+    background-color: #355b91;
     overflow: visible;
     background-position: bottom;
 }
@@ -415,7 +415,7 @@ i.fa-solid.fa-dragon:after {
 }
 
 #goals #sadie-goals {
-    background-color: #4f9d50;
+    background-color: #4e825f;
 }
 
 .fa-lightbulb:after {
@@ -450,11 +450,11 @@ i.fa-solid.fa-dragon:after {
 }
 
 #goals #gavin-goals {
-    background-color: #ce336f; 
+    background-color: #b03b59; 
 }
 
 #palworld {
-    background-color: #ce336f; 
+    background-color: #b03b59; 
 }
 
 #palworld em,

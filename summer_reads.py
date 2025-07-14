@@ -165,10 +165,10 @@ def bar_chart_svg(counter, colors):
 def summer_reads_bar_chart():
     counter = reader_count()
     colors = [
-        '#009391',  # Light Blue
-        '#4f9d50',  # Light Green
+        '#355b91',  # Light Blue
+        '#4e825f',  # Light Green
         '#d88036',  # Gold
-        '#ce336f',  # Light Salmon
+        '#b03b59',  # Light Salmon
         '#d88036',  # Gold
     ]
     return bar_chart_svg(counter, colors)
