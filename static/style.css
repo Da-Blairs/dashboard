@@ -7,7 +7,6 @@
 
 html {
     color: #fee9c5;
-    background: #000; /*#3a372e; /*#0f1117;*/
     background: url(static/paper2.jpg) #3a372e;
     background-blend-mode: multiply;
     background-size: cover;
@@ -93,7 +92,10 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 #weather {
-    background: #ce336f; 
+    background: url(static/grunge2.jpg) #ce336f;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: bottom;
 /*    background: linear-gradient(240deg, rgba(252, 142, 190) 0%, rgba(252, 229, 195) 100%);*/
     color: #fee9c5;
 /*    color: #000;*/
@@ -123,9 +125,9 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 .event-list .event {
-    color: black;
-    background: linear-gradient(240deg, rgba(151, 231, 209) 0%, rgba(236, 252, 195) 100%);
-    background: #ce336f;
+    background: url(static/grunge3.jpg) #ce336f;
+    background-blend-mode: multiply;
+    background-size: cover;
     color: #000;
     color: #fee9c5;
     border-radius: 20px;
@@ -200,43 +202,108 @@ span.date:last-child {
 }
 
  #food {
-     position: relative;
-/*     background: linear-gradient(240deg, rgba(229, 162, 67) 0%, rgba(247, 247, 170) 90%);*/
-     background: #009391;
-     color: #fee9c5;
-     border-radius: 20px;
-     padding: 1em;
-     align-items: baseline;
-     flex-flow: row wrap;
+    position: relative;
+    background: url(static/grunge4.jpg) #009391;
+    background-blend-mode: multiply;
+    background-size: cover;
+    color: #fee9c5;
+    border-radius: 20px;
+    padding: 1em;
+    align-items: baseline;
+    flex-flow: row wrap;
  }
 #food p {
     font-family: "Raleway", sans-serif;
     font-size: 25px;
     font-weight: 700;
 }
- #food p .count {
-     font-weight: normal;
-     font-size: 16px;
- }
+#food p .count {
+ font-weight: normal;
+ font-size: 16px;
+}   
 #gwen-goals, #sadie-goals, #will-goals {
     box-shadow: rgba(0, 0, 0, 0.7) 20px 0px 25px;
 }
+
+i.fa-solid.fa-dragon:after {
+    content: " ";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-blend-mode: normal;
+    right: -10px;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(5px);
+    animation: ember-flicker 15s infinite alternate ease-in-out,
+        ember-wave 22s infinite;
+
+}
+@keyframes ember-flicker {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+        background-color: #8B0000;
+        border-radius: 50%;
+    }
+    25% {
+        opacity: 0.9;
+        transform: scale(1.05);
+        background-color: #B22222;
+        border-radius: 75% 25%;
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(0.95);
+        background-color: #FF4500;
+        border-radius: 50%;
+    }
+    75% {
+        opacity: 1;
+        transform: scale(1.1);
+        background-color: #FF6347;
+        border-radius: 25% 75%;
+    }
+}
+
+@keyframes ember-wave {
+    0%, 100% {
+        border-radius: 50%;
+    }
+    25% {
+        border-radius: 75% 25%;
+    }
+    50% {
+         border-radius: 50%;
+    }
+    75% {
+        border-radius: 25% 75%;
+    }
+}
+
 #goals div {
     margin-bottom: 16px;
 }
 #palworld, #movie-list, #game-list, #goals div {
 /*    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);*/
-    background: #d88036;
+    background: url(static/grunge4.jpg) #d88036;
+    background-blend-mode: multiply;
+    background-size: cover;
 /*     color: #000;*/
      color: #fee9c5;
      border-radius: 20px;
      padding: 1em;
      position: relative;
      overflow: hidden;
+    background-image: url(static/grunge3.jpg);
+    background-blend-mode: multiply;
+    background-size: cover;
 }
 
 #movie-list {
-    background: #4f9d50;
+    background: url(static/grunge2.jpg) #4f9d50;
+    background-blend-mode: multiply;
+    background-size: cover;
 }
 #palworld .fa-solid,
 #movie-list .fa-solid,
@@ -314,9 +381,9 @@ span.date:last-child {
 }
 
 #goals #will-goals {
-/*     background: linear-gradient(240deg, #ee9ca7 0%, #ffdde1 100%);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: #009391;
+    background-color: #009391;
     overflow: visible;
+    background-position: bottom;
 }
 
 #goals #will-goals .fa-solid:not(.fa-circle-check) {
@@ -346,8 +413,7 @@ span.date:last-child {
 }
 
 #goals #sadie-goals {
-/*    background: linear-gradient(240deg, #FC5C7D 0%, #6A82FB 100%);*/
-    background: #4f9d50;
+    background-color: #4f9d50;
 }
 
 .fa-lightbulb:after {
@@ -356,7 +422,6 @@ span.date:last-child {
     height: 200px;
     display: block;
     position: absolute;
-    background: #fee9c5;
     top: -63px;
     left: -73px;
     border-radius: 50%;
@@ -383,11 +448,11 @@ span.date:last-child {
 }
 
 #goals #gavin-goals {
-    background: #ce336f; 
+    background-color: #ce336f; 
 }
 
 #palworld {
-    background: #ce336f; 
+    background-color: #ce336f; 
 }
 
 #palworld em,
