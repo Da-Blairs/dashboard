@@ -556,6 +556,7 @@ iframe {
     background: rgba(254, 233, 197, 0.10);;
     border: 1px solid rgba(254, 233, 197, 0.52);
     backdrop-filter: blur(10px); 
+    border-bottom-width: 5px;
 }
 
 #work-list .event,
@@ -563,7 +564,8 @@ iframe {
 #food {
     background: rgba(53, 91, 145, 0.10);;
     border: 1px solid rgba(53, 91, 145, 0.52);
-    backdrop-filter: blur(10px);    
+    backdrop-filter: blur(10px);  
+    border-bottom-width: 5px;  
 }
 
 #game-list,
@@ -572,6 +574,7 @@ iframe {
     background: rgba(216, 128, 54, 0.10);;
     border: 1px solid rgba(216, 128, 54, 0.52);
     backdrop-filter: blur(10px);
+    border-bottom-width: 5px;   
 }
 
 #weather,
@@ -581,6 +584,7 @@ iframe {
     background: rgba(176, 59, 89, 0.10);
     border: 1px solid rgba(176, 59, 89, 0.52);
     backdrop-filter: blur(10px);
+    border-bottom-width: 5px;
 }
 
 #sadie-goals,
@@ -588,4 +592,5 @@ iframe {
     backdrop-filter: blur(10px);
     background: rgba(78, 130, 95, 0.15);
     border: 1px solid rgba(78, 130, 95, 0.52);
+    border-bottom-width: 5px;
 }
