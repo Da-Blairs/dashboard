@@ -634,3 +634,8 @@ iframe {
 #movie-list .fa-solid:after {
     background-color: rgba(78, 130, 95);
 }
+
+#gwen-goals .fa-dragon:after {
+    margin-left: 50px;
+    margin-top: -15px;
+}
