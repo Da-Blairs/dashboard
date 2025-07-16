@@ -15,7 +15,7 @@ html {
 body  {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 16px;
+    gap: 20px;
     align-items: start;
     width: calc(1920px - 96px);/* 1920x1080 */
     padding: 61px 0 0;
@@ -31,7 +31,7 @@ body  {
 body > div {
     display: flex;
     flex-flow: column;
-    row-gap: 16px;
+    row-gap: 20px;
 }
 
 @media screen and ( max-height: 768px ) {
@@ -100,7 +100,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     color: #fee9c5;
 /*    color: #000;*/
     border-radius: 20px;
-    padding: .5em;
+    padding: 20px;
     display: flex;
     font-family: "Macondo Swash Caps", sans-serif;
     font-size: 33px;
@@ -120,7 +120,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     flex-flow: row wrap;
     font-weight: bold;
     font-size: 25px;
-    gap: 16px;
+    gap: 20px;
     justify-content: space-between;
     color: #355b91;
 }
@@ -138,7 +138,7 @@ body, h1, h2, h3, em, .clock-placeholder {
 /*    color: #000;*/
     color: #fee9c5;
     border-radius: 20px;
-    padding: .5em;
+    padding: 20px;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -156,9 +156,7 @@ body, h1, h2, h3, em, .clock-placeholder {
 .event-list i.fa-solid {
     color: #b03b59;
 }
-.event-list .event:nth-child(-n+8) {
-    box-shadow: rgba(0, 0, 0, .6) 0px -10px 25px, rgba(0, 0, 0, .6) 0px 10px 25px;
-}
+
 .event-list .time {
     font-size: 20px;
     font-weight: normal;
@@ -168,7 +166,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     color: #fee9c5;
     display: flex;
     justify-content: space-between;
-    padding: 15px 15px 5px;
+    padding: 20px 20px 5px;
     margin: 0 auto -19px;
     width: auto;
 }
@@ -179,7 +177,7 @@ body, h1, h2, h3, em, .clock-placeholder {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
 /*    background: #4e825f;*/
     background: unset;
-    width: calc(50% - 33px);
+    width: calc(50% - 50px);
 }
 
 .work .event i.fa-solid {
@@ -237,7 +235,7 @@ span.date:last-child {
 /*    background-size: cover;*/
     color: #fee9c5;
     border-radius: 20px;
-    padding: 1em;
+    padding: 20px;
     padding-right: 90px;
     align-items: baseline;
     flex-flow: row wrap;
@@ -319,7 +317,7 @@ i.fa-solid.fa-dragon:after {
 }
 
 #goals div {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 #palworld, #movie-list, #game-list, #goals div {
 /*    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);*/
@@ -329,7 +327,7 @@ i.fa-solid.fa-dragon:after {
 /*     color: #000;*/
      color: #fee9c5;
      border-radius: 20px;
-     padding: 1em;
+     padding: 20px;
      position: relative;
      overflow: hidden;
 /*    background-image: url(static/grunge3.jpg);*/
