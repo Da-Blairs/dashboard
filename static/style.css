@@ -195,7 +195,7 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 .work .event i.fa-solid {
-    color: #4e825f;
+    color: #355b91;
     opacity: 1;
 
 }
@@ -484,20 +484,6 @@ i.fa-solid.fa-dragon:after {
     color: #4e825f;
 }
 
-.fa-lightbulb:after {
-    content: "";
-    width: 200px;
-    height: 200px;
-    display: block;
-    position: absolute;
-    top: -63px;
-    left: -73px;
-    border-radius: 50%;
-    opacity: 0.7;
-    filter: blur(8px);
-    mix-blend-mode: soft-light;
-    background: radial-gradient(rgb(254, 233, 197, 0) 35%, #fee9c5 80%);
-}
 
 #will-goals:after {
     height: 400px;
@@ -552,6 +538,34 @@ iframe {
     transform: rotate(180deg);
 }
 
+.big-icon:after,
+.fa-brands:after,
+.fa-solid:after {
+    display: block;
+}
+
+.big-icon:before,
+.fa-brands:before,
+.fa-solid:not(.fa-circle-check):not(.fa-triangle-exclamation):before {
+    position: relative;
+    filter: brightness(2);
+    z-index: 2;
+}
+
+.big-icon:after,
+.fa-brands:after,
+.fa-solid:not(.fa-circle-check):not(.fa-triangle-exclamation):after {
+    content: " ";
+    width: 100px;
+    height: 100px;
+    filter:blur(20px);
+    background: #4e825f;
+    position: absolute;
+    top: 0;
+    left: -10px;
+}
+
+
 #steps,
 .clock-placeholder:after {
     background: rgba(254, 233, 197, 0.10);;
@@ -569,6 +583,12 @@ iframe {
     border-bottom-width: 5px;  
 }
 
+#work-list .event .fa-solid:after,
+#will-goals .fa-solid:after,
+#food .fa-solid:after {
+    background-color: rgba(53, 91, 145);
+}
+
 #game-list,
 #gwen-goals,
 #zoe-goals {
@@ -576,6 +596,12 @@ iframe {
     border: 1px solid rgba(216, 128, 54, 0.52);
     backdrop-filter: blur(10px);
     border-bottom-width: 5px;   
+}
+
+#game-list .fa-solid:after,
+#gwen-goals .fa-solid:after,
+#zoe-goals .fa-solid:after {
+    background-color:rgba(216, 128, 54) ;
 }
 
 #weather,
@@ -588,10 +614,23 @@ iframe {
     border-bottom-width: 5px;
 }
 
+#weather .big-icon:after,
+#gavin-goals .fa-solid:after,
+#palworld .fa-solid:after,
+#event-list:not(.work) .event .fa-solid:after,
+#event-list:not(.work) .event .fa-brands:after {
+    background-color: rgba(176, 59, 89);
+}
+
 #sadie-goals,
 #movie-list {
     backdrop-filter: blur(10px);
     background: rgba(78, 130, 95, 0.15);
     border: 1px solid rgba(78, 130, 95, 0.52);
     border-bottom-width: 5px;
+}
+
+#sadie-goals .fa-solid:after,
+#movie-list .fa-solid:after {
+    background-color: rgba(78, 130, 95);
 }
