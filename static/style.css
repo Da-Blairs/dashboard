@@ -92,10 +92,10 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 #weather {
-    background: url(static/grunge2.jpg) #b03b59;
-    background-blend-mode: multiply;
-    background-size: cover;
-    background-position: bottom;
+/*    background: url(static/grunge2.jpg) #b03b59;*/
+/*    background-blend-mode: multiply;*/
+/*    background-size: cover;*/
+/*    background-position: bottom;*/
 /*    background: linear-gradient(240deg, rgba(252, 142, 190) 0%, rgba(252, 229, 195) 100%);*/
     color: #fee9c5;
 /*    color: #000;*/
@@ -106,6 +106,13 @@ body, h1, h2, h3, em, .clock-placeholder {
     font-size: 33px;
     justify-content: space-between;
     position: relative;
+    backdrop-filter: brightness(1.2) blur(6px);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+}
+
+#weather i.big-icon {
+    color: #b03b59;
+    opacity: 1;
 }
 
 .event-list {
@@ -125,17 +132,29 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 .event-list .event {
-    background: url(static/grunge3.jpg) #b03b59;
-    background-blend-mode: multiply;
-    background-size: cover;
-    color: #000;
+/*    background: url(static/grunge3.jpg) #b03b59;*/
+/*    background-blend-mode: multiply;*/
+/*    background-size: cover;*/
+/*    color: #000;*/
     color: #fee9c5;
     border-radius: 20px;
     padding: .5em;
     width: 100%;
     position: relative;
     overflow: hidden;
-    
+    backdrop-filter: brightness(1.2) blur(6px);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px; 
+}
+
+.event-list:not(.work) .event {
+    padding-right: 100px;  
+}
+
+
+
+.event-list i.fa-brands,
+.event-list i.fa-solid {
+    color: #b03b59;
 }
 .event-list .event:nth-child(-n+8) {
     box-shadow: rgba(0, 0, 0, .6) 0px -10px 25px, rgba(0, 0, 0, .6) 0px 10px 25px;
@@ -155,8 +174,18 @@ body, h1, h2, h3, em, .clock-placeholder {
 }
 
 .work .event {
-    background: #4e825f;
+    position: relative;
+    backdrop-filter: brightness(1.2) blur(6px);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+/*    background: #4e825f;*/
+    background: unset;
     width: calc(50% - 33px);
+}
+
+.work .event i.fa-solid {
+    color: #4e825f;
+    opacity: 1;
+
 }
 
 span.date:last-child {
@@ -203,16 +232,23 @@ span.date:last-child {
 
  #food {
     position: relative;
-    background: url(static/grunge4.jpg) #355b91;
-    background-blend-mode: multiply;
-    background-size: cover;
+/*    background: url(static/grunge4.jpg) #355b91;*/
+/*    background-blend-mode: multiply;*/
+/*    background-size: cover;*/
     color: #fee9c5;
     border-radius: 20px;
     padding: 1em;
     padding-right: 90px;
     align-items: baseline;
     flex-flow: row wrap;
+    backdrop-filter: brightness(1.2) blur(6px);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
  }
+
+ #food i.fa-solid {
+    color: #355b91;
+ }
+
 #food p {
     font-family: "Raleway", sans-serif;
     font-size: 25px;
@@ -287,25 +323,42 @@ i.fa-solid.fa-dragon:after {
 }
 #palworld, #movie-list, #game-list, #goals div {
 /*    background: linear-gradient(240deg, rgba(185, 159, 237) 0%, rgba(237, 185, 218) 100%);*/
-    background: url(static/grunge4.jpg) #d88036;
-    background-blend-mode: multiply;
-    background-size: cover;
+/*    background: url(static/grunge4.jpg) #d88036;*/
+/*    background-blend-mode: multiply;*/
+/*    background-size: cover;*/
 /*     color: #000;*/
      color: #fee9c5;
      border-radius: 20px;
      padding: 1em;
      position: relative;
      overflow: hidden;
-    background-image: url(static/grunge3.jpg);
-    background-blend-mode: multiply;
-    background-size: cover;
+/*    background-image: url(static/grunge3.jpg);*/
+/*    background-blend-mode: multiply;*/
+/*    background-size: cover;*/
+    backdrop-filter: brightness(1.2) blur(6px);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+}
+#zoe-goals i.fa-solid:not(.fa-circle-check),
+#gwen-goals i.fa-solid:not(.fa-circle-check) {
+    color: #d88036;
+}
+
+#game-list i.fa-solid {
+    color: #d88036;
+    opacity: 1;
 }
 
 #movie-list {
-    background: url(static/grunge2.jpg) #4e825f;
-    background-blend-mode: multiply;
-    background-size: cover;
+/*    background: url(static/grunge2.jpg) #4e825f;*/
+/*    background-blend-mode: multiply;*/
+/*    background-size: cover;*/
 }
+
+#movie-list i.fa-solid {
+    color: #4e825f;
+    opacity: 1;
+}
+
 #palworld .fa-solid,
 #movie-list .fa-solid,
 #game-list .fa-solid,
@@ -318,13 +371,13 @@ i.fa-solid.fa-dragon:after {
 .event .fa-brands, 
 .event .fa-solid {
     position: absolute;
-    color: #fee9c5;
+/*    color: #fee9c5;*/
     font-size: 80px;
-    opacity: 60%;
+/*    opacity: 60%;*/
     right: 20px;
     top: 50%;
     margin-top: -18px;
-    mix-blend-mode: hard-light;
+/*    mix-blend-mode: hard-light;*/
 }
 
 .work {
@@ -383,14 +436,15 @@ i.fa-solid.fa-dragon:after {
 }
 
 #goals #will-goals {
-    background-color: #355b91;
+/*    background-color: #355b91;*/
     overflow: visible;
-    background-position: bottom;
+/*    background-position: bottom;*/
 }
 
 #goals #will-goals .fa-solid:not(.fa-circle-check) {
     font-size: 80px;
     animation: wibble 5s infinite;
+    color: #355b91;
 }
 
 @keyframes wibble {
@@ -414,8 +468,8 @@ i.fa-solid.fa-dragon:after {
     }
 }
 
-#goals #sadie-goals {
-    background-color: #4e825f;
+#goals #sadie-goals i.fa-solid:not(.fa-circle-check) {
+    color: #4e825f;
 }
 
 .fa-lightbulb:after {
@@ -440,7 +494,7 @@ i.fa-solid.fa-dragon:after {
     top: -299px;
     left: 189px;
     background: radial-gradient(rgb(254, 233, 197, 0) 35%, rgb(254, 233, 197, 0.8) 50%);
-    content: " ";
+/*    content: " ";*/
     display: block;
     position: absolute;
     border-radius: 50%;
@@ -450,11 +504,19 @@ i.fa-solid.fa-dragon:after {
 }
 
 #goals #gavin-goals {
-    background-color: #b03b59; 
+/*    background-color: #b03b59; */
+}
+
+#gavin-goals i.fa-solid:not(.fa-circle-check) {
+    color: #b03b59;
 }
 
 #palworld {
-    background-color: #b03b59; 
+/*    background-color: #b03b59; */
+}
+
+#palworld i.fa-solid {
+    color: #b03b59;
 }
 
 #palworld em,
