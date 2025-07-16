@@ -249,7 +249,7 @@ span.date:last-child {
     color: #fee9c5;
     border-radius: 20px;
     padding: 20px;
-    padding-right: 90px;
+    padding-right: 95px;
     align-items: baseline;
     flex-flow: row wrap;
     backdrop-filter: brightness(1.2) blur(6px);
