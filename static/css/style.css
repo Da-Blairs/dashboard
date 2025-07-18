@@ -1,0 +1,676 @@
+@import url("https://fonts.googleapis.com/css2?family=Macondo&family=Macondo+Swash+Caps&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+/**
+ * "Macondo Swash Caps", "cursive"
+ * Macondo, cursive;
+ * Raleway, sans-serif
+ */
+html {
+  color: #fee9c5;
+  background: url(static/paper2.jpg) #3a372e;
+  background-blend-mode: multiply;
+  background-size: cover;
+}
+
+/*html:after {
+    background: url(static/rain2.gif) repeat;
+    content: " ";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}*/
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+  width: 1824px; /* 1920x1080 */
+  padding: 61px 0 0;
+  margin: 0.2em auto 0;
+  font-size: 20px;
+  font-family: "Raleway", sans-serif;
+  line-height: 1.6;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+body > div, body #goals, body .event-list:not(.work) {
+  display: grid;
+  width: 100%;
+  row-gap: 20px;
+}
+
+@media screen and (max-height: 768px) {
+  header {
+    visibility: hidden;
+  }
+  footer {
+    visibility: hidden;
+  }
+}
+div#error {
+  color: rgba(220, 0, 0, 0);
+  position: absolute;
+  top: 3px;
+  z-index: 12;
+  font-size: 48px;
+}
+div#error .events-error,
+div#error .work-error,
+div#error .swim-error,
+div#error .reads-error,
+div#error .dinner-error {
+  color: rgb(220, 0, 0);
+}
+
+h1, h2, h3, em, .clock-placeholder {
+  font-family: "Macondo Swash Caps", cursive;
+}
+
+body, h1, h2, h3, em, .clock-placeholder {
+  color: #fee9c5;
+}
+
+em {
+  font-weight: bold;
+  font-size: 28px;
+  font-style: normal;
+  display: block;
+}
+
+.clock-placeholder {
+  font-family: Macondo, cursive;
+  font-size: 65px;
+  padding: 20px !important;
+}
+.clock-placeholder span {
+  display: block;
+  width: 100%;
+  font-family: Macondo, cursive;
+  text-align: center;
+}
+.clock-placeholder #date {
+  font-family: "Macondo Swash Caps", cursive;
+  margin-top: -0.65em;
+  padding-left: 25px;
+  width: calc(100% - 25px);
+  font-size: 90px;
+}
+
+#weather {
+  display: flex;
+  font-family: "Macondo Swash Caps", sans-serif;
+  font-size: 33px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.event-list .date {
+  font-family: "Macondo Swash Caps", cursive;
+  font-size: 25px;
+  width: auto;
+  margin: 0 auto -19px;
+}
+.event-list .date:last-child {
+  display: none;
+}
+.event-list .title {
+  font-weight: bold;
+  font-size: 25px;
+}
+.event-list:not(.work) {
+  margin-top: -31px;
+}
+.event-list:not(.work) .event {
+  padding-right: 100px;
+}
+
+@keyframes ember-flicker {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+    background-color: #8B0000;
+    border-radius: 50%;
+  }
+  25% {
+    opacity: 0.9;
+    transform: scale(1.05);
+    background-color: #B22222;
+    border-radius: 75% 25%;
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.95);
+    background-color: #FF4500;
+    border-radius: 50%;
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.1);
+    background-color: #FF6347;
+    border-radius: 25% 75%;
+  }
+}
+@keyframes ember-wave {
+  0%, 100% {
+    border-radius: 50%;
+  }
+  25% {
+    border-radius: 75% 25%;
+  }
+  50% {
+    border-radius: 50%;
+  }
+  75% {
+    border-radius: 25% 75%;
+  }
+}
+.work {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.work::empty {
+  display: none;
+}
+.work .event {
+  position: relative;
+  backdrop-filter: brightness(1.2) blur(6px);
+  background: unset;
+  width: calc(50% - 53px) !important;
+  padding: 20px !important;
+}
+.work .event #work1, .work .event #work2 {
+  white-space: pre-wrap;
+  font-size: 25px;
+  font-weight: bold;
+}
+.work .event #work2 {
+  padding-left: 60px;
+  display: inline-block;
+  text-align: right;
+}
+.work .event .fa-solid {
+  right: -50px !important;
+}
+.work .event:nth-child(even) .fa-solid {
+  right: unset;
+  left: -50px;
+}
+
+.game-item:last-child,
+.movie-item:last-child {
+  margin-bottom: -1em;
+}
+
+.fa-clapperboard,
+.fa-book,
+.fa-book-skull {
+  transform: rotate(-10deg);
+}
+
+#goals #gwen-goals i.fa-solid.fa-dragon:after {
+  content: " ";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-blend-mode: normal;
+  left: unset;
+  right: -10px;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(5px);
+  animation: ember-flicker 15s infinite alternate ease-in-out, ember-wave 22s infinite;
+}
+#goals #will-goals .fa-solid:not(.fa-circle-check) {
+  font-size: 80px;
+  animation: wibble 5s infinite;
+  color: #355b91;
+}
+
+@keyframes wibble {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  2% {
+    transform: rotate(-5deg);
+  }
+  4% {
+    transform: rotate(4deg);
+  }
+  6% {
+    transform: rotate(-3deg);
+  }
+  8% {
+    transform: rotate(2deg);
+  }
+  10% {
+    transform: rotate(0deg);
+  }
+}
+#steps,
+.clock-placeholder {
+  background: rgba(254, 233, 197, 0.1);
+  background: linear-gradient(135deg, rgba(254, 233, 197, 0.1) 23%, rgba(254, 233, 197, 0.4) 33%, rgba(254, 233, 197, 0.25) 42%, rgba(254, 233, 197, 0.1) 54%, rgba(254, 233, 197, 0.25) 100%);
+  text-shadow: 1px 1px 2px #000;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(254, 233, 197, 0.52);
+  backdrop-filter: blur(5px);
+  border-bottom-width: 5px;
+  border-bottom-color: #feefd4;
+  background-blend-mode: multiply;
+  border-radius: 20px;
+  padding: 20px 100px 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+}
+#steps:after,
+.clock-placeholder:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*        background: url(static/rain2.gif);*/
+  background-size: 800px;
+  z-index: -4;
+}
+#steps .big-icon,
+#steps .fa-brands,
+#steps .fa-solid:not(.fa-circle-check),
+.clock-placeholder .big-icon,
+.clock-placeholder .fa-brands,
+.clock-placeholder .fa-solid:not(.fa-circle-check) {
+  color: #fee9c5;
+  position: absolute;
+  font-size: 80px;
+  right: 20px;
+  top: calc(50% - 40px);
+}
+#steps .big-icon:before,
+#steps .fa-brands:before,
+#steps .fa-solid:not(.fa-circle-check):before,
+.clock-placeholder .big-icon:before,
+.clock-placeholder .fa-brands:before,
+.clock-placeholder .fa-solid:not(.fa-circle-check):before {
+  position: relative;
+  filter: brightness(2);
+  z-index: 2;
+}
+#steps .big-icon:after,
+#steps .fa-brands:after,
+#steps .fa-solid:not(.fa-circle-check):after,
+.clock-placeholder .big-icon:after,
+.clock-placeholder .fa-brands:after,
+.clock-placeholder .fa-solid:not(.fa-circle-check):after {
+  display: block;
+  content: " ";
+  width: 100px;
+  height: 100px;
+  filter: blur(20px);
+  position: absolute;
+  top: 0;
+  left: -10px;
+  background-color: #fee9c5;
+}
+
+#steps {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  column-gap: 0.5em;
+  line-height: 1em;
+  height: 260px;
+  justify-content: right;
+  position: relative;
+  font-size: 30px;
+  padding: 20px;
+  /*&:before {
+      content: " ";
+      position: absolute;
+      width: 60%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(53, 91, 145, 1) 0%, rgba(78, 130, 95, 1) 20%, rgba(216, 128, 54, 1) 40%, rgba(176, 58, 89, 1) 60%, rgba(216, 128, 54, 1) 80%);
+      border-radius: 0 0% 100% 0%;
+      filter: blur(20px) opacity(0.5);
+      top: 6px;
+      left: 82px;
+  }*/
+}
+#steps .count {
+  font-size: 90px;
+  font-family: "Macondo";
+}
+#steps img {
+  margin-bottom: -92px;
+  width: 100%;
+  position: relative;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+#work-list .event,
+#will-goals,
+#food {
+  background: rgba(53, 91, 145, 0.1);
+  background: linear-gradient(135deg, rgba(53, 91, 145, 0.1) 23%, rgba(53, 91, 145, 0.4) 33%, rgba(53, 91, 145, 0.25) 42%, rgba(53, 91, 145, 0.1) 54%, rgba(53, 91, 145, 0.25) 100%);
+  text-shadow: 1px 1px 2px #000;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(53, 91, 145, 0.52);
+  backdrop-filter: blur(5px);
+  border-bottom-width: 5px;
+  border-bottom-color: #5481c0;
+  background-blend-mode: multiply;
+  border-radius: 20px;
+  padding: 20px 100px 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+}
+#work-list .event:after,
+#will-goals:after,
+#food:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*        background: url(static/rain2.gif);*/
+  background-size: 800px;
+  z-index: -4;
+}
+#work-list .event .big-icon,
+#work-list .event .fa-brands,
+#work-list .event .fa-solid:not(.fa-circle-check),
+#will-goals .big-icon,
+#will-goals .fa-brands,
+#will-goals .fa-solid:not(.fa-circle-check),
+#food .big-icon,
+#food .fa-brands,
+#food .fa-solid:not(.fa-circle-check) {
+  color: #355b91;
+  position: absolute;
+  font-size: 80px;
+  right: 20px;
+  top: calc(50% - 40px);
+}
+#work-list .event .big-icon:before,
+#work-list .event .fa-brands:before,
+#work-list .event .fa-solid:not(.fa-circle-check):before,
+#will-goals .big-icon:before,
+#will-goals .fa-brands:before,
+#will-goals .fa-solid:not(.fa-circle-check):before,
+#food .big-icon:before,
+#food .fa-brands:before,
+#food .fa-solid:not(.fa-circle-check):before {
+  position: relative;
+  filter: brightness(2);
+  z-index: 2;
+}
+#work-list .event .big-icon:after,
+#work-list .event .fa-brands:after,
+#work-list .event .fa-solid:not(.fa-circle-check):after,
+#will-goals .big-icon:after,
+#will-goals .fa-brands:after,
+#will-goals .fa-solid:not(.fa-circle-check):after,
+#food .big-icon:after,
+#food .fa-brands:after,
+#food .fa-solid:not(.fa-circle-check):after {
+  display: block;
+  content: " ";
+  width: 100px;
+  height: 100px;
+  filter: blur(20px);
+  position: absolute;
+  top: 0;
+  left: -10px;
+  background-color: #355b91;
+}
+
+#game-list,
+#gwen-goals,
+#zoe-goals {
+  background: rgba(216, 128, 54, 0.1);
+  background: linear-gradient(135deg, rgba(216, 128, 54, 0.1) 23%, rgba(216, 128, 54, 0.4) 33%, rgba(216, 128, 54, 0.25) 42%, rgba(216, 128, 54, 0.1) 54%, rgba(216, 128, 54, 0.25) 100%);
+  text-shadow: 1px 1px 2px #000;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(216, 128, 54, 0.52);
+  backdrop-filter: blur(5px);
+  border-bottom-width: 5px;
+  border-bottom-color: #e2a068;
+  background-blend-mode: multiply;
+  border-radius: 20px;
+  padding: 20px 100px 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+}
+#game-list:after,
+#gwen-goals:after,
+#zoe-goals:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*        background: url(static/rain2.gif);*/
+  background-size: 800px;
+  z-index: -4;
+}
+#game-list .big-icon,
+#game-list .fa-brands,
+#game-list .fa-solid:not(.fa-circle-check),
+#gwen-goals .big-icon,
+#gwen-goals .fa-brands,
+#gwen-goals .fa-solid:not(.fa-circle-check),
+#zoe-goals .big-icon,
+#zoe-goals .fa-brands,
+#zoe-goals .fa-solid:not(.fa-circle-check) {
+  color: #d88036;
+  position: absolute;
+  font-size: 80px;
+  right: 20px;
+  top: calc(50% - 40px);
+}
+#game-list .big-icon:before,
+#game-list .fa-brands:before,
+#game-list .fa-solid:not(.fa-circle-check):before,
+#gwen-goals .big-icon:before,
+#gwen-goals .fa-brands:before,
+#gwen-goals .fa-solid:not(.fa-circle-check):before,
+#zoe-goals .big-icon:before,
+#zoe-goals .fa-brands:before,
+#zoe-goals .fa-solid:not(.fa-circle-check):before {
+  position: relative;
+  filter: brightness(2);
+  z-index: 2;
+}
+#game-list .big-icon:after,
+#game-list .fa-brands:after,
+#game-list .fa-solid:not(.fa-circle-check):after,
+#gwen-goals .big-icon:after,
+#gwen-goals .fa-brands:after,
+#gwen-goals .fa-solid:not(.fa-circle-check):after,
+#zoe-goals .big-icon:after,
+#zoe-goals .fa-brands:after,
+#zoe-goals .fa-solid:not(.fa-circle-check):after {
+  display: block;
+  content: " ";
+  width: 100px;
+  height: 100px;
+  filter: blur(20px);
+  position: absolute;
+  top: 0;
+  left: -10px;
+  background-color: #d88036;
+}
+
+#weather,
+#gavin-goals,
+#palworld,
+#event-list:not(.work) .event {
+  background: rgba(176, 58, 89, 0.1);
+  background: linear-gradient(135deg, rgba(176, 58, 89, 0.1) 23%, rgba(176, 58, 89, 0.4) 33%, rgba(176, 58, 89, 0.25) 42%, rgba(176, 58, 89, 0.1) 54%, rgba(176, 58, 89, 0.25) 100%);
+  text-shadow: 1px 1px 2px #000;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(176, 58, 89, 0.52);
+  backdrop-filter: blur(5px);
+  border-bottom-width: 5px;
+  border-bottom-color: #cc637f;
+  background-blend-mode: multiply;
+  border-radius: 20px;
+  padding: 20px 100px 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+}
+#weather:after,
+#gavin-goals:after,
+#palworld:after,
+#event-list:not(.work) .event:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*        background: url(static/rain2.gif);*/
+  background-size: 800px;
+  z-index: -4;
+}
+#weather .big-icon,
+#weather .fa-brands,
+#weather .fa-solid:not(.fa-circle-check),
+#gavin-goals .big-icon,
+#gavin-goals .fa-brands,
+#gavin-goals .fa-solid:not(.fa-circle-check),
+#palworld .big-icon,
+#palworld .fa-brands,
+#palworld .fa-solid:not(.fa-circle-check),
+#event-list:not(.work) .event .big-icon,
+#event-list:not(.work) .event .fa-brands,
+#event-list:not(.work) .event .fa-solid:not(.fa-circle-check) {
+  color: #b03a59;
+  position: absolute;
+  font-size: 80px;
+  right: 20px;
+  top: calc(50% - 40px);
+}
+#weather .big-icon:before,
+#weather .fa-brands:before,
+#weather .fa-solid:not(.fa-circle-check):before,
+#gavin-goals .big-icon:before,
+#gavin-goals .fa-brands:before,
+#gavin-goals .fa-solid:not(.fa-circle-check):before,
+#palworld .big-icon:before,
+#palworld .fa-brands:before,
+#palworld .fa-solid:not(.fa-circle-check):before,
+#event-list:not(.work) .event .big-icon:before,
+#event-list:not(.work) .event .fa-brands:before,
+#event-list:not(.work) .event .fa-solid:not(.fa-circle-check):before {
+  position: relative;
+  filter: brightness(2);
+  z-index: 2;
+}
+#weather .big-icon:after,
+#weather .fa-brands:after,
+#weather .fa-solid:not(.fa-circle-check):after,
+#gavin-goals .big-icon:after,
+#gavin-goals .fa-brands:after,
+#gavin-goals .fa-solid:not(.fa-circle-check):after,
+#palworld .big-icon:after,
+#palworld .fa-brands:after,
+#palworld .fa-solid:not(.fa-circle-check):after,
+#event-list:not(.work) .event .big-icon:after,
+#event-list:not(.work) .event .fa-brands:after,
+#event-list:not(.work) .event .fa-solid:not(.fa-circle-check):after {
+  display: block;
+  content: " ";
+  width: 100px;
+  height: 100px;
+  filter: blur(20px);
+  position: absolute;
+  top: 0;
+  left: -10px;
+  background-color: #b03a59;
+}
+#weather .big-icon, #weather .fa-solid,
+#gavin-goals .big-icon,
+#gavin-goals .fa-solid,
+#palworld .big-icon,
+#palworld .fa-solid,
+#event-list:not(.work) .event .big-icon,
+#event-list:not(.work) .event .fa-solid {
+  color: #b03a59;
+}
+
+#sadie-goals,
+#movie-list {
+  background: rgba(78, 130, 95, 0.1);
+  background: linear-gradient(135deg, rgba(78, 130, 95, 0.1) 23%, rgba(78, 130, 95, 0.4) 33%, rgba(78, 130, 95, 0.25) 42%, rgba(78, 130, 95, 0.1) 54%, rgba(78, 130, 95, 0.25) 100%);
+  text-shadow: 1px 1px 2px #000;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(78, 130, 95, 0.52);
+  backdrop-filter: blur(5px);
+  border-bottom-width: 5px;
+  border-bottom-color: #71aa84;
+  background-blend-mode: multiply;
+  border-radius: 20px;
+  padding: 20px 100px 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+}
+#sadie-goals:after,
+#movie-list:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*        background: url(static/rain2.gif);*/
+  background-size: 800px;
+  z-index: -4;
+}
+#sadie-goals .big-icon,
+#sadie-goals .fa-brands,
+#sadie-goals .fa-solid:not(.fa-circle-check),
+#movie-list .big-icon,
+#movie-list .fa-brands,
+#movie-list .fa-solid:not(.fa-circle-check) {
+  color: #4e825f;
+  position: absolute;
+  font-size: 80px;
+  right: 20px;
+  top: calc(50% - 40px);
+}
+#sadie-goals .big-icon:before,
+#sadie-goals .fa-brands:before,
+#sadie-goals .fa-solid:not(.fa-circle-check):before,
+#movie-list .big-icon:before,
+#movie-list .fa-brands:before,
+#movie-list .fa-solid:not(.fa-circle-check):before {
+  position: relative;
+  filter: brightness(2);
+  z-index: 2;
+}
+#sadie-goals .big-icon:after,
+#sadie-goals .fa-brands:after,
+#sadie-goals .fa-solid:not(.fa-circle-check):after,
+#movie-list .big-icon:after,
+#movie-list .fa-brands:after,
+#movie-list .fa-solid:not(.fa-circle-check):after {
+  display: block;
+  content: " ";
+  width: 100px;
+  height: 100px;
+  filter: blur(20px);
+  position: absolute;
+  top: 0;
+  left: -10px;
+  background-color: #4e825f;
+}
+
+/*# sourceMappingURL=style.css.map */

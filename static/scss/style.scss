@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&family=Macondo+Swash+Caps&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+/**
+ * "Macondo Swash Caps", "cursive"
+ * Macondo, cursive;
+ * Raleway, sans-serif
+ */
+
+$yellow: #fee9c5;
+$blue: #355b91;
+$green: #4e825f;
+$red: #b03a59;
+$orange: #d88036;
+
+html {
+    color: $yellow;
+    background: url(static/paper2.jpg) #3a372e;
+    background-blend-mode: multiply;
+    background-size: cover;
+}
+
+/*html:after {
+    background: url(static/rain2.gif) repeat;
+    content: " ";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}*/
+
+body  {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+    width: calc(1920px - 96px);/* 1920x1080 */
+    padding: 61px 0 0;
+    margin: 0.2em auto 0;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.6;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    > div, #goals, .event-list:not(.work) {
+        display: grid;
+        width: 100%;
+        row-gap: 20px;
+    }
+}
+ 
+
+@media screen and ( max-height: 768px ) {
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+}
+
+div#error {
+    color: rgba(220, 0, 0, 0);
+    position: absolute;
+    top: 3px;
+    z-index: 12;
+    font-size: 48px;
+    .events-error,
+    .work-error,
+    .swim-error,
+    .reads-error,
+    .dinner-error {
+        color: rgba(220, 0, 0, 1);
+    }
+}
+
+h1, h2, h3, em, .clock-placeholder {
+    font-family: "Macondo Swash Caps", cursive;
+}
+
+body, h1, h2, h3, em, .clock-placeholder {
+    color: $yellow;
+}
+
+em {
+    font-weight: bold;
+    font-size: 28px;
+    font-style: normal;
+    display: block;
+}
+
+.clock-placeholder {
+    font-family: Macondo, cursive;
+    font-size: 65px;
+    padding: 20px!important;
+    span {
+        display: block;
+        width: 100%;
+        font-family: Macondo, cursive;
+        text-align: center;
+    }
+    #date {
+        font-family: "Macondo Swash Caps", cursive;
+        margin-top: -0.65em;
+        padding-left: 25px;
+        width: calc(100% - 25px);
+        font-size: 90px;
+    }
+}
+
+#weather {
+    display: flex;
+    font-family: "Macondo Swash Caps", sans-serif;
+    font-size: 33px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.event-list {
+    .date {
+        font-family: "Macondo Swash Caps", cursive;
+        font-size: 25px;
+        width: auto;
+        margin: 0 auto -19px;
+        &:last-child {
+            display: none;
+        }
+    }
+    .title {
+        font-weight: bold;
+        font-size: 25px;
+    }
+    &:not(.work) {
+        margin-top: -31px;
+        .event {
+            padding-right: 100px;  
+        }
+    }
+}
+
+@keyframes ember-flicker {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+        background-color: #8B0000;
+        border-radius: 50%;
+    }
+    25% {
+        opacity: 0.9;
+        transform: scale(1.05);
+        background-color: #B22222;
+        border-radius: 75% 25%;
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(0.95);
+        background-color: #FF4500;
+        border-radius: 50%;
+    }
+    75% {
+        opacity: 1;
+        transform: scale(1.1);
+        background-color: #FF6347;
+        border-radius: 25% 75%;
+    }
+}
+
+@keyframes ember-wave {
+    0%, 100% {
+        border-radius: 50%;
+    }
+    25% {
+        border-radius: 75% 25%;
+    }
+    50% {
+         border-radius: 50%;
+    }
+    75% {
+        border-radius: 25% 75%;
+    }
+}
+
+.work {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    &::empty {
+        display: none;
+    }
+    .event {
+        position: relative;
+        backdrop-filter: brightness(1.2) blur(6px);
+        background: unset;
+        width: calc(50% - 53px) !important;
+        padding: 20px !important;
+        #work1, #work2 {
+            white-space: pre-wrap;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        #work2 {
+            padding-left: 60px;
+            display: inline-block;
+            text-align: right;
+        }
+        .fa-solid {
+            right: -50px !important;
+        }
+        &:nth-child(even) .fa-solid {
+            right: unset;
+            left: -50px;
+        }
+    }
+}
+
+.game-item:last-child,
+.movie-item:last-child {
+    margin-bottom: -1em;
+}
+
+.fa-clapperboard,
+.fa-book,
+.fa-book-skull {
+    transform: rotate(-10deg);
+}
+
+#goals {
+    #gwen-goals {
+        i.fa-solid.fa-dragon:after {
+            content: " ";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-blend-mode: normal;
+            left: unset;
+            right: -10px;
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(5px);
+            animation: ember-flicker 15s infinite alternate ease-in-out,
+                ember-wave 22s infinite;
+
+        }
+    }
+    #will-goals {
+        .fa-solid:not(.fa-circle-check) {
+            font-size: 80px;
+            animation: wibble 5s infinite;
+            color: $blue;
+        }
+
+    }
+}
+
+
+@keyframes wibble {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    2% {
+        transform: rotate(-5deg);
+    }
+    4% {
+        transform: rotate(4deg);
+    }
+    6% {
+        transform: rotate(-3deg);
+    }
+    8% {
+        transform: rotate(2deg);
+    }
+    10% {
+        transform: rotate(0deg);
+    }
+}
+
+@mixin glow-box($colour) {
+    background: rgba($colour, 0.10);
+    background: linear-gradient(135deg,
+        rgba($colour, 0.10) 23%, 
+        rgba($colour, 0.40) 33%, 
+        rgba($colour, 0.25) 42%, 
+/*        rgba($colour, 0.30) 44%, */
+        rgba($colour, 0.10) 54%, 
+        rgba($colour, 0.25) 100%);
+    text-shadow: 1px 1px 2px #000;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba($colour, 0.52);
+    backdrop-filter: blur(5px);
+    border-bottom-width: 5px;
+    border-bottom-color: scale-color($colour, $lightness: 25%);
+    background-blend-mode: multiply;
+    border-radius: 20px;
+    padding: 20px 100px 20px 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+    &:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+/*        background: url(static/rain2.gif);*/
+        background-size: 800px;
+        z-index: -4;
+    }
+    .big-icon,
+    .fa-brands,
+    .fa-solid:not(.fa-circle-check) {
+        color: $colour;
+        position: absolute;
+        font-size: 80px;
+        right: 20px;
+        top: calc(50% - 40px);
+        &:before {
+            position: relative;
+            filter: brightness(2);
+            z-index: 2;
+        }
+        &:after {
+            display: block;
+            content: " ";
+            width: 100px;
+            height: 100px;
+            filter:blur(20px);
+            position: absolute;
+            top: 0;
+            left: -10px;
+            background-color: $colour;
+        }
+    }
+}
+
+#steps,
+.clock-placeholder {
+    @include glow-box($yellow);
+}
+
+#steps {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    column-gap: .5em;
+    line-height: 1em;
+    height: 260px;
+    justify-content: right;
+    position: relative;
+    font-size: 30px;
+    padding: 20px;
+    /*&:before {
+        content: " ";
+        position: absolute;
+        width: 60%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(180deg, rgba(53, 91, 145, 1) 0%, rgba(78, 130, 95, 1) 20%, rgba(216, 128, 54, 1) 40%, rgba(176, 58, 89, 1) 60%, rgba(216, 128, 54, 1) 80%);
+        border-radius: 0 0% 100% 0%;
+        filter: blur(20px) opacity(0.5);
+        top: 6px;
+        left: 82px;
+    }*/
+    .count {
+        font-size: 90px;
+        font-family: 'Macondo';
+    }
+    img {
+        margin-bottom: -92px;
+        width: 100%;
+        position: relative;
+        filter: drop-shadow(1px 1px 2px rgb(0 0 0 / 0.4));
+    }
+
+}
+
+#work-list .event,
+#will-goals,
+#food {
+    @include glow-box($blue);
+}
+
+#game-list,
+#gwen-goals,
+#zoe-goals {
+    @include glow-box($orange);
+}
+
+#weather,
+#gavin-goals,
+#palworld,
+#event-list:not(.work) .event {
+    @include glow-box($red);
+    .big-icon, .fa-solid {
+        color: $red;
+    }
+}
+
+#sadie-goals,
+#movie-list {
+    @include glow-box($green);
+}

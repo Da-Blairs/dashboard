@@ -32,7 +32,7 @@ def home():
     if not credentials:
         return redirect('/authorize')
 
-    styles_css = read_css(os.path.join(app.root_path, 'static', 'style.css'))
+    styles_css = read_css(os.path.join(app.root_path, 'static', 'css', 'style.css'))
     weather_icons_css = read_css(os.path.join(app.root_path, 'static', 'weather-icons.min.css'))
 
     toronto_tz = pytz.timezone('America/Toronto')

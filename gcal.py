@@ -191,7 +191,8 @@ event_icons = {
     "oma": "<i class='fa-solid fa-face-grin-hearts'></i>",
     "goderich": "<i class='fa-solid fa-face-grin-hearts'></i>",
     "movie": "<i class='fa-solid fa-clapperboard'></i>",
-    "plorin": "<i class='fa-solid fa-person-hiking'></i>",
+    "plorin": "<i class='fa-solid fa-person-hiking'></i>", 
+    "hike": "<i class='fa-solid fa-person-hiking'></i>",
     "exercise": "<i class='fa-solid fa-dumbbell'></i>",
     "dentist": "<i class='fa-solid fa-tooth'></i>",
     "zoub": "<i class='fa-solid fa-dog'></i>",
@@ -236,7 +237,7 @@ def gcal_events():
 
             if 'date' in event['start']:
                 if event['start'].get('date') == date:
-                    html_output.append(f'<div class="event"><span class="time">All Day</span><br>{icon} {event_title}</div>')
+                    html_output.append(f'<div class="event">All Day<br>{icon} <span class="title">{event_title}</span></div>')
 
             if 'dateTime' in event['start']:
                 if event['start']['dateTime'].split('T')[0] == date:
@@ -244,7 +245,7 @@ def gcal_events():
                     start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
                     end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'])
                     end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
-                    html_output.append(f'<div class="event"><span class="time">{start_time}-{end_time}</span><br>{icon} {event_title}</div>')
+                    html_output.append(f'<div class="event">{start_time}-{end_time}<br>{icon}<span class="title">{event_title}</span></div>')
 
     return jsonify({'html': "\n".join(html_output)})
 
