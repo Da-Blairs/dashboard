@@ -118,8 +118,9 @@
                         }
                     } else {
                         document.getElementById('weather').innerHTML = `
-                            ${data.temperature}<br>
-                            ${data.uv}<br>
+                            <span>${data.temperature}</span>
+                            <span>${data.uv}</span>
+                            <span></span>
                             <i class="big-icon wi ${data.weathercode}"></i>
                         `;
                         document.getElementById('error').classList.remove('weather-error');
