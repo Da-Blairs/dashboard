@@ -142,6 +142,28 @@ def authorize():
 def callback():
     return google_callback(request, redirect)
 
+@app.route('/save_dashboard', methods=['POST'])
+def save_dashboard():
+    # Get plain text content from request body
+    content = request.data.decode('utf-8')
+    
+    # Hardcoded filename
+    filename = "dashboard_content.txt"
+    save_path = os.path.join('saved_files', filename)
+    
+    # Create directory if it doesn't exist
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    
+    # Save content to file
+    try:
+        with open(save_path, 'w') as f:
+            f.write(content)
+        return jsonify({
+            'message': 'Dashboard content saved successfully',
+            'path': save_path
+        }), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     print("Running on host:", app.config['SERVER_NAME'])
