@@ -185,17 +185,19 @@
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            let errorElement = document.getElementById('error');
+            if (!errorElement.classList.contains('saveDashboard-error')) {
+                errorElement.classList.add('saveDashboard-error');
+            }
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Dashboard saved successfully:', data);
-        //alert(`Dashboard content saved to: ${data.path}`);
     })
     .catch(error => {
-        console.error('Error saving dashboard:', error);
-        //alert('Error saving dashboard: ' + error.message);
+        console.error('Error with saveDashboard:', error);
+        document.getElementById('saveDashboard').innerText = 'Error with saveDashboard.';
+        let errorElement = document.getElementById('error');
+        if (!errorElement.classList.contains('saveDashboard-error')) {
+            errorElement.classList.add('saveDashboard-error');
+        }
     });
 }
 
