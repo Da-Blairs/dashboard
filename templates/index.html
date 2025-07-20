@@ -170,7 +170,39 @@
                 col3.style.marginTop = (currentMarginTop - step) + 'px';
             }
         });
+        
+        function saveDashboard() {
+    // Get all text content from the document
+    const documentText = document.documentElement.textContent || document.documentElement.innerText;
+    
+    // Send request using Fetch API
+    fetch('/save_dashboard', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain'
+        },
+        body: documentText
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Dashboard saved successfully:', data);
+        alert(`Dashboard content saved to: ${data.path}`);
+    })
+    .catch(error => {
+        console.error('Error saving dashboard:', error);
+        alert('Error saving dashboard: ' + error.message);
+    });
+}
 
+setTimeout(saveDashboard, 5000);
+    
+// Set up hourly saves (3600000 ms = 1 hour)
+setInterval(saveDashboard, 3600000);
     </script>
 </head>
 <body>
