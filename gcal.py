@@ -184,7 +184,12 @@ event_icons = {
     "birthday": "<i class='fa-solid fa-cake-candles'></i>",
     "grad": "<i class='fa-solid fa-graduation-cap'></i>",
     "retire": "<i class='fa-solid fa-umbrella-beach'></i>",
-    "babysit": "<i class='fa-solid fa-person-running'></i>",
+    "babysit": "<i class='fa-solid fa-children'></i>",
+    "québec": "<i class='fa-solid fa-compass'></i>",
+    "quebec": "<i class='fa-solid fa-compass'></i>",
+    "sleepover": "<i class='fa-solid fa-moon'></i>",
+    "c25k": "<i class='fa-solid fa-person-running'></i>",
+    "western": "<i class='fa-solid fa-building-columns'></i>",
     "recital": "<i class='fa-solid fa-music'></i>",
     "d&d": "<i class='fa-solid fa-dragon'></i>",
     "d&d": "<i class='fa-brands fa-d-and-d'></i>",
@@ -214,8 +219,9 @@ def gcal_events():
     events_result = service.events().list(
         calendarId=url,
         timeMin=midnight_toronto_iso(),
-        maxResults=8,
+        maxResults=15,
         singleEvents=True,
+        timeZone='America/Toronto',
         orderBy='startTime'
     ).execute()
     events = events_result.get('items', [])
@@ -240,12 +246,22 @@ def gcal_events():
                     html_output.append(f'<div class="event">All Day<br>{icon} <span class="title">{event_title}</span></div>')
 
             if 'dateTime' in event['start']:
-                if event['start']['dateTime'].split('T')[0] == date:
-                    start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'])
-                    start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
-                    end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'])
-                    end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
+                start_datetime = datetime.datetime.fromisoformat(event['start']['dateTime'])
+                start_time = start_datetime.strftime('%I:%M %p').lower().lstrip('0')
+                end_datetime = datetime.datetime.fromisoformat(event['end']['dateTime'])
+                end_time = end_datetime.strftime('%I:%M %p').lower().lstrip('0')
+                    
+                if event['start']['dateTime'].split('T')[0] == date and event['end']['dateTime'].split('T')[0] == date:
                     html_output.append(f'<div class="event">{start_time}-{end_time}<br>{icon}<span class="title">{event_title}</span></div>')
+
+                elif event['start']['dateTime'].split('T')[0] <= date and event['end']['dateTime'].split('T')[0] == date:
+                    html_output.append(f'<div class="event">Until {end_time}<br>{icon}<span class="title">{event_title}</span></div>')
+
+                elif event['start']['dateTime'].split('T')[0] == date and event['end']['dateTime'].split('T')[0] >= date:
+                    html_output.append(f'<div class="event">Starting at {start_time}<br>{icon}<span class="title">{event_title}</span></div>')
+                
+                elif event['start']['dateTime'].split('T')[0] < date and event['end']['dateTime'].split('T')[0] > date:
+                    html_output.append(f'<div class="event">Ongoing<br>{icon}<span class="title">{event_title}</span></div>')
 
     return jsonify({'html': "\n".join(html_output)})
 
