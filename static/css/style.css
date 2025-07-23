@@ -120,7 +120,7 @@ em {
   font-size: 25px;
 }
 .event-list:not(.work) {
-  margin-top: -31px;
+  margin-top: -40px;
 }
 .event-list:not(.work) .event {
   padding-right: 100px;
