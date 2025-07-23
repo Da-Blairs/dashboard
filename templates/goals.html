@@ -10,7 +10,7 @@
         <em>{{person_name}} Summer Goals</em>
         <i class="{{ person_icon }}"></i>
         {% for goal in person_data.goals %}
-            <i class="{% if goal.status == 1 %}fa-regular fa-circle-check{% else %}fa-regular fa-circle{% endif %}"></i> 
+            <i class="{% if goal.status == 1 %}fa-solid fa-circle-check{% else %}fa-regular fa-circle{% endif %}"></i> 
                 {{ goal.goal
             |replace('{{gwen_read}}', gwen_read|string)
             |replace('{{will_read}}', will_read|string)
