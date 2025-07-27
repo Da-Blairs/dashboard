@@ -116,6 +116,10 @@ em {
     font-size: 33px;
     justify-content: space-between;
     position: relative;
+    .big-icon {
+        font-size: 70px;
+        top: calc(50% - 25px);
+    }
 }
 
 .event-list {
@@ -196,15 +200,11 @@ em {
         background: unset;
         width: calc(50% - 53px) !important;
         padding: 20px !important;
-        #work1, #work2 {
-            white-space: pre-wrap;
-            font-size: 25px;
-            font-weight: bold;
-        }
         #work2 {
-            padding-left: 60px;
+            padding-left: 30px;
             display: inline-block;
             text-align: right;
+            width: calc(100% - 30px);
         }
         .fa-solid {
             right: -50px !important;

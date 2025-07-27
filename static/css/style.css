@@ -110,6 +110,10 @@ em {
   justify-content: space-between;
   position: relative;
 }
+#weather .big-icon {
+  font-size: 70px;
+  top: calc(50% - 25px);
+}
 
 .event-list .date {
   font-family: "Macondo Swash Caps", cursive;
@@ -187,15 +191,11 @@ em {
   width: calc(50% - 53px) !important;
   padding: 20px !important;
 }
-.work .event #work1, .work .event #work2 {
-  white-space: pre-wrap;
-  font-size: 25px;
-  font-weight: bold;
-}
 .work .event #work2 {
-  padding-left: 60px;
+  padding-left: 30px;
   display: inline-block;
   text-align: right;
+  width: calc(100% - 30px);
 }
 .work .event .fa-solid {
   right: -50px !important;
