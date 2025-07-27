@@ -10,6 +10,7 @@ import json
 import os
 import pprint
 import pytz
+from runs import run_list
 from movies import movie_list
 from games import game_list
 from goals import goal_list
@@ -45,6 +46,16 @@ def home():
         gwen_read=gwen_read(),
         will_read=will_read()
     )
+
+@app.route('/runs')
+def runs():
+    runs_data = run_list()
+    if runs_data:
+        runs = runs_data.json
+        html_content = render_template('run_list.html', runs=runs['runs'])
+        return jsonify({'html': html_content})
+    else:
+        return "Failed to fetch movie list."
 
 @app.route('/movies')
 def movies():

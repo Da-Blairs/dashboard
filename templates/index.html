@@ -27,6 +27,11 @@
                 });
         }
 
+
+        function updateRuns() {
+            fetchData('/runs', 'run-list', 'runs');
+        }
+
         function updateMovies() {
             fetchData('/movies', 'movie-list', 'movies');
         }
@@ -136,6 +141,7 @@
                 });
         }
 
+        setInterval(updateRuns, 300000); // Update every 5 minutes
         setInterval(updateMovies, 300000); // Update every 5 minutes
 	    setInterval(updateGames,30000);
         setInterval(updatePalworld,30000);
@@ -152,6 +158,7 @@
             updateReads();
             updateDinner();
             updateEvents();
+            updateRuns();
             updateMovies();
             updateGames();
 	        updatePalworld();
@@ -246,6 +253,9 @@ setInterval(saveDashboard, 3600000);
 
         <div id="palworld">
         ...
+        </div>
+        <div id="run-list">
+            ...
         </div>
         <!-- <div id="swims">
             <span id="swim_count" class="count">{{ swim_count }}</span>

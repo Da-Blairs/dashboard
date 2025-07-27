@@ -1,3 +1,4 @@
+@use "sass:color";
 @import url('https://fonts.googleapis.com/css2?family=Macondo&family=Macondo+Swash+Caps&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 /**
  * "Macondo Swash Caps", "cursive"
@@ -72,6 +73,7 @@ div#error {
 
 h1, h2, h3, em, .clock-placeholder {
     font-family: "Macondo Swash Caps", cursive;
+    text-wrap: balance;
 }
 
 body, h1, h2, h3, em, .clock-placeholder {
@@ -210,6 +212,7 @@ em {
     }
 }
 
+.run-item:last-child,
 .game-item:last-child,
 .movie-item:last-child {
     margin-bottom: -1em;
@@ -277,7 +280,6 @@ em {
         rgba($colour, 0.10) 23%, 
         rgba($colour, 0.40) 33%, 
         rgba($colour, 0.25) 42%, 
-/*        rgba($colour, 0.30) 44%, */
         rgba($colour, 0.10) 54%, 
         rgba($colour, 0.25) 100%);
     text-shadow: 1px 1px 2px #000;
@@ -286,7 +288,7 @@ em {
     border: 1px solid rgba($colour, 0.52);
     backdrop-filter: blur(5px);
     border-bottom-width: 5px;
-    border-bottom-color: scale-color($colour, $lightness: 25%);
+    border-bottom-color: color.scale($colour, $lightness: 25%);
     background-blend-mode: multiply;
     border-radius: 20px;
     padding: 20px 100px 20px 20px;
@@ -298,7 +300,6 @@ em {
         left: 0;
         width: 100%;
         height: 100%;
-/*        background: url(static/rain2.gif);*/
         background-size: 800px;
         z-index: -4;
     }
@@ -392,6 +393,7 @@ em {
     }
 }
 
+#run-list,
 #sadie-goals,
 #movie-list {
     @include glow-box($green);

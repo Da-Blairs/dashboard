@@ -1,0 +1,7 @@
+<i class="fa-solid fa-person-running"></i>
+{% for run in runs %}
+<div class="run-item">
+    {{ run.date }}<br>
+    <em>{{ run.run_name }}</em><br>
+</div>
+{% endfor %}
