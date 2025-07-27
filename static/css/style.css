@@ -110,10 +110,6 @@ em {
   justify-content: space-between;
   position: relative;
 }
-#weather .big-icon {
-  font-size: 70px;
-  top: calc(50% - 25px);
-}
 
 .event-list .date {
   font-family: "Macondo Swash Caps", cursive;
@@ -433,6 +429,7 @@ em {
   background-color: #355b91;
 }
 
+#weather .big-icon,
 #work-list .event .fa-solid:not(.fa-circle-check) {
   font-size: 70px;
   top: calc(50% - 35px);

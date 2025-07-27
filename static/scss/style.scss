@@ -116,10 +116,6 @@ em {
     font-size: 33px;
     justify-content: space-between;
     position: relative;
-    .big-icon {
-        font-size: 70px;
-        top: calc(50% - 25px);
-    }
 }
 
 .event-list {
@@ -380,6 +376,7 @@ em {
     @include glow-box($blue);
 }
 
+#weather .big-icon,
 #work-list .event .fa-solid:not(.fa-circle-check) {
     font-size: 70px;
     top: calc(50% - 35px);
