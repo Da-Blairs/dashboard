@@ -205,7 +205,6 @@ em {
   left: -50px;
 }
 
-.run-item:last-child,
 .game-item:last-child,
 .movie-item:last-child {
   margin-bottom: -1em;
@@ -432,6 +431,11 @@ em {
   top: 0;
   left: -10px;
   background-color: #355b91;
+}
+
+#work-list .event .fa-solid:not(.fa-circle-check) {
+  font-size: 70px;
+  top: calc(50% - 35px);
 }
 
 #game-list,

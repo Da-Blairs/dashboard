@@ -216,7 +216,6 @@ em {
     }
 }
 
-.run-item:last-child,
 .game-item:last-child,
 .movie-item:last-child {
     margin-bottom: -1em;
@@ -379,6 +378,11 @@ em {
 #will-goals,
 #food {
     @include glow-box($blue);
+}
+
+#work-list .event .fa-solid:not(.fa-circle-check) {
+    font-size: 70px;
+    top: calc(50% - 35px);
 }
 
 #game-list,
