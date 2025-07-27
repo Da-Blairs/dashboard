@@ -15,6 +15,10 @@ html {
   background-size: cover;
 }
 
+div:empty {
+  display: none;
+}
+
 /*html:after {
     background: url(static/rain2.gif) repeat;
     content: " ";
@@ -951,7 +955,7 @@ setInterval(saveDashboard, 3600000);
 
 
         
-            01:29 PM
+            01:41 PM
             July 27
         
 
@@ -1068,9 +1072,7 @@ setInterval(saveDashboard, 3600000);
 
     
     
-        Saturday, July 26
-Starting at 3:00 pmElias & Emily sleepover
-Sunday, July 27
+        Sunday, July 27
 Until 10:00 amElias & Emily sleepover
 Monday, July 28
 8:30 am-3:30 pmWilliam @ Western

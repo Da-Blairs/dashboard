@@ -231,6 +231,12 @@ def gcal_events():
 
     for date in date_list:
         header = datetime.datetime.strptime(date, "%Y-%m-%d")
+        header_toronto = toronto_tz.localize(header)
+    
+        # Skip if before midnight Toronto time
+        if header_toronto.isoformat() < midnight_toronto_iso():
+            continue
+
         html_output.append(f"<span class='date'><span>{header.strftime('%A')}, {header.strftime('%B %d')}</span><span></span></span>")
 
         for event in events:

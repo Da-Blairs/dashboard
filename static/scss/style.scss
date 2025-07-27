@@ -19,6 +19,10 @@ html {
     background-size: cover;
 }
 
+div:empty {
+    display: none;
+}
+
 /*html:after {
     background: url(static/rain2.gif) repeat;
     content: " ";
